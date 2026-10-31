@@ -36,13 +36,13 @@ Cascading becomes a sequence of routing problems over "supermodels" (ordered seq
 
 ## 5. Key results
 - RouterBench zero-shot (Table 1), AUC %: with 11 models at low noise, routing 83.25, baseline cascade 84.48, their cascade 84.47, cascade routing 87.24 (linear interpolation 70.51). At high noise with 11 models, cascade routing 74.40 vs routing 72.67 and baseline cascade 69.79.
-- The gap widens with more models and shrinks as noise grows; the paper reports gains of up to 8% on RouterBench and 14% on SWE-Bench.
+- The gap widens with more models and shrinks as noise grows. Two different figures appear for RouterBench: the Introduction says gains of "up to 8%" (and 14% on SWE-Bench); Section 5.1 reports, over the full noise grid in Figure 2, up to 8% over cascading and up to 12% over routing. The Table 1 differences are much smaller: the text says cascade routing gains 1 to 4 AUC points over the baselines (13% to 80% relative to the linear-interpolation baseline), so do not compare "8%" with the table directly.
 - SWE-Bench, 10 models (Table 2): routing 40.47, baseline cascade 38.52, their cascade 53.20, cascade routing 54.12 (post-hoc quality is accurate because tests can be run).
 - Qwen models on Minerva Math plus LiveCodeBench: routing and cascade routing tie at 58.20; baseline cascade 47.03 (ex-ante estimation is good, post-hoc poor).
 - With real log-probability estimators (Table 2, right) the gain is at most 1.2%. Selection overhead stays within 1 s for up to 40 models (appendix).
 
 ## 6. Limitations
-*Stated by the authors:* gains shrink when quality estimators are poor; the supermodel count grows exponentially, so pruning is needed.
+The paper has no limitations section (only an impact statement). The points below are authors' statements in the main text: gains shrink when quality estimators are poor (Sections 5.1 and 5.2), and the supermodel count grows exponentially (up to 2^k), so pruning is needed to keep selection fast (Section 4).
 
 *My observations:* most evidence uses simulated noise on RouterBench rather than trained predictors. Cascading needs a post-hoc quality signal, which open-ended chat lacks. Costs are static per model: no queueing or GPU contention, and sequential re-routing adds latency the cost term ignores. I read arXiv v5, which may differ slightly from the camera-ready.
 
@@ -57,4 +57,4 @@ Section 2.4 (cost-aware selection); scoring-function design in Chapter 3. "Unlik
 ## 9. Row for Table 2.3
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
-| Dekoninck et al. (2025) | Unify routing and cascading with optimality guarantees | Linear-programme view; cascade routing with quality and cost estimators | RouterBench, SWE-Bench, Minerva Math, LiveCodeBench | Beats both baselines (up to 8% and 14% AUC gain); estimator quality decisive | Simulated noise; static costs; no live load |
+| Dekoninck et al. (2025) | Unify routing and cascading with optimality guarantees | Linear-programme view; cascade routing with quality and cost estimators | RouterBench, SWE-Bench, Minerva Math, LiveCodeBench | Beats both baselines (Table 1: 1 to 4 AUC points; up to 8% / 12% in Fig. 2 and 14% on SWE-Bench); estimator quality decisive | Simulated noise; static costs; no live load |

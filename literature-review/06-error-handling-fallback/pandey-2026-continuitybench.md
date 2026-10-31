@@ -11,7 +11,7 @@
 | Relevance to project | High |
 
 ## APA 7 reference
-Pandey, V., & Singh, G. (2026). *ContinuityBench: A benchmark and systems study of stateful failover in multi-provider LLM routing* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2607.15899
+Pandey, V., & Singh, G. (2026a). *ContinuityBench: A benchmark and systems study of stateful failover in multi-provider LLM routing* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2607.15899
 
 ## In-text citation forms
 (Pandey & Singh, 2026a) · Pandey and Singh (2026a); the same-year companion is 2026b
@@ -34,7 +34,7 @@ Gateways such as LiteLLM, Portkey and OpenRouter retry a failed request on anoth
 ## 5. Key results
 - Table 1: treatment CPR 744 / 750 = 99.20% (95% Wilson CI 98.27 to 99.63); baseline 0 / 750 (0.00%, CI 0.00 to 0.51). Per-run treatment CPR 98.7 to 99.3% (Table 2).
 - Table 3 (run 5): mean CLO +59 ms, median −450 ms, P95 +13,614 ms; mean latency 6,283 ms vs 6,225 ms for the baseline. The tail cases are the longest conversations.
-- Retry storm: with a fixed 2 s retry interval and a fallback limited to 15 requests per minute, 100 concurrent failovers hammered the endpoint, CPR fell to zero and the proxy crashed. The fix is capped exponential backoff with jitter, t = min(30, 2^a + U(0,1)) seconds.
+- Retry storm: with a fixed 2 s retry interval and a fallback limited to 15 requests per minute, 100 concurrent failovers hammered the endpoint, CPR fell to zero and the proxy crashed. This was observed during development with a Google Gemini free-tier fallback (15 requests per minute); Gemini was not part of the final OpenAI-to-Claude chain, so the headline CPR figures contain no retry-storm runs and the storm result is a negative finding, not a measured rate. The fix is capped exponential backoff with jitter, t = min(30, 2^a + U(0,1)) seconds.
 - Race condition: a shared history cache let concurrent conversations mix, dropping CPR to 28% at concurrency 100 until histories were deep-copied per conversation.
 
 ## 6. Limitations
@@ -47,9 +47,9 @@ Gateways such as LiteLLM, Portkey and OpenRouter retry a failed request on anoth
 - **Reuse:** CPR and CLO as benchmark metrics for the failover tests (3.9); fault injection of timeout, 5xx and 429; backoff with jitter; per-session isolation of state under concurrency. **Avoid:** presenting 99.2% as general. **Not covered:** self-hosted backends, KV-cache loss, circuit breakers, live load, streaming.
 
 ## 8. How to use it in the report
-Section 2.5 (fallback in LLM gateways) as the only direct study, labelled preprint; and the failover evaluation in 3.9. "Pandey and Singh (2026) show in a preprint that failover without conversation history gives a 0% continuity rate in their harness, and that fixed-interval retries against a rate-limited fallback cause a retry storm."
+Section 2.5 (fallback in LLM gateways) as the only direct study, labelled preprint; and the failover evaluation in 3.9. "Pandey and Singh (2026a) show in a preprint that failover without conversation history gives a 0% continuity rate in their harness, and that fixed-interval retries against a rate-limited fallback cause a retry storm."
 
 ## 9. Row for Table 2.3
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
-| Pandey & Singh (2026) | Measure conversational continuity under provider failover | CPR and CLO metrics; stateless vs history-forwarding proxy; fault injection; LLM judge | 150 synthetic conversations × 5 runs; GPT-4o-mini to Claude 3.5 Sonnet | CPR 99.20% vs 0%; retry storm and race condition found | Preprint; synthetic; no streaming; strawman baseline |
+| Pandey & Singh (2026a) | Measure conversational continuity under provider failover | CPR and CLO metrics; stateless vs history-forwarding proxy; fault injection; LLM judge | 150 synthetic conversations × 5 runs; GPT-4o-mini to Claude 3.5 Sonnet | CPR 99.20% vs 0%; retry storm and race condition found | Preprint; synthetic; no streaming; strawman baseline |
