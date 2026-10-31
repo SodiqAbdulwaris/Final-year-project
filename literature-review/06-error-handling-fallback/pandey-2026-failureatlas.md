@@ -11,7 +11,7 @@
 | Relevance to project | High |
 
 ## APA 7 reference
-Pandey, V., & Singh, G. (2026). *FailureAtlas: A taxonomy of failure modes in multi-provider LLM serving infrastructure* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2607.17525
+Pandey, V., & Singh, G. (2026b). *FailureAtlas: A taxonomy of failure modes in multi-provider LLM serving infrastructure* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2607.17525
 
 ## In-text citation forms
 (Pandey & Singh, 2026b) when cited together with ContinuityBench · Pandey and Singh (2026b)

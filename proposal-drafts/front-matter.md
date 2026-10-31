@@ -6,17 +6,19 @@ Paste each block into the matching page of `Template_for_Final_Year_Project_Revi
 
 ## 1. Title options
 
-The template allows at most 20 words, capitals, concise and specific. Word counts are shown. Pick one with the supervisor.
+**Updated after the 26 Oct team guide** (see `design-reconciliation.md`, item 17). The template allows at most 20 words, capitals, concise and specific. Word counts are shown. `DECISION-NEEDED`: pick one with the supervisor.
 
 | Option | Title | Words |
 |---|---|---|
-| A | AI REQUEST ROUTER: A LOAD-AWARE GATEWAY FOR SELECTING LARGE LANGUAGE MODELS BY COST, QUALITY AND LATENCY | 16 |
-| B | DESIGN AND EVALUATION OF AN AI REQUEST ROUTER USING PROMPT DIFFICULTY, COST AND LIVE BACKEND LOAD | 16 |
-| C | AN OPENAI-COMPATIBLE AI REQUEST ROUTER FOR HOSTED AND SELF-HOSTED LANGUAGE MODELS WITH LIVE LOAD AWARENESS AND FAILOVER | 17 |
+| A | A BUDGET-AWARE REQUEST ROUTER FOR HOSTED AND LOCAL LARGE LANGUAGE MODELS USING PAST-PERFORMANCE RETRIEVAL AND CONTROLLED SWITCHING | 17 |
+| B | DESIGN AND EVALUATION OF A BUDGET-AWARE OPENAI-COMPATIBLE GATEWAY THAT ROUTES REQUESTS BETWEEN HOSTED AND LOCALLY SERVED LANGUAGE MODELS | 18 |
+| C | AI REQUEST ROUTER: K-NN MODEL SELECTION, BUDGET BANDS AND SESSION-AWARE SWITCHING FOR HOSTED AND LOCAL LLMS | 16 |
 
-ASSUMPTION: Option B is the closest to the template's aim wording ("design, implement and evaluate"). Option A names the main difference from existing routers (live load). Option C names the self-hosted angle.
+ASSUMPTION: Option B is closest to the template's aim wording ("design, implement and evaluate"). Option A names the research idea (past-performance retrieval and switching). Option C keeps the project name.
 
-**Short running title (for a later journal manuscript, up to 50 characters):** `Load-aware LLM request routing` (30 characters).
+*Superseded 16 Oct options (live-load framing), kept for the record:* "AI REQUEST ROUTER: A LOAD-AWARE GATEWAY FOR SELECTING LARGE LANGUAGE MODELS BY COST, QUALITY AND LATENCY"; "DESIGN AND EVALUATION OF AN AI REQUEST ROUTER USING PROMPT DIFFICULTY, COST AND LIVE BACKEND LOAD"; "AN OPENAI-COMPATIBLE AI REQUEST ROUTER FOR HOSTED AND SELF-HOSTED LANGUAGE MODELS WITH LIVE LOAD AWARENESS AND FAILOVER".
+
+**Short running title (for a later journal manuscript, up to 50 characters):** `Budget-aware LLM request routing` (32 characters).
 
 **Cover page block** (template wording, filled where known):
 
@@ -102,15 +104,15 @@ Each member must state honestly what they contributed. The proposal does not say
 | 4 | TODO | TODO | TODO | TODO | |
 | 5 | TODO | TODO | TODO | TODO | |
 
-A neutral way to split the work, if the team wants a starting point (ASSUMPTION: not in the proposal; follows the three phases and the template's example roles):
+A neutral way to split the work, if the team wants a starting point (ASSUMPTION: not in either source document; follows the guide's nine-step order and the template's example roles):
 
 | Candidate role | Maps to |
 |---|---|
-| Gateway and backend integration | Phase 1: FastAPI endpoint, hosted APIs, vLLM and Ollama adapters (Chapter 3.6.1, Chapter 4.2) |
-| Classifier and scoring | Phase 1: sentence-transformers features, logistic regression, scoring function (3.6.5, 3.7, 4.6.1) |
-| Resilience and load awareness | Phase 2: Redis state, Prometheus signals, circuit breaker (3.6.1, 4.6.3, 4.6.4) |
-| Benchmarking and evaluation | Phase 3: RouterBench and MT-Bench harness, Grafana dashboards (3.9, 4.6) |
-| Documentation and QA | Test cases (4.5), literature review (Chapter 2), report assembly |
+| Requirements and usability | Steps 1 and 9: interviews, MoSCoW and traceability, SUS study (Chapter 3.2, 3.5, 3.9.7; Chapter 4.5) |
+| Gateway, adapters and failover | Steps 2 and 8: FastAPI endpoint, hosted and local adapters, retries and circuit breaker (3.6.1; E5) |
+| Registry, filters and budget ledger | Steps 3 and 4: eligibility filter, bands, atomic reservation (3.6.5; E4) |
+| Routing and evaluation | Steps 5 to 7: rule and k-NN routers, calibration, hysteresis, context policies (E1 to E3) |
+| Documentation, QA and literature | Test cases, coverage, Chapter 2, report assembly |
 
 ---
 
@@ -123,7 +125,7 @@ The template requires an honest, specific table. **The team must confirm every r
 
 | Tool and version | Task it was used for | Chapter / section | How the output was verified or edited |
 |---|---|---|---|
-| Claude Code (Anthropic). TODO: confirm the exact model name and version used by the team | Extracting facts from the proposal, template and course module; drafting section skeletons and first-draft wording for Chapters 1 to 3 and the front matter; organising literature-review notes | Front matter; Chapters 1 to 3 (drafts); literature-review notes feeding Chapter 2 | TODO: the team must state how each claim was checked against the proposal and against the original papers, and what was rewritten. Every citation to be checked against the original source before use. |
+| Claude Code (Anthropic). TODO: confirm the exact model name and version used by the team | Extracting facts from the proposal, the 26 Oct team guide, the template and the course module; drafting section skeletons and first-draft wording for Chapters 1 to 5 and the front matter; reconciling the two plans; generating the Chapter 2 tables from the literature-review notes | Front matter; Chapters 1 to 5 (drafts and skeletons); reconciliation and README notes; literature-review notes feeding Chapter 2 | TODO: the team must state how each claim was checked against the proposal and against the original papers, and what was rewritten. Every citation to be checked against the original source before use. |
 | TODO: other tools used (for example a code assistant while building the router, a grammar checker) | TODO | TODO | TODO |
 
 If, in the end, no generative AI tool was used for the final text or code, replace the table with the template sentence: "No generative AI tools were used in the preparation of this project or report." Do not use that sentence while the drafting assistance above stands.
@@ -145,30 +147,45 @@ Left for the team to write. Neither can be drafted from the project documents.
 
 Keywords (template: four to six, alphabetical). Candidate list from the project documents, for the team to trim:
 
-`cost optimisation; large language models; latency; load balancing; model routing; request gateway`
+`budget-aware routing; k-nearest neighbours; large language models; model switching; request gateway; software engineering`
 
 ---
 
 ## 9. List of tables and list of figures
 
-Generate these automatically in Word (References, Insert Table of Figures). Planned captions so far:
+Generate these automatically in Word (References, Insert Table of Figures). Planned captions so far (numbers will shift when assembled):
 
 | Item | Caption |
 |---|---|
-| Table 2.1 | Literature search strategy |
+| Table 2.1 | Literature search strategy (with Table 2.1b counts by theme) |
 | Table 2.2 | Feature comparison of existing systems and the proposed system |
 | Table 2.3 | Summary of related works |
 | Table 2.4 | Mapping of research gaps to project objectives |
 | Table 3.1 | Functional requirements |
 | Table 3.2 | Non-functional requirements |
 | Table 3.3 | Tools and technologies |
-| Table 3.4 onward | Extra Chapter 3 tables (see `ch3-methodology-design.md`; renumber with Word's caption tool) |
-| Table 4.1 to 4.x | See `ch4-ch5-skeletons.md` |
+| Table 3.4 | Build order and done conditions |
+| Table 3.5 | Limitations of the existing way of working |
+| Table 3.6 | How the proposed system addresses each limitation |
+| Table 4.1 | Hardware and software requirements |
+| Table 4.2 | Functional test cases |
+| Tables 4.3 to 4.15 | Unit and integration results; quality table; usability results; E1 to E5 setup and results (see `ch4-ch5-skeletons.md`) |
 | Table 5.1 | Achievement of objectives |
 | Figure 2.1 | PRISMA-style flow of the literature search |
-| Figure 2.2 | Conceptual framework of the study (the template's example list calls it Figure 2.1; see `00-source-facts.md`, section 11) |
+| Figure 2.2 | Conceptual framework of the study |
 | Figure 3.1 | Methodology diagram |
-| Figure 3.2 | Request flow and system architecture (redraw proposal Figure 1) |
+| Figure 3.2 | Logical pipeline and request flow |
+
+### Objectives and research questions (for the front pages and abstract planning)
+
+| Objective | Short form | Research question | Experiment | Hypothesis |
+|---|---|---|---|---|
+| O1 | k-NN competence estimation against rules | RQ1 | E1 | H1 |
+| O2 | Session-aware hysteresis | RQ2 | E2 | H2 |
+| O3 | Context after switching | RQ3 | E3 | H3 |
+| O4 | Budget bands and atomic reservation | RQ4 | E4 | none (verification) |
+| O5 | Adapters, failover and overhead | RQ5 | E5 | none (verification) |
+| O6 | Requirements, quality and usability | RQ6 | none | none |
 
 ---
 
@@ -179,24 +196,28 @@ Alphabetical, as the template requires. Spell each out in full at its first use 
 | Abbreviation | Meaning |
 |---|---|
 | API | Application Programming Interface |
-| CI | Confidence Interval |
+| CI | Confidence Interval; Continuous Integration (state which in context) |
 | DSR | Design Science Research |
 | ERD | Entity Relationship Diagram |
 | FR | Functional Requirement |
 | GPU | Graphics Processing Unit |
 | H0 | Null hypothesis |
-| H1 | Alternative hypothesis |
+| H1 | Alternative hypothesis (also used for the guide's hypothesis 1; written H1 to H3 in the text) |
 | HTTP | Hypertext Transfer Protocol |
+| ISO/IEC | International Organization for Standardization / International Electrotechnical Commission |
+| k-NN | k-Nearest Neighbours |
 | LLM | Large Language Model |
 | MoSCoW | Must, Should, Could, Won't (requirement priorities) |
+| MVP | Minimum Viable Product |
 | NDPA | Nigeria Data Protection Act |
 | NFR | Non-Functional Requirement |
 | p95 | 95th percentile (the value that 95 percent of measurements do not exceed) |
 | PRISMA | Preferred Reporting Items for Systematic Reviews and Meta-Analyses |
 | RQ | Research Question |
 | SMART | Specific, Measurable, Achievable, Relevant, Time-bound |
-| SUS | System Usability Scale (keep only if a usability study is run) |
-| TPS | Tokens Per Second |
+| SSRF | Server-Side Request Forgery |
+| SUS | System Usability Scale |
+| TTFT | Time To First Token |
 | UML | Unified Modeling Language |
 
-Product and benchmark names are not abbreviations and are not listed: FastAPI, Grafana, MT-Bench, Ollama, Prometheus, Redis, RouterBench, scikit-learn, sentence-transformers, vLLM. TODO: confirm the long forms of any other short name the team adds before listing it.
+Product and benchmark names are not abbreviations and are not listed: FastAPI, LM Studio, LLMRouterBench, llama.cpp, LongMemEval, Ollama, RouterBench, scikit-learn, sentence-transformers, vLLM. TODO: confirm the long forms of any other short name the team adds before listing it.

@@ -35,7 +35,7 @@ The value function is a small two-layer fully connected network on the last-laye
 - Metrics: ROC-AUC and macro-F1 for difficulty, accuracy and total output tokens for adaptive sampling. One A100 GPU, temperature 0.5. I did not find a code link in the text.
 
 ## 5. Key results
-- Difficulty estimation (Table 1): on ScienceQA the method reaches ROC-AUC 93.09% and macro-F1 79.48%, and the text says it beats all baselines on nearly every metric.
+- Difficulty estimation (Table 1): on ScienceQA the method reaches ROC-AUC 93.09% and macro-F1 79.48%, and the text says it beats all baselines on nearly every metric. Note: Table 4 (model-size study, same ScienceQA setup) prints 93.04 and 79.48, an inconsistency in the paper; 93.09 is kept here as given in the text and Table 1.
 - Adaptive sampling (Figures 3–4, budgets K = 10 for SC/BoN and 5 for SR): highest accuracy at fewer or comparable output tokens. Exact token savings are only shown in figures, so I do not quote them.
 - Training time (Table 6): about 1.56 and 1.85 minutes (MMBench, ScienceQA), against 5.32/5.20 for HaluSearch-Gen and 10.23/9.15 for HaluSearch-Critic.
 - Cross-model transfer (Table 5): a probe trained on Qwen2.5-7B-Instruct and tested on LLaMA-3.1-8B-Instruct gives ROC-AUC 47.29 (CommonsenseQA) and 49.74 (StrategyQA), close to chance, so one value function per target model is needed.
@@ -44,7 +44,7 @@ The value function is a small two-layer fully connected network on the last-laye
 ## 6. Limitations
 Stated by the authors: needs token-level hidden states, which closed-source APIs do not expose; single-turn inputs only; generalisation to unseen domains and tasks is future work.
 
-Identified by me: difficulty is model-specific (labels depend on one model and three rollouts), so the probe must be retrained per model, as the near-chance transfer result shows. Only 7–8B open models are used for estimation, plus multiple-choice and short-answer tasks, so open-ended chat prompts are mostly untested (a Section 6.1 open-ended test exists but I did not extract its numbers). No latency or serving-cost measurement beyond training time and one estimation-time figure.
+Identified by me: difficulty is model-specific (labels depend on one model and three rollouts), so the probe must be retrained per model, as the near-chance transfer result shows. Models are mostly 7–8B (Qwen2.5-VL-7B, InternVL3-8B), with a scaling test on Qwen2.5-VL 3B, 7B, 32B and 72B (Table 4) and tasks that are multiple-choice or short-answer, so open-ended chat prompts are mostly untested (a Section 6.1 open-ended test exists but I did not extract its numbers). No serving-cost or latency measurement under load: the paper reports training time (Table 6) and, in Figure 2 only, a test-time comparison of estimation time over 400 questions per dataset on Qwen2.5-VL-7B-Instruct, whose values I did not extract.
 
 ## 7. Relevance to the AI Request Router
 - Supports the difficulty classifier and the label-noise/generalisation risk: it shows that a small probe can predict "will this model fail" and that probes do not transfer across models.

@@ -1,6 +1,6 @@
 # Literature review: AI Request Router
 
-Markdown literature review for the final-year project (Nile University of Nigeria, Software Engineering). 81 papers across eight topics (9–11 fully documented papers each, all published 2020 or later), plus a grey-literature review of existing routers.
+Markdown literature review for the final-year project (Nile University of Nigeria, Software Engineering). 90 papers across nine topics (9–11 fully documented papers each, all published 2020 or later), plus a grey-literature review of existing routers.
 
 ## Start here
 | File | What it is |
@@ -24,6 +24,7 @@ Markdown literature review for the final-year project (Nile University of Nigeri
 | 06 Error handling and fallback | [overview](06-error-handling-fallback/00-overview.md) | 10 |
 | 07 Testing and benchmarking | [overview](07-testing-and-benchmarking/00-overview.md) | 9 |
 | 08 System design and gateway | [overview](08-system-design-gateway/00-overview.md) | 9 |
+| 09 Retrieval, k-NN and multi-turn routing | [overview](09-retrieval-knn-and-multiturn-routing/00-overview.md) | 9 |
 
 Each overview holds the topic's comparison table, themes, gaps, links, and **search log** (feeds Table 2.1 of the report).
 
@@ -37,4 +38,4 @@ Each file follows `_templates/paper-template.md`: verified APA citation, problem
 - Where a file says a number comes from arXiv v1 rather than the camera-ready, check it before quoting.
 
 ## Report requirements met (template Chapter 2)
-At least 25 works in depth (81), at least 40 references (81 plus grey sources), APA 7 with DOIs where they exist, 2020 or later. The 70%-in-last-five-years rule is met for every paper (all are 2020 or later). Peer-reviewed share varies by topic; see each overview.
+At least 25 works in depth (90), at least 40 references (90 plus grey sources), APA 7 with DOIs where they exist, 2020 or later. The 70%-in-last-five-years rule is met for every paper (all are 2020 or later). Peer-reviewed share varies by topic; see each overview.

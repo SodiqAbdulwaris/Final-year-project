@@ -32,7 +32,7 @@ Layer choice was explored: middle layers gave the best prediction (Figure 2), so
 
 ## 4. Data, models and tools
 - MathCombined: 3,136 problems from AIME24, AMC23, GSM8K, Minerva, OlympiadBench and TheoremQA, split 1,882 train / 626 validation / 628 router evaluation. It has ground-truth answers but no difficulty labels.
-- Candidate models: Mixtral-8x7B-Instruct, OLMo-2-7B-Instruct, Llama-3.1-8B-Instruct, phi-4, Llama-3.1-Nemotron-Nano-8B, Llama-3.3-70B-Instruct, Llama-3.3-Nemotron-Super-49B and s1.1-32B. The appendix removes the two non-reasoning models and Nemotron-Nano from the router pool because they were off the accuracy–time trend.
+- Models: eight were profiled for the correctness predictor (Mixtral-8x7B-Instruct, OLMo-2-7B-Instruct, Llama-3.1-8B-Instruct, phi-4, Llama-3.1-Nemotron-Nano-8B, Llama-3.3-70B-Instruct, Llama-3.3-Nemotron-Super-49B and s1.1-32B). Appendix B removes Mixtral and Llama-3.1-8B (both non-reasoning) and Nemotron-Nano from the router pool because they were off the accuracy–time trend.
 - Baselines: each single model, and random assignment between two models. No code link found in the paper.
 
 ## 5. Key results
@@ -43,7 +43,7 @@ Layer choice was explored: middle layers gave the best prediction (Figure 2), so
 - Exact accuracy values per threshold are only in plots, so none are quoted here.
 
 ## 6. Limitations
-Stated by the authors: features come from one representative model rather than from each candidate; future work should analyse the embedding space, try similarity-based routing, and go beyond a single model.
+Stated assumption and future work (the paper has no limitations section): features come from one representative model rather than from each candidate, on the assumption that difficulty patterns generalise across similar architectures; future work should analyse the embedding space, try similarity-based routing, and go beyond a single model.
 
 Identified by me: math-only evaluation; very short paper with results shown mainly in figures and no confidence intervals or repeated runs; inference "cost" is measured as average seconds per question on the authors' own setup, not as money or under concurrent load; the 32B feature extractor is expensive for a gateway; the training set for the correctness predictor is only 1,882 problems; workshop-level evidence, so treat claims cautiously.
 
@@ -60,4 +60,4 @@ Identified by me: math-only evaluation; very short paper with results shown main
 ## 9. Row for Table 2.3
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
-| Zhao et al. (2025) | Route reasoning problems to the smallest capable model | MLP probes on s1.1-32B layer-45 activations predicting difficulty or correctness | MATH (difficulty labels); MathCombined (3,136 problems); eight open models | Beats random routing; about equal to s1.1-32B at roughly two-thirds of compute | Math only, 32B features, workshop paper, no live load or money cost |
+| Zhao et al. (2025) | Route reasoning problems to the smallest capable model | MLP probes on s1.1-32B layer-45 activations predicting difficulty or correctness | MATH (difficulty labels); MathCombined (3,136 problems); eight open models profiled, five in the router pool (Appendix B) | Beats random routing; about equal to s1.1-32B at roughly two-thirds of compute | Math only, 32B features, workshop paper, no live load or money cost |
