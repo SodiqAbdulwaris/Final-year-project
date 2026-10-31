@@ -1,449 +1,463 @@
-# CHAPTER THREE: METHODOLOGY, SYSTEM ANALYSIS AND DESIGN (draft)
+# CHAPTER THREE: METHODOLOGY, SYSTEM ANALYSIS AND DESIGN (draft, reworked to follow the 26 Oct team guide)
 
 **Drafting notes (delete before pasting)**
 
-- Tense: future (proposal). Facts from `00-source-facts.md`; fact IDs in square brackets are for the team.
-- Numeric targets are **not set** in the proposal [E-01]. Every target below is written as `TODO-confirm-with-supervisor` with the unit and form of the measure, never with an invented number.
-- Items the drafter chose are marked `ASSUMPTION:`. The template numbers the first three Chapter 3 tables as 3.1 to 3.3; extra tables here continue from 3.4 in the order they appear. Renumber with Word's caption tool when assembling.
-- Template target length 15 to 25 pages. Diagrams (use case, class, sequence, activity, deployment) must be drawn; this file gives their content as lists and tables.
+- **Governing design.** Follows the 26 Oct 2026 team guide where it conflicts with the 16 Oct proposal (supervisor decision, user to confirm). `design-reconciliation.md` lists every conflict. Items still open are marked `DECISION-NEEDED`. Proposal-only elements kept because the guide does not contradict them: OpenAI-compatible gateway, hosted plus self-hosted backends, circuit breaker, p95 latency, RouterBench, always-strong and always-weak baselines.
+- Tense: future (proposal). Fact IDs such as [P-04] point to `00-source-facts.md`; "guide" means the team guide (section numbers refer to it).
+- Numeric targets and margins are **not set**. The guide says each must be justified and approved before test data are examined, so every one is `TODO-confirm-with-supervisor`. The only numbers fixed in the guide are: 3 to 4 candidate models; at least 5 interviews; at least 80% line coverage; SUS with at least 8 participants (preferred); an illustrative 60/20/20 split; pilot of 30 to 50 sessions of 8 to 12 turns; 20 to 30 conversations of 10, 20 and 40 turns for E3.
+- Citations are APA author-date and exist in `literature-review/references.md`. `[CITE-09]` and `[CITE-10]` mark topics 09 and 10 whose references were not yet in `references.md`. Same-surname initials as in Chapter 1.
+- The template numbers the first three Chapter 3 tables as 3.1 to 3.3; other tables continue in order of appearance. Renumber with Word's caption tool.
+- Principle from the guide: build the smallest complete version, reuse existing libraries, add complexity only where a measured problem justifies it, and never omit security checks, budget correctness, failure handling or tests.
 
 ---
 
-This chapter describes how the AI Request Router will be researched, specified, designed and evaluated. It sets out the methodology, how requirements will be gathered, an analysis of the existing way of working, the proposed system, the requirements, the design including the routing algorithm, the data to be used, the tools, the evaluation plan, and the ethical considerations. The aim is that someone with similar skills can reproduce the work from this chapter alone.
+This chapter describes how the router will be researched, specified, designed and evaluated. It sets out the methodology and build order, how requirements will be gathered, an analysis of how requests are handled today, the proposed system, the requirements, the design including the selection algorithms, the data, the tools, the five experiments and the software-engineering evaluation, and the ethical considerations. The aim is that someone with similar skills can reproduce the work from this chapter alone.
 
 ## 3.1 Research and Development Methodology
 
-**Research design: Design Science Research (DSR).** The project builds an artefact, the router, to close a stated gap, and evaluates it against stated criteria. That is the pattern of design science [CITE: Design Science Research methodology; candidate sources from the drafter's knowledge, verify before citing: Hevner et al. (2004) and Peffers et al. (2007)]. Experiments on public benchmarks supply the evidence, so the evaluation is also experimental (Wohlin et al., 2012, cited in the course module). ASSUMPTION: the proposal does not name a methodology; DSR plus iterative development is the drafter's choice. TODO-confirm-with-supervisor.
+**Research design: Design Science Research (DSR).** The project builds an artefact, the router, and evaluates it against stated criteria, which is the pattern of design science [CITE: Design Science Research methodology; candidate sources named from the drafter's knowledge, verify before citing: Hevner et al. (2004) and Peffers et al. (2007)]. Experiments on public data and controlled live tests supply the evidence [CITE: Wohlin et al. (2012), cited in the course module]. ASSUMPTION: the guide names no methodology; DSR plus iterative development is the drafter's choice. TODO-confirm-with-supervisor.
 
-**Development model: iterative and incremental, three iterations that follow the proposal's phases** [SC-01 to SC-03; order "to be confirmed with the team"].
+**Development model: iterative and incremental, following the guide's nine-step order.** Each step ends with its "done" condition, unit and integration tests written with the deliverable, and an update to the traceability matrix.
 
-| Iteration | Phase [proposal] | Build | Evaluate and review | Objective |
-|---|---|---|---|---|
-| 1 | Phase 1: gateway and classifier | FastAPI endpoint; hosted, Ollama and vLLM adapters; classifier; first scoring function | Functional tests; classifier routing accuracy on at least two model pairs; router overhead | O1 to O3 |
-| 2 | Phase 2: resilience and load awareness | Prometheus signals from vLLM into Redis; load terms in the score; retry and circuit breaker | Load-aware versus load-blind under load; success rate under injected failure | O4, O5 |
-| 3 | Phase 3: benchmarking | Benchmark harness; baselines; Grafana dashboards | Cost, quality, p95 versus always-strong and always-weak on RouterBench and MT-Bench | O6 |
+**Table 3.4: Build order and done conditions (guide section 10)**
 
-Each iteration ends with a review with the supervisor. TODO: iteration length, number of sprints, meeting cadence, calendar dates (feeds the "time-bound" part of the SMART objectives and Appendix F).
+| Step | Deliverable | Done condition | Objective |
+|---|---|---|---|
+| 1 | Requirements: at least 5 developer interviews or surveys; MoSCoW priorities; traceability matrix started | Prioritised requirements with IDs and acceptance criteria; supervisor agrees the MVP scope | O6 |
+| 2 | Proxy plus one local and one hosted adapter | The same API request runs through both; non-stream and stream verified | O5 |
+| 3 | Registry, context estimate and hard filtering (lifecycle steps 3 and 4) | Capability, context and budget exclusions have automated tests | O4 |
+| 4 | Budget ledger and policy bands, with final revalidation and reservation (steps 7 and 8) | Atomic concurrent reservation and reconciliation tested | O4 |
+| 5 | Rule-based router (step 5) | Deterministic baseline and decision logs work | O1 |
+| 6 | k-NN router with calibration check and insufficient-evidence fallback | Historical outcomes indexed; test-set selection cannot see answers; reliability table produced; compared with rules | O1 |
+| 7 | Optional managed session and hysteresis | Exact transcript preserved; switch reasons and outcomes logged | O2, O3 |
+| 8 | Reliability, performance and quality evaluation | Fault injection, TTFT, cost and quality reports, CSV export; at least 80% line coverage; ISO/IEC 25010 table completed | O4, O5, O6 |
+| 9 | Developer usability evaluation | Preferably at least 8 developers complete the tasks and SUS; issues fixed or logged | O6 |
 
-**Figure 3.1: Methodology diagram** (draw; content below).
+TODO: calendar dates for the nine steps (feeds the "time-bound" part of the objectives and Appendix F). `DECISION-NEEDED`: dates, team allocation, supervisor meeting cadence.
 
-```
- Problem identification         Define objectives         Design and development        Demonstration            Evaluation              Communication
- (gaps G1-G7, Table 2.4)  ───►  (O1-O6, SMART)      ───►  (iterations 1, 2, 3)     ───►  (router runs on    ───►   (metrics, baselines,  ───►  (report, replication
-                                                                ▲                         benchmark prompts)       hypotheses H0/H1)          package, dashboards)
-                                                                └──────────────── feedback to next iteration ◄────────────────┘
+Only a learned classifier, vector-based context retrieval or a graph experiment is added if the core works and there is a specific research question it helps answer (guide section 10).
+
+**Figure 3.1: Methodology diagram.**
+
+```mermaid
+flowchart LR
+  A["Problem and gap<br/>(Table 2.4)"] --> B["Objectives O1-O6<br/>and RQ1-RQ6"]
+  B --> C["Requirements<br/>(step 1)"]
+  C --> D["Build steps 2-7<br/>proxy, filters, ledger,<br/>rules, k-NN, hysteresis"]
+  D --> E["Evaluate<br/>E1-E3 offline replay<br/>E4-E5 live tests"]
+  E --> F["Quality and usability<br/>(steps 8-9)"]
+  F --> G["Report, replication package"]
+  E -. "feedback" .-> D
 ```
 
 ## 3.2 Requirements Elicitation
 
-The template asks who was asked, how many, and how they were selected. For this project the planned sources are documents, not participants:
+The guide requires **at least five** potential developer users, such as students or engineers who call hosted or local LLM APIs, to be interviewed or surveyed (guide section 9). Questions are open, so they do not simply confirm the design.
 
-1. **Review of existing solutions.** The proposal already analyses OpenRouter, LiteLLM Router and Auto Router, RouteLLM, FrugalGPT-style cascades and commercial routers, and records what each does and does not cover [S-01 to S-05]. Their documentation will be re-read, with access dates, before the requirements are frozen [R-04].
-2. **Literature review** (Chapter Two): the gaps G1 to G7 become requirement drivers.
-3. **Supervisor consultation**, to agree the numeric targets before testing [E-01]. TODO: date of the agreement.
+| Item | Plan |
+|---|---|
+| Participants | At least 5 developers; TODO: how many, how selected (students, engineers, other). Selection method TODO. |
+| Topics | Providers used; cost and privacy concerns; latency tolerance; existing gateways; integration pain points; what quality loss they would tolerate for a saving (this informs the non-inferiority margin). |
+| Consent and data | Obtain consent; avoid storing identifying details; anonymise; TODO: consent approach agreed with the supervisor. Interview guide and consent form go in Appendix C. |
+| Output | A coded list of functional and non-functional requirements, each with its source (interview, literature or policy). |
 
-Main findings so far (from the proposal): the router must decide per prompt, use live load, honour a latency budget, work with hosted and self-hosted backends, recover from failure and be measurable against baselines [D-01 to D-07].
-
-TODO-confirm-with-supervisor: whether the department expects interviews or a questionnaire with the target users (developers and organisations running more than one LLM [P-07]). **No human participants are planned in the proposal.** If interviews are added, consent forms and the interview guide go in Appendix C and Section 3.10 changes.
+Other sources: the review of existing routers and gateways (Chapter Two), the team guide, and the literature. `DECISION-NEEDED`: confirm whether department ethics approval is needed for interviews and the SUS study (also Section 3.10).
 
 ## 3.3 Analysis of the Existing System
 
 ### 3.3.1 Description of the Existing System
 
-"Existing system" here means how teams send LLM requests today [P-01, P-04]:
-
-1. **Hard-coded single model.** The application calls one model's API for every request. There is no per-prompt choice, no awareness of backend load and no failover. This is the baseline situation.
-2. **Gateways and routers.** Some teams put OpenRouter or LiteLLM in front of their models. These add provider choice, load balancing across copies of a named model, fallbacks, or complexity tiers, each covering one slice [S-01, S-02].
-
-Figure (draw): flowchart or activity diagram of the hard-coded path, Client application, then one model API, then response, with "error returned to client" on failure. TODO: draw.
+"Existing system" here is how teams send LLM requests today: (1) **a hard-coded single model** called for every request, with no per-prompt choice, no spending control and no fallback [P-01, P-04]; (2) **gateways and routers** (OpenRouter, LiteLLM, vLLM Semantic Router, Not Diamond and others, vendor documentation reviewed in Section 2.5), which provide authentication, budgets, fallbacks and, increasingly, automatic model choice; and (3) **research routers** that choose a model from preference or benchmark data (Ding et al., 2024; Ong et al., 2025) or from similar past requests [CITE-09]. Figure (draw): activity diagram of the hard-coded path, client, one model API, response, and "error returned" on failure. TODO: draw.
 
 ### 3.3.2 Limitations of the Existing System
 
-Source for each row: the proposal's section 2 [S-01 to S-05]. All third-party statements are VERIFY until re-checked.
+**Table 3.5: Limitations of the existing way of working**
 
-**Table 3.4: Limitations of the existing system**
-
-| ID | Limitation | Evidence | Gap in Table 2.4 |
+| ID | Limitation | Evidence | Gap (Table 2.4) |
 |---|---|---|---|
-| L1 | Easy and hard prompts go to the same model | Hard-coded setups; LiteLLM core Router [S-02] | G1 |
-| L2 | Live load is seen late or not at all | OpenRouter rolling 5-minute statistics [S-01]; LiteLLM Auto Router docs do not mention load [S-02] | G2 |
-| L3 | Self-hosted GPU servers are not covered together with hosted APIs | OpenRouter routing docs [S-01]; commercial routers closed [S-05] | G3 |
-| L4 | Decisions are price-only or quality-only | OpenRouter defaults [S-01]; RouteLLM two models only [S-03] | G4 |
-| L5 | Failure handling is absent in hard-coded setups and not tied to per-prompt choice in research routers | Proposal section 1 [P-04]; RouteLLM [S-03] | G5 |
-| L6 | Cascades pay the latency of every failed attempt | FrugalGPT-style cascades [S-04] | G6 |
-| L7 | Savings are unproven without comparison to single-model baselines | Proposal section 3 [D-07] | G7 |
+| L-a | One model for all requests wastes money or lowers quality | Hard-coded setups [P-02, P-03] | R1 |
+| L-b | Competence estimates are not shown to be calibrated and the evidence rule is unstated; simple baselines are hard to beat | Hu et al., 2024; H. Li et al., 2026; [CITE-09] | R1 |
+| L-c | Switching models inside a conversation is not evaluated for cost and cache effects | [CITE-09: Zhang et al., 2026]; Srivatsa et al., 2025 | R2 |
+| L-d | Context after a switch is rebuilt without a measured policy | [CITE-10] | R3 |
+| L-e | Spending limits are engineering practice, not shown to hold under concurrency | Vendor documentation (Section 2.5) | R4 |
+| L-f | Failover and circuit-breaker behaviour for LLM calls is thinly evidenced; gateway overhead is rarely measured | Pandey & Singh, 2026a; Huang et al., 2022; Romero et al., 2021 | R5, L7 |
+| L-g | Offline benchmarks do not measure live latency, caching or failures; usability and software quality of routers are not reported in the reviewed papers | Hu et al., 2024; H. Li et al., 2026; Y. Lu et al., 2026 | R6, L6 |
 
 ## 3.4 The Proposed System
 
 ### 3.4.1 Description of the Proposed System
 
-The AI Request Router is a gateway: one OpenAI-compatible endpoint that receives every client request, scores the prompt for difficulty and task type, weighs predicted quality, cost and the live load of each backend against an optional per-request latency budget, and sends the request to the best backend, hosted or self-hosted, retrying on the next-best backend on failure [M-05, D-01 to D-06].
+The AI Request Router is **one modular FastAPI application and a relational database** that exposes an OpenAI-compatible `/v1/chat/completions` endpoint. For each request it validates the client, resolves the budget and session policy, estimates the context requirement, filters out ineligible deployments, ranks the eligible ones by estimated competence (with an uncertainty lower bound), cost and latency, prepares the context once for the chosen model, revalidates, atomically reserves budget, and dispatches through a generic adapter with bounded retries and a circuit breaker (guide section 3). Local engines (Ollama, LM Studio, llama.cpp server, vLLM) and hosted APIs are both first-class backends.
 
-- **Users:** developers and organisations running more than one LLM [P-07]. In design terms the actors are the client application, the operator who configures backends, the backends themselves, and Prometheus.
-- **Main modules:** gateway (FastAPI); prompt classifier; scoring engine; backend adapters (hosted APIs, Ollama, vLLM); live-state store (Redis) with the Prometheus metrics collector; resilience (retry and circuit breaker); benchmark harness and dashboards (Grafana).
+- **Users:** developers and organisations that call hosted or local LLM APIs; the operator who configures models, prices and budget bands; the evaluator who runs experiments.
+- **Main modules (logical, not services):** gateway; context-requirement estimator; eligibility filter; routing engine (rule and k-NN); context preparation; budget ledger; execution and fallback layer with adapters; model and deployment registry; session log; health and latency samples; evaluation records; decision logs.
 
 ### 3.4.2 Justification for the Proposed System
 
-**Table 3.5: How the proposed system addresses each limitation** (from proposal section 3 [D-01 to D-07])
+**Table 3.6: How the proposed system addresses each limitation**
 
-| Limitation (Table 3.4) | What the router does | Built with | Requirements |
-|---|---|---|---|
-| L1 | Scores each prompt for difficulty and task type before choosing a model | sentence-transformers, scikit-learn logistic regression | FR-03, FR-04 |
-| L2 | Reads live queue length, GPU use and tokens per second and avoids busy servers | vLLM, Prometheus | FR-09, FR-10 |
-| L3 | Puts hosted APIs and own GPU servers behind one OpenAI-compatible endpoint | vLLM, Ollama, FastAPI | FR-01, FR-06, FR-07, FR-08 |
-| L4 | Combines predicted quality, cost and latency into one score; honours a latency budget | Custom scoring function in Python | FR-02, FR-04, FR-05 |
-| L5 | Retries on the next-best backend; pauses traffic to a repeatedly failing one | Redis, circuit-breaker pattern | FR-11, FR-12 |
-| L6 | Decides before calling, in one hop | Same classifier run before the request is sent | FR-03 |
-| L7 | Plots cost against quality and p95 latency against always-strong and always-weak baselines | RouterBench, MT-Bench, Grafana | FR-14, FR-15 |
+| Limitation (Table 3.5) | What the router does | Requirements |
+|---|---|---|
+| L-a | Chooses among 3 to 4 deployments per request | FR-05, FR-06, FR-07, FR-08 |
+| L-b | Validates competence estimates with a reliability table and Brier score, applies a minimum-evidence rule and an uncertainty lower bound, and compares against simple rules and always-strong and always-weak baselines | FR-07, FR-08, FR-09, FR-21 |
+| L-c | Session-aware hysteresis compared with locked and free switching | FR-18 |
+| L-d | Explicit, bounded context policies compared with full replay | FR-16, FR-17, FR-19 |
+| L-e | Budget bands and atomic reservation, verified under concurrency | FR-10, FR-11 |
+| L-f | Bounded retries and a circuit breaker; overhead measured against direct calls | FR-13, FR-14, FR-15 |
+| L-g | Live tests (E4, E5), requirements, quality table, tests and a SUS study | FR-21, NFR-01 to NFR-14 |
 
 ## 3.5 Requirements Specification
 
 ### 3.5.1 Functional Requirements
 
-MoSCoW priorities are the drafter's reading of the proposal (ASSUMPTION): features the proposal builds in a named phase are Must; supporting features are Should or Could; building or training models is Won't [SC-04]. TODO-confirm-with-supervisor. Use the IDs again in the Chapter 4 test cases.
+MoSCoW priorities are the drafter's reading of the guide (ASSUMPTION): what the guide's build order or experiments require is Must; supporting features are Should; optional or conditional items are Could; items on the guide's out-of-scope list are Won't. TODO-confirm-with-supervisor, and revise after the requirements interviews (step 1), which may change them. Use the IDs again in the test cases in Chapter 4.
 
 **Table 3.1: Functional requirements**
 
 | ID | Requirement | Actor | Priority |
 |---|---|---|---|
-| FR-01 | The system shall expose one OpenAI-compatible endpoint that accepts chat requests from any client. (ASSUMPTION: the chat-completions style of request; exact paths fixed in design.) | Client application | Must |
-| FR-02 | The system shall accept an optional per-request latency budget. (TODO: whether it is sent as a header or a body field.) | Client application | Must |
-| FR-03 | The system shall classify each prompt for difficulty and task type before a backend is chosen, once per request. | System | Must |
-| FR-04 | The system shall compute a score for each eligible backend from predicted quality, cost and latency, and select the highest-scoring backend. | System | Must |
-| FR-05 | The system shall exclude, or rank lower, a backend whose predicted latency exceeds the request's latency budget. | System | Must |
-| FR-06 | The system shall route to hosted API backends. | System | Must |
-| FR-07 | The system shall route to self-hosted vLLM backends. | System | Must |
-| FR-08 | The system shall route to Ollama backends. | System | Should |
-| FR-09 | The system shall obtain queue length, GPU use and tokens per second for each vLLM backend through Prometheus. | System | Must |
-| FR-10 | The system shall use the live load values in the score so that busy backends are avoided. | System | Must |
-| FR-11 | The system shall retry a failed request on the next-best backend. | System | Must |
-| FR-12 | The system shall temporarily stop sending traffic to a backend that keeps failing, and shall keep that health state in Redis. | System | Must |
-| FR-13 | The system shall record, for every request, the chosen backend, the scores, the attempts, the latency, the tokens and the cost. (ASSUMPTION: needed to compute the evaluation metrics; not stated in the proposal.) | System | Must |
-| FR-14 | The system shall provide a benchmark harness that replays RouterBench and MT-Bench prompts through the router and through the always-strong and always-weak baselines. | Evaluator | Must |
-| FR-15 | The system shall show cost against quality and p95 latency per strategy on Grafana dashboards. | Evaluator | Should |
-| FR-16 | The system shall let an operator configure backends, prices and scoring weights without code changes. (ASSUMPTION.) | Operator | Should |
-| FR-17 | The system shall authenticate client calls with API keys. (ASSUMPTION: usual for an OpenAI-compatible gateway; not in the proposal.) | Client application | Should |
-| FR-18 | The system shall support streamed responses. (ASSUMPTION: not in the proposal.) | Client application | Could |
-| FR-19 | The system shall build or train the language models it routes between. | n/a | Won't (out of scope [SC-04]) |
+| FR-01 | The system shall expose an OpenAI-compatible `/v1/chat/completions` endpoint supporting non-streamed and server-sent-event streamed responses. (Tools and structured output only if needed and verified.) | Client application | Must |
+| FR-02 | The system shall authenticate clients and validate each payload, allowed endpoint and user or project policy, with rate limits. | Client application | Must |
+| FR-03 | The system shall keep a registry of models (version, context window, formats, tool ability, per-domain evaluation records, evaluation date) and of deployments (base URL, engine, observed TTFT, failure and 429 rate, queue estimate, ready state, price settings, health timestamp). | Operator | Must |
+| FR-04 | The system shall estimate the input-token count conservatively per model (with a safety margin), the output cap and the required capabilities for each request. | System | Must |
+| FR-05 | The system shall exclude deployments that lack required capabilities, cannot fit the estimated input plus output cap, are unhealthy, are forbidden by privacy or data-location policy, or whose estimated upper cost exceeds the remaining budget. | System | Must |
+| FR-06 | The system shall provide rule-based routers: static cheapest eligible, and domain average computed from training data only. | System | Must |
+| FR-07 | The system shall provide a k-NN competence estimator over scored past tasks, per model, with a minimum-evidence rule and fallback to the domain average, then to "unknown". Unknown shall never be treated as good. | System | Must |
+| FR-08 | The system shall select the lowest expected-cost eligible deployment whose success lower bound meets the target quality; if none qualifies it shall fail or use a client-authorised fallback labelled below target, and shall never silently violate a guaranteed threshold. | System | Must |
+| FR-09 | The system shall produce a calibration report (reliability table, Brier score) for the competence estimates, and shall support optional monotone recalibration fitted on validation data. | Evaluator | Must (report); Could (recalibration) |
+| FR-10 | The system shall provide three configurable cost budget bands (Economy, Balanced, Quality) with request, session and project caps, units, time window, output cap and behaviour at exhaustion. | Operator | Must |
+| FR-11 | The system shall revalidate the final prompt, atomically reserve the maximum estimated spend before dispatch, reject unaffordable requests before dispatch, and reconcile actual provider usage afterwards. | System | Must |
+| FR-12 | The system shall call backends through a generic OpenAI-compatible adapter for at least one local engine and one hosted API, with further engines (LM Studio, llama.cpp server, vLLM) as time allows. | System | Must (one local, one hosted); Should (others) |
+| FR-13 | The system shall retry a failed request a bounded number of times on the next-ranked eligible deployment, shall not duplicate tool side effects, shall not continue an already started stream on a different model as if nothing happened, and shall not let a free local fallback bypass privacy or capability rules. | System | Must |
+| FR-14 | The system shall keep a circuit breaker per deployment (closed, open, half-open) that temporarily stops traffic to a repeatedly failing deployment. | System | Must |
+| FR-15 | The system shall log, per request, the chosen deployment, reason, scores, tokens, cost, TTFT, end-to-end time, outcome and switch reason, without storing raw sensitive prompts by default. | System | Must |
+| FR-16 | The system shall by default leave conversation context with the client (stateless), never silently dropping or compressing supplied messages. | System | Must |
+| FR-17 | The system shall optionally offer router-managed sessions that store the full ordered transcript and the selected-model history. | Client application | Should |
+| FR-18 | The system shall provide session-aware hysteresis: stay with the current model unless the expected benefit exceeds a threshold, a capability requirement changes, the current deployment fails, or budget or permission rules require a change. | System | Should |
+| FR-19 | The system shall provide bounded and retrieval context policies and shall never silently truncate system instructions, the current request, tool-call and result pairs or exact artefacts; it shall return an explicit context-too-large error instead. | System | Should |
+| FR-20 | The system shall support graph-retrieval context arms (manual and automatic) as an experiment only. | Evaluator | Could (conditional on E3) |
+| FR-21 | The system shall provide an evaluation harness for E1 to E5 that saves configuration version, dataset version, model and backend versions, seed, date, machine specification, pricing snapshot and raw outputs. | Evaluator | Must |
+| FR-22 | The system shall refresh health and latency estimates in a background job so expensive evaluations do not block live requests. | System | Should |
+| FR-23 | The system shall accept an optional per-request latency budget. (Proposal element kept; the guide does not contradict it.) `DECISION-NEEDED`. | Client application | Could |
+| FR-24 | The system shall read vLLM `/metrics` (queue, KV-cache, latency) when a server exposes it and feed it to the router (optional extension X1). | System | Could |
+| FR-25 | The system shall provide a learned difficulty classifier as an E1 comparator. | Evaluator | Could |
+| FR-26 | The system shall export reports as CSV or a basic dashboard. | Evaluator | Should |
+| FR-27 | The system shall train or fine-tune models, transfer KV caches across models, schedule GPUs across hosts, manage engine installation, use online RL or bandits, act as a general agent framework or build LLM graphs on every live request. | n/a | Won't (out of scope, guide section 10) |
 
 ### 3.5.2 Non-Functional Requirements
 
-The proposal sets no numeric targets [E-01]. Each row states the measure, the unit and how it is measured. The target cell stays `TODO-confirm-with-supervisor` unless the requirement can be pass or fail without a number.
+The guide requires each indicator to have a target fixed **before measurement** and justified by a requirement or a measured baseline, not invented. Targets are therefore TODO-confirm-with-supervisor, except where the guide or template fixes a number or the check is pass or fail.
 
 **Table 3.2: Non-functional requirements**
 
-| ID | Category | Requirement | Measure / target |
+| ID | Category (ISO/IEC 25010) | Requirement | Measure / target |
 |---|---|---|---|
-| NFR-01 | Performance | Router decision overhead (classification plus scoring), added to the call | p95 overhead in ms per request under a stated load. Target: TODO-confirm-with-supervisor |
-| NFR-02 | Performance | End-to-end latency compared with always-strong | p95 latency in ms per strategy and load level. Target: TODO-confirm-with-supervisor [E-03] |
-| NFR-03 | Cost | Cost per request compared with always-strong | Mean cost per request, and percent reduction. Target: TODO-confirm-with-supervisor [E-02] |
-| NFR-04 | Quality | Answer quality compared with always-strong | Mean benchmark quality score, with the allowed drop δ. Target: TODO-confirm-with-supervisor [E-02] |
-| NFR-05 | Accuracy | Routing accuracy of the classifier | Proportion of prompts routed to the right model, with 95% confidence interval, on at least two model pairs. "Right model" definition and target: TODO-confirm-with-supervisor [E-04, R-01] |
-| NFR-06 | Reliability | Request success rate when one backend fails | Success rate with and without fallback under injected failure. Target: TODO-confirm-with-supervisor |
-| NFR-07 | Reliability | Circuit breaker behaviour | Opens after a configured number of failures and recovers after a probe. Parameter values: TODO-confirm-with-supervisor. Pass or fail on the behaviour |
-| NFR-08 | Compatibility | Works with a standard OpenAI client library without changing client code | Pass or fail test with an unmodified client (ASSUMPTION: library choice TODO) |
-| NFR-09 | Scalability | Number of concurrent requests the gateway sustains | Concurrent requests at which p95 overhead stays within NFR-01. Target and hardware: TODO |
-| NFR-10 | Security | Provider keys and client keys are not stored in code or logs | Pass or fail review; secrets read from the environment (ASSUMPTION) |
-| NFR-11 | Privacy | Raw prompt text is not written to logs by default | Pass or fail review; prompts logged as hashes (ASSUMPTION) |
-| NFR-12 | Observability | Every request and every backend exposes metrics | Prometheus metrics present for each backend; decision log per request (FR-13) |
-| NFR-13 | Maintainability | Scoring weights and prices change without code changes | Change by configuration only (FR-16) |
-| NFR-14 | Reproducibility | Anyone can repeat the benchmark runs | Replication package with versions, seeds and scripts; results reproduced within reported confidence intervals (ASSUMPTION: module rule on replicability) |
+| NFR-01 | Performance efficiency | Gateway overhead | Proxy overhead = gateway-to-endpoint TTFT minus direct-to-endpoint TTFT under equivalent settings, warmed and cold. Target: TODO-confirm-with-supervisor, set from the measured direct baseline. |
+| NFR-02 | Performance efficiency | Throughput under concurrent clients | Requests per second and p95 latency at stated concurrency. Target and hardware: TODO |
+| NFR-03 | Reliability | Completion under injected faults | Completion rate with slow response, 429, connection failure, malformed output and mid-stream disconnect. Target: TODO-confirm-with-supervisor |
+| NFR-04 | Reliability | Circuit-breaker and fallback rules | Pass or fail on timeout, open, half-open recovery and fallback behaviour. Parameters: TODO |
+| NFR-05 | Reliability (budget correctness) | Spending limits hold | No authorised request exceeds the declared reservation limits and unaffordable requests are rejected before dispatch (pass or fail, 10 and 100 concurrent requests); overshoot and reconciliation failures reported |
+| NFR-06 | Security | Authentication, authorisation, secrets, allow-listing | Pass or fail review: API keys required; secrets out of prompt and telemetry logs; only registered, authorised endpoints; URL validation and SSRF and private-network blocking where not permitted |
+| NFR-07 | Security (privacy) | Raw sensitive prompts not stored by default; retention and deletion policy | Pass or fail; Nigeria Data Protection Act 2023 where personal data is processed [CITE: Nigeria Data Protection Act 2023] |
+| NFR-08 | Maintainability | Modularity and testability | At least 80% line coverage measured automatically (guide), reported per module with the most careful tests on budget, filtering and routing logic |
+| NFR-09 | Maintainability | Effort to add a new adapter | Indicator (for example files changed or time taken) and target: TODO |
+| NFR-10 | Usability | Developer usability | SUS mean with an interval from preferably at least 8 participants, plus completion, time on task, errors. Target: TODO-confirm-with-supervisor (the template's SUS benchmark of 68 is a candidate) |
+| NFR-11 | Compatibility | Works with an unmodified OpenAI client library | Pass or fail test (library choice TODO) |
+| NFR-12 | Observability | Every request has a decision log | Pass or fail (FR-15) |
+| NFR-13 | Estimate quality | Calibration of competence estimates | Reliability table and Brier score reported; target for acceptable calibration: TODO-confirm-with-supervisor |
+| NFR-14 | Reproducibility | Anyone can repeat the experiments | Replication package with versions, seeds, scripts and pricing snapshots (pass or fail) |
+
+State the edition of ISO/IEC 25010 cited, because characteristic names differ between the 2011 and 2023 editions (guide section 9).
 
 ### 3.5.3 Use Case Model
 
-**Actors.** Client application (developer's software that calls the endpoint); Operator (configures backends, prices, weights); Evaluator (the team, runs benchmarks); external systems: hosted API providers, Ollama server, vLLM server, Prometheus.
-
-**Use cases** (draw the diagram from this list):
+**Actors.** Client application (developer's software); Operator (configures models, prices, bands, policies); Evaluator (the team); external systems: hosted APIs and local engines.
 
 | ID | Use case | Actor | Requirements |
 |---|---|---|---|
-| UC-01 | Route a request to the best backend | Client application | FR-01 to FR-07, FR-13 |
-| UC-02 | Recover from a backend failure | System (client sees a normal answer) | FR-11, FR-12 |
-| UC-03 | Observe live backend load | Prometheus, system | FR-09, FR-10 |
-| UC-04 | Configure backends, prices and weights | Operator | FR-16, FR-17 |
-| UC-05 | Run a benchmark comparison | Evaluator | FR-14, FR-15 |
+| UC-01 | Route a chat request | Client application | FR-01 to FR-08, FR-11, FR-12, FR-15 |
+| UC-02 | Recover from a backend failure | System | FR-13, FR-14 |
+| UC-03 | Enforce a budget under concurrency | System | FR-10, FR-11 |
+| UC-04 | Continue a managed session after a possible switch | Client application | FR-16 to FR-19 |
+| UC-05 | Manage registry, bands and policies | Operator | FR-03, FR-10 |
+| UC-06 | Run an experiment | Evaluator | FR-09, FR-21, FR-26 |
 
-**UC-01: Route a request to the best backend**
+**UC-01: Route a chat request**
 
 | Field | Content |
 |---|---|
 | Actor | Client application |
-| Preconditions | At least one backend is configured and not in an open-circuit state. Client holds a valid key (FR-17). |
-| Main flow | 1. Client sends an OpenAI-style request with an optional latency budget. 2. Gateway validates it. 3. Classifier returns difficulty and task type. 4. Scoring engine reads live state for each backend. 5. Engine drops backends with an open circuit or predicted latency above the budget. 6. Engine scores the rest and ranks them. 7. Gateway calls the top backend. 8. Gateway returns the response in the OpenAI format. 9. Gateway records the decision, latency, tokens and cost. |
-| Alternative flows | A. No latency budget given: latency is scored but no backend is excluded on budget. B. No backend meets the budget: TODO design decision (relax the budget and choose the lowest predicted latency, or return an error). C. Backend call fails: go to UC-02. D. Invalid key or request: return an error without calling any backend. |
-| Postconditions | The client holds a response or an error; a decision record exists. |
+| Preconditions | At least one deployment is registered; the client holds a valid key; a budget band applies |
+| Main flow | 1. Receive and validate. 2. Resolve budget band, remaining allowances and session policy. 3. Estimate input tokens, output cap and required capabilities. 4. Filter to eligible deployments. 5. Rank by competence lower bound, cost and latency, plus any switching penalty. 6. Prepare the context once for the chosen model. 7. Revalidate the final prompt. 8. Atomically reserve budget. 9. Dispatch, stream, reconcile usage, log. |
+| Alternative flows | A. No eligible deployment or none meets the target: fail, or use the client-authorised degradation, labelled below target. B. Revalidation fails: next-ranked candidate (bounded attempts) or explicit error. C. Reservation fails because a concurrent request used the allowance: next candidate or reject before dispatch. D. Backend call fails: UC-02. |
+| Postconditions | The client holds a response or an explicit error; a decision record exists; the ledger is reconciled. |
 
 **UC-02: Recover from a backend failure**
 
 | Field | Content |
 |---|---|
-| Actor | System (triggered by UC-01) |
-| Preconditions | A backend call has failed or timed out. |
-| Main flow | 1. Gateway records the failure against that backend in Redis. 2. If the failure count reaches the threshold, the circuit opens and the backend receives no traffic for a cool-down period. 3. Gateway retries on the next-best backend from the ranked list. 4. Gateway returns the first successful response. |
-| Alternative flows | A. Every ranked backend fails: return an error to the client. B. Cool-down ends: the circuit half-opens and a single probe request decides whether it closes. |
-| Postconditions | Health state is updated; the attempt sequence is logged. Thresholds, cool-down and maximum attempts: TODO-confirm-with-supervisor. |
-
-**UC-05: Run a benchmark comparison**
-
-| Field | Content |
-|---|---|
-| Actor | Evaluator |
-| Preconditions | Benchmark prompts and prices loaded; strategies configured (always-strong, always-weak, load-blind router, load-aware router). |
-| Main flow | 1. Evaluator selects a benchmark, model pair and load level. 2. Harness replays the same prompts through each strategy. 3. Harness records cost, quality, latency and success per request. 4. Harness computes means, p95 and confidence intervals. 5. Results appear on dashboards and in result files. |
-| Alternative flows | A. A backend is unavailable: the run is marked and the cause logged. |
-| Postconditions | A result set exists that the Chapter 4 tables are filled from. |
+| Trigger | A call times out, returns 429 or a connection error, or returns malformed output |
+| Main flow | 1. Record the failure for that deployment. 2. If the failure count reaches the threshold, open the circuit for a cool-down. 3. Retry on the next-ranked eligible deployment, within the bounded number of attempts, without charging the budget twice for an attempt that did not bill. 4. Return the first success. |
+| Alternative flows | A. All attempts fail: explicit error. B. Mid-stream failure: do not silently continue on a different model; return an explicit error or an indicated retry. C. Cool-down ends: half-open probe decides. |
+| Postconditions | Health state and decision log updated. Thresholds, cool-down and maximum attempts: TODO-confirm-with-supervisor. |
 
 ## 3.6 System Design
 
 ### 3.6.1 System Architecture
 
-The design follows the proposal's Figure 1. Style: ASSUMPTION: a layered request pipeline inside one asynchronous gateway service, with a shared state store and external backends. It is chosen because every request must pass the classifier and scoring engine once, in order [F-01], and because shared health state must be visible to every gateway instance [D-05]. TODO: justify further against the alternatives from Section 2.3.
+Style: one modular FastAPI process with a relational database, logical modules and no separate services. This is the guide's choice: independent microservices, graph databases and distributed GPU scheduling are not justified yet; Redis, a separate vector database or a graph database enter only after a measured concurrency, scale or query problem (guide section 10). The same separation of gateway, routing, adapters, fallback and telemetry appears in published designs of model gateways and serving layers: INFaaS selects a variant per query from a dynamic state machine using a constant-time metadata store, and reports a median selection overhead of 2.2 to 3.5 ms (Romero et al., 2021); AIBrix places an LLM-aware gateway in front of engine instances (Shan et al., 2025) (preprint); Clockwork centralises scheduling decisions and runs a request only when it is predicted to meet its deadline (Gujarati et al., 2020). Clockwork and AlpaServe state that their central controller is a single point of failure (Gujarati et al., 2020; Z. Li et al., 2023), so the router's state must be restartable.
 
-**Request flow** [F-02 to F-04]
+**Figure 3.2: Logical pipeline and request flow**
 
-1. **Client request**: OpenAI-style call with an optional latency budget.
-2. **Gateway (FastAPI)**: single endpoint for every client.
-3. **Prompt classifier**: scores difficulty and task type.
-4. **Scoring engine**: weighs quality, cost and latency; reads **live state (Redis)**: queue length, GPU use, tokens per second (collected by Prometheus), health and failure counts.
-5. **Backend**: one of hosted APIs (pay-per-token providers), Ollama (local models) or vLLM (self-hosted GPU server).
-6. **On failure**: retry on the next-best backend and pause traffic to the failing one.
-7. vLLM servers report their metrics, which flow into the live state.
+```mermaid
+flowchart TD
+  CL["Client application"] --> GW["OpenAI-compatible gateway<br/>auth, validation, rate limits,<br/>budget and session policy"]
+  GW --> CE["Context-requirement estimate<br/>input tokens, output cap, capabilities"]
+  CE --> EF["Eligibility filtering<br/>capabilities, context fit, health,<br/>privacy, affordable upper cost"]
+  EF --> RE["Routing engine<br/>competence estimate with lower bound,<br/>cost, latency, switching penalty"]
+  RE --> CP["Context preparation, once,<br/>for the selected model"]
+  CP --> RV["Final revalidation +<br/>atomic budget reservation"]
+  RV --> EX["Execution and fallback<br/>generic adapters, bounded retries,<br/>circuit breaker, streaming"]
+  EX --> L["Local endpoints<br/>Ollama, LM Studio, llama.cpp, vLLM"]
+  EX --> H["Hosted endpoints<br/>supported cloud APIs"]
+  SM["Side modules: registry, session log,<br/>budget ledger, health and latency samples,<br/>evaluation records, decision logs"] -.-> RE
+```
 
-**Open design question** [F-05]: how metrics get from Prometheus into Redis. ASSUMPTION: a small collector in the gateway periodically queries Prometheus (or scrapes the vLLM metrics endpoint) and writes the latest values into Redis with a short expiry, so a stale value is not trusted. TODO-confirm-with-supervisor: polling interval and expiry.
+**Request lifecycle (guide section 3.1).** (1) Receive and validate. (2) Resolve budget and session policy. (3) Estimate context requirements and input tokens (conservative: the best available tokenizer per model plus a safety margin). (4) Filter models. (5) Rank eligible models. (6) Prepare the final context once for the selected model: pass-through by default, optional router-owned history. (7) Revalidate: recompute the final token count and re-check capabilities and maximum cost; on failure go back to step 5 (bounded) or fail. (8) Atomically reserve budget. (9) Dispatch and record: stream, handle errors and fallback, reconcile usage, log. Context is not built per candidate; for managed sessions with bounded or retrieved context, step 3 uses each candidate's maximum allowed input budget and step 7 catches any mismatch.
 
-**Deployment diagram (draw).** Nodes: client machine; gateway host (FastAPI, classifier loaded in memory); Redis; Prometheus and Grafana; one or more GPU hosts running vLLM; a host running Ollama; external hosted API providers. TODO: actual hardware, network layout and where each runs.
-
-Figure 3.2: reuse the image of proposal Figure 1 as a starting point and redraw it as a UML deployment diagram.
+**Deployment diagram (draw).** Nodes: client machine; router host (FastAPI process, embedding model for k-NN, relational database); local inference host(s) running Ollama or another OpenAI-compatible engine; external hosted API providers. For hybrid setups, "localhost" on a cloud-hosted router is not the user's laptop: allow only registered, authorised endpoints (Section 3.6.7). TODO: actual hardware and network layout.
 
 ### 3.6.2 Structural Design (Class Diagram)
 
-ASSUMPTION: candidate classes, to confirm during Iteration 1.
+ASSUMPTION: candidate classes, to confirm during implementation.
 
-| Class | Responsibility | Key attributes and methods |
-|---|---|---|
-| `Gateway` | HTTP endpoint, validation, auth | `handle_request(req)` |
-| `PromptClassifier` | Embed the prompt; return difficulty and task type | `embed(text)`, `difficulty(e)`, `task_type(e)` |
-| `ScoringEngine` | Rank eligible backends | `score(backend, d, t, live, budget)`, `rank(...)` |
-| `Backend` (abstract) | Common interface | `price_in`, `price_out`, `call(req)` |
-| `HostedBackend`, `OllamaBackend`, `VllmBackend` | Concrete adapters | provider-specific `call` |
-| `LiveStateStore` | Read and write live metrics and health in Redis | `get(backend)`, `put(backend, metrics)` |
-| `MetricsCollector` | Pull queue, GPU use and tokens per second from Prometheus | `poll()` |
-| `CircuitBreaker` | Closed, open, half-open state per backend | `allow()`, `record_success()`, `record_failure()` |
-| `Router` | Orchestrate classify, score, call, retry | `route(req)` |
-| `DecisionLogger` | Persist the decision record | `log(record)` |
-| `BenchmarkHarness` | Replay prompts through strategies | `run(strategy, dataset, load)` |
+| Class | Responsibility |
+|---|---|
+| `Gateway` | HTTP endpoint, authentication, validation, rate limits |
+| `PolicyResolver` | Budget band, remaining allowances, session policy and current model affinity |
+| `ContextEstimator` | Input-token estimate with safety margin, output cap, required capabilities |
+| `Registry` | Model facts and deployment facts (FR-03) |
+| `EligibilityFilter` | Hard requirements (FR-05) |
+| `CompetenceEstimator` (interface) | `RuleEstimator` (static, domain average) and `KnnEstimator` (FR-06, FR-07); optional `ClassifierEstimator` |
+| `SelectionPolicy` | Lower-bound and cost rule (FR-08); hysteresis wrapper (FR-18) |
+| `ContextBuilder` | Pass-through; bounded; retrieval (and graph arms) policies (FR-16, FR-19) |
+| `BudgetLedger` | Atomic reservation, release and reconciliation (FR-10, FR-11) |
+| `Adapter` (interface) | OpenAI-compatible adapter for local and hosted endpoints (FR-12) |
+| `FallbackExecutor`, `CircuitBreaker` | Bounded retries and per-deployment state (FR-13, FR-14) |
+| `DecisionLogger` | Persists the decision record (FR-15) |
+| `EvaluationHarness` | Runs E1 to E5 and exports reports (FR-21, FR-26) |
 
 ### 3.6.3 Behavioural Design (Sequence and Activity Diagrams)
 
-Draw: (a) sequence diagram for UC-01 with lifelines Client, Gateway, Classifier, ScoringEngine, LiveStateStore, Backend; (b) sequence diagram for UC-02 with CircuitBreaker and two Backends; (c) activity diagram of the routing algorithm in Section 3.6.5; (d) state diagram of the circuit breaker (closed, open, half-open).
+Draw: (a) sequence diagram for UC-01 with lifelines Client, Gateway, PolicyResolver, EligibilityFilter, SelectionPolicy, ContextBuilder, BudgetLedger, Adapter, Backend; (b) sequence diagram for concurrent reservation (two requests, one allowance); (c) sequence diagram for UC-02 with CircuitBreaker and two backends; (d) activity diagram of the selection algorithm (Section 3.6.5); (e) state diagram of the circuit breaker; (f) activity diagram of the hysteresis decision.
 
 ### 3.6.4 Database Design
 
-The proposal names no relational database [D-05]. Shared state lives in Redis; decision logs need a durable store (FR-13). TODO-confirm-with-supervisor: whether the department expects an ERD and 3NF schema for this project, and which store holds the logs.
+ASSUMPTION: draft schema; the guide asks only for a relational database and prefers CSV or SQLite for early experiments. `DECISION-NEEDED`: SQLite or a server database. Aim for at least Third Normal Form and provide a data dictionary (type, constraint, description) when final.
 
-**Redis keys (ASSUMPTION: names are draft).**
-
-| Key pattern | Content | Written by |
+| Table | Main columns | Notes |
 |---|---|---|
-| `backend:{id}:queue_len` | Current queue length | MetricsCollector |
-| `backend:{id}:gpu_util` | Current GPU use | MetricsCollector |
-| `backend:{id}:tps` | Current tokens per second | MetricsCollector |
-| `backend:{id}:failures` | Recent failure count | CircuitBreaker |
-| `backend:{id}:breaker` | closed, open or half-open, with reopen time | CircuitBreaker |
-
-**Decision-log schema (ASSUMPTION), in at least 3NF if stored relationally.**
-
-| Table | Columns | Notes |
-|---|---|---|
-| `backend` | `backend_id` (PK), `name`, `kind` (hosted, ollama, vllm), `price_in`, `price_out` | One row per configured backend |
-| `request` | `request_id` (PK), `received_at`, `prompt_hash`, `difficulty`, `task_type`, `latency_budget_ms`, `strategy`, `final_backend_id` (FK), `outcome` | No raw prompt text (NFR-11) |
-| `attempt` | `attempt_id` (PK), `request_id` (FK), `backend_id` (FK), `seq`, `score`, `status`, `latency_ms`, `tokens_in`, `tokens_out`, `cost` | One row per backend call, so retries are visible |
-
-Provide a data dictionary (type, constraint, description) for each table when the schema is final.
+| `model` | `model_id` (PK), `version`, `context_window`, `formats`, `tool_ability`, `evaluated_on` | One row per model version (a new version is a new model) |
+| `deployment` | `deployment_id` (PK), `model_id` (FK), `base_url`, `engine`, `kind` (hosted or local), `price_in`, `price_out`, `ready`, `health_ts` | Price settings are a snapshot |
+| `deployment_sample` | `sample_id`, `deployment_id` (FK), `ts`, `ttft_ms`, `failed`, `rate_limited`, `queue_est` | Feeds latency and health estimates |
+| `eval_record` | `record_id`, `task_id`, `domain`, `model_id` (FK), `outcome`, `input_tokens`, `output_tokens`, `cost`, `split` | One row per task answered by one model (guide E1) |
+| `task` | `task_id` (PK), `task_text`, `domain`, `embedding_ref` | Split is by task, not by row |
+| `budget_policy` | `policy_id`, `band`, `request_cap`, `session_cap`, `project_cap`, `currency`, `window`, `output_cap` | Caps are configuration |
+| `reservation` | `reservation_id`, `policy_id`, `request_id`, `reserved`, `actual`, `status`, `ts` | Atomic transaction; reconciled later |
+| `session`, `session_message` | `session_id`, `current_model_id`; `msg_id`, `session_id`, `seq`, `role`, `content` | Managed sessions only; exact transcript |
+| `request_log` | `request_id`, `session_id`, `turn`, `chosen_deployment_id`, `previous_deployment_id`, `reason`, `input_tokens`, `output_tokens`, `cached_tokens`, `cost`, `ttft_ms`, `e2e_ms`, `outcome` | Raw sensitive prompts not stored by default |
+| `circuit_state` | `deployment_id`, `state`, `failures`, `reopen_at` | In the database or in memory |
+| `experiment_run` | `run_id`, `experiment`, `config_version`, `dataset_version`, `seed`, `date`, `machine` | Reproducibility (FR-21) |
 
 ### 3.6.5 Algorithm and Model Design
 
-**Pipeline** (each request passes the classifier and scoring engine once [F-01]).
+**A. Eligibility (guide 3.3).** Deployment m is eligible for request x only if all hold: required capabilities present; estimated input plus output cap fits the context window; provider allowed by privacy and data-location policy and healthy; estimated upper spending at most the remaining budget.
 
-1. Embed the prompt with sentence-transformers.
-2. Classifier outputs a difficulty score d in [0, 1] and a task type t [D-01]. ASSUMPTION: difficulty is the estimated probability that the weak model's answer would be unacceptable, learned by logistic regression from benchmark labels; task type is a second classifier. The labels and their definition: TODO-confirm-with-supervisor [E-04, R-02].
-3. For each eligible backend i, the scoring engine computes predicted quality, expected cost and expected latency (below), then the score.
-4. The highest-scoring backend is called; on failure the next ranked one is tried (Section 3.6.5, resilience).
+**B. Competence estimate (guide 3.4).** A model's per-domain score is its observed outcome on scored tasks, not a leaderboard number. Records come from public routing-benchmark data for the chosen models (RouterBench; LLMRouterBench), plus a small set of tasks the team scores where coverage is missing. For task x and model m:
 
-**Predicted quality.** ASSUMPTION: q̂ᵢ(x) = (1 − d) · qᵢ,easy(t) + d · qᵢ,hard(t), where qᵢ,easy(t) and qᵢ,hard(t) are the mean benchmark quality of model i on easy and hard prompts of task type t in the training split. This is the simplest form that uses both outputs of the classifier. Alternatives (one logistic regression per model predicting acceptable quality) are compared in Chapter Two.
+- *Domain-average rule (baseline B):* the training-set average outcome of m in x's domain.
+- *k-NN (method C):* p̂(m, x) = Σᵢ wᵢ·yᵢ / Σᵢ wᵢ over the k nearest scored tasks i (by embedding similarity) where yᵢ is m's outcome on task i and wᵢ is a similarity weight (ASSUMPTION: weights equal to 1 for plain k-NN, which is the variant that matched a learned router in the closest published work [CITE-09: Varangot-Reille et al., 2026 (EACL)]).
+- *Minimum-evidence rule:* trust p̂ only if at least n_min scored neighbours lie within a similarity cutoff; n_min and the cutoff are tuned on validation data, not guessed. Below it, fall back to the domain average; below the domain minimum, the estimate is **unknown**. Unknown is never treated as good: the router escalates to the strongest eligible model within budget or applies the fail or degrade policy for the band.
+- *Calibration:* check p̂ on validation data with a reliability table (binned predicted against observed success) and the Brier score. Choose the quality threshold by the success it actually achieves, not by the nominal value. Apply isotonic or Platt-style recalibration fitted on validation data only if the check shows a problem and the fix helps.
 
-**Expected cost.** ĉᵢ(x) = pᵢ,in · nᵢₙ(x) + pᵢ,out · n̂ₒᵤₜ(t), with per-token prices pᵢ,in and pᵢ,out from configuration, input token count nᵢₙ(x) and an estimated output length n̂ₒᵤₜ(t) by task type. Hosted prices come from the provider. TODO-confirm-with-supervisor: how a self-hosted token is priced (for example amortised GPU cost); the proposal does not say.
+Why per-model success rather than a single difficulty score: difficulty predictors are tied to a model pool and cross-model transfer of hidden-state probes was near chance (Zhu et al., 2025); frozen-embedding predictors with a light head are the family cheap enough for a gateway (Šakota et al., 2024; Zotos et al., 2025; Shnitzer et al., 2023). A learned classifier remains an optional E1 comparator (FR-25).
 
-**Expected latency.** ASSUMPTION: l̂ᵢ(x) = l₀ᵢ + n̂ₒᵤₜ(t) / TPSᵢ + Qᵢ · sᵢ, where l₀ᵢ is base latency, TPSᵢ is tokens per second, Qᵢ is queue length and sᵢ is the average service time per queued request, for self-hosted servers from live state [D-02]. For hosted APIs, a rolling average of recent latency stands in. The form is to be validated against measurements in Iteration 2.
+**C. Uncertainty lower bound.** Neighbours resemble one another and may be similarity-weighted, so they are not independent trials, and a textbook binomial interval on the neighbour count would be over-confident (guide 3.4). ASSUMPTION: start from
 
-**Score.** For each backend i not blocked by the circuit breaker and, when a budget B is given, with l̂ᵢ ≤ B:
+> LB(m, x) = p̂(m, x) − z · sqrt( v̂ / n_eff ),  with n_eff = (Σᵢ wᵢ)² / Σᵢ wᵢ²
 
-> Sᵢ(x) = w_q · q̂ᵢ(x) − w_c · ĉᵢ(x) / c_ref − w_l · l̂ᵢ(x) / L_ref
+where v̂ is the weighted variance of neighbour outcomes (for 0/1 outcomes, p̂(1 − p̂)) and z is a tuning constant chosen on validation data. The margin shrinks with the effective number of neighbours and grows with how much outcomes disagree, as the guide requires. Whether LB beats the raw average is an ablation in E1, and in the E1 test the team reports whether achieved success actually met the target whenever LB did.
 
-with w_q + w_c + w_l = 1; c_ref = the largest ĉ among eligible backends; L_ref = B if a budget is given, otherwise the largest l̂ among eligible backends. The router picks argmaxᵢ Sᵢ. Weights are tuned on a validation split (ASSUMPTION: grid search) and reported; the values are TODO.
+**Worked example (ILLUSTRATIVE VALUES ONLY: invented to show how the formula behaves, not measurements).** Target quality 0.70, z = 1. Model A has five neighbours with weights 0.9, 0.8, 0.8, 0.7, 0.6 and outcomes 1, 1, 0, 1, 1: Σw = 3.8, p̂ = 3.0 / 3.8 = 0.789, Σw² = 2.94, n_eff = 3.8² / 2.94 = 4.91, v̂ = 0.789 × 0.211 = 0.166, margin = sqrt(0.166 / 4.91) = 0.184, so LB = 0.606, below the target, and A is not selected. Model B has p̂ = 0.85 with n_eff = 20: margin = sqrt(0.1275 / 20) = 0.080, LB = 0.770, which meets the target, so B is selected even if A is cheaper. Thin evidence widens the margin, so the router escalates rather than gambles.
 
-**Worked example (ILLUSTRATIVE VALUES ONLY: these are invented to show how the formula behaves, not measurements, and must not appear in results).**
+**D. Selection rule (guide 3.3).** Among eligible deployments with LB at least the target, choose the lowest expected total cost (prompt and completion tokens, cache discounts where observed, context preparation, routing overhead and known retry penalties, without double-counting input tokens); break ties by observed deployment latency (observed TTFT, not a global benchmark speed). If none qualifies, fail or use the client-authorised fallback and label the result below target. Local models: report external API charges separately from estimated local resource cost (GPU time, electricity, memory, loading delays) and never present estimated resource costs as billed dollars; tokens per dollar from GPU price is one published way to estimate self-hosted cost (Griggs et al., 2024) (preprint). This selection form follows the budget-constrained formulations in the routing literature, where estimator quality dominates the outcome (Dekoninck et al., 2025; Ding et al., 2024; Ong et al., 2025), and a weighted score of predicted quality, latency and cost is the design of the closest load-aware prior art (Da & Kalyvianaki, 2026) (preprint).
 
-Setup: weights w_q = 0.6, w_c = 0.2, w_l = 0.2. Latency budget B = 3 s, so L_ref = 3 s. Two backends: Strong (hosted API) and Weak (vLLM). Cost is normalised by the larger cost, so Strong has ĉ/c_ref = 1.0 and Weak has 0.05.
+**E. Budget ledger (guide 3.5, E4).** After the final prompt is known (lifecycle steps 6 and 7), reserve R = n_in·p_in + max_output_tokens·p_out (plus a safety margin where exact accounting is unavailable) in one atomic transaction or lock-protected ledger. If a concurrent request has used the allowance, the reservation fails and the request moves to the next candidate or is rejected before dispatch. After the response, reconcile actual provider usage and release the difference. A perfect hard ceiling on a provider's final invoice is not always possible when provider usage is delayed or token estimates differ, so estimated and reported billing are tracked separately.
 
-| Case | Backend | q̂ | ĉ / c_ref | l̂ (s) | l̂ / L_ref | Computation | S |
-|---|---|---|---|---|---|---|---|
-| 1. Easy prompt, Weak idle | Strong | 0.95 | 1.00 | 1.2 | 0.40 | 0.6·0.95 − 0.2·1.00 − 0.2·0.40 = 0.570 − 0.200 − 0.080 | **0.290** |
-| | Weak | 0.90 | 0.05 | 0.6 | 0.20 | 0.6·0.90 − 0.2·0.05 − 0.2·0.20 = 0.540 − 0.010 − 0.040 | **0.490** (chosen) |
-| 2. Hard prompt, Weak idle | Strong | 0.92 | 1.00 | 1.2 | 0.40 | 0.552 − 0.200 − 0.080 | **0.272** (chosen) |
-| | Weak | 0.40 | 0.05 | 0.6 | 0.20 | 0.240 − 0.010 − 0.040 | **0.190** |
-| 3. Easy prompt, Weak busy (queue pushes l̂ to 3.4 s) | Weak | 0.90 | 0.05 | 3.4 | n/a | l̂ = 3.4 s > B = 3 s, so Weak is excluded before scoring | excluded |
-| | Strong | 0.95 | 1.00 | 1.2 | 0.40 | 0.290 as in case 1 | **0.290** (chosen) |
+**F. Session-aware hysteresis (guide 3.6, E2).** With current model m₀ and best alternative m*, switch only if ΔU = U(m*) − U(m₀) exceeds a threshold θ, where U is a standardised utility on a single scale (ASSUMPTION: relative expected cost saving minus a switching penalty for cache loss and context re-processing, defined only for alternatives whose LB meets the target). Exceptions that override stickiness: a capability requirement changes, the current deployment fails, or budget or permission rules require a change. θ is chosen on pilot sessions; an arbitrary value is meaningless without normalisation. Track observed cached-token counts where the backend exposes them; otherwise treat cache benefits as estimates and sensitivity-test them. Motivation: a different model generally cannot reuse another model's KV cache, and turn-level routing work reports cost savings from switching selectively, while noting that switching loses prefix reuse [CITE-09: Zhang et al., 2026 (MTRouter)]; prefix sharing in serving is studied by Srivatsa et al. (2025). The guide's stop rule applies: keep hysteresis only if the switching and cost benefit survives the quality constraints and the logic has tolerable overhead.
 
-What the example shows: the same weights send the easy prompt to the cheap model and the hard prompt to the strong model (gap G1); when the cheap model's live load makes it miss the latency budget, traffic moves to the other backend (gap G2). The numbers 0.95, 0.90, 0.92, 0.40, the latencies and the weights are placeholders. Real values come from the benchmark data and measurements.
+**G. Context policies (guide 3.6, E3).** Stateless by default. For opted-in sessions the router stores the full ordered transcript and builds context once, after selection: C0 full replay (within the window); C1 bounded (pinned instructions, recent valid turns, explicitly preserved critical state); C2 text or vector retrieval added to C1; C3a manual graph and C3b automatic graph (optional, conditional on E3). A graph would be a derived index of source messages, never the source of truth; the assembler traverses it and passes model-readable text. [CITE-10: conversation memory and context management, including LongMemEval and temporal graph memory]
 
-**Routing pseudocode.**
+**H. Failover (guide 3.1 and E5; proposal pattern kept).** Bounded retries on the next-ranked eligible deployment; per-deployment circuit breaker with closed, open and half-open states and a cool-down; never continue a started stream on a different model; never let a free local fallback bypass privacy or capability rules. Retries can sustain outages, so they are bounded, jittered and checked against the fallback's headroom (Huang et al., 2022; Aderaldo & Mendonça, 2026); the failures that matter often return normally but degraded (Yan et al., 2025); and the direct evidence on gateway failover is two preprints from one vendor (Pandey & Singh, 2026a, 2026b). Parameters (failure threshold, window, cool-down, maximum attempts, timeouts): TODO-confirm-with-supervisor.
+
+**Pseudocode.**
 
 ```
-function ROUTE(request):
-    B  ← request.latency_budget            # may be none
-    e  ← EMBED(request.prompt)
-    d  ← DIFFICULTY(e);  t ← TASK_TYPE(e)
-    ranked ← []
-    for each backend i in REGISTRY:
-        if BREAKER[i].state = OPEN: continue
-        q ← PREDICT_QUALITY(i, d, t)
-        c ← EXPECTED_COST(i, request, t)
-        l ← EXPECTED_LATENCY(i, t, LIVE_STATE[i])
-        if B is set and l > B: continue
-        ranked.append(i, SCORE(q, c, l, B))
-    if ranked is empty:                    # TODO design decision: relax budget or return error
-        return HANDLE_NO_CANDIDATE(request)
-    sort ranked by score, highest first
-    for (i, score) in first K of ranked:   # K = maximum attempts, TODO
-        response ← CALL(i, request, timeout)    # timeout value TODO
-        if response is success:
-            BREAKER[i].RECORD_SUCCESS();  LOG(request, ranked, i);  return response
-        BREAKER[i].RECORD_FAILURE()
-    return ERROR(503)
+function ROUTE(request, session):
+    policy  ← RESOLVE_POLICY(request, session)             # band, caps, affinity
+    need    ← ESTIMATE(request)                            # tokens (margin), output cap, capabilities
+    cands   ← [d for d in REGISTRY if ELIGIBLE(d, need, policy)]
+    scored  ← []
+    for d in cands:
+        est ← COMPETENCE(d.model, request)                 # rule or k-NN, with minimum-evidence rule
+        if est is UNKNOWN: continue                        # unknown is never good
+        lb  ← LOWER_BOUND(est)
+        if lb >= policy.target: scored.append((d, EXPECTED_COST(d, need), OBSERVED_TTFT(d), lb))
+    if scored is empty: return ESCALATE_OR_FAIL(cands, policy)   # strongest eligible within budget, or explicit failure
+    ranked ← sort(scored, by expected cost, then TTFT)
+    if session.current in ranked and not SWITCH_JUSTIFIED(session, ranked[0], theta): ranked ← move session.current to front
+    for d in first K of ranked:                            # K = maximum attempts (TODO)
+        ctx ← BUILD_CONTEXT(request, session, d)           # once, for d
+        if not REVALIDATE(ctx, d, policy): continue
+        if not RESERVE(policy, MAX_COST(ctx, d)): continue # atomic; may fail under concurrency
+        res ← CALL(d, ctx)                                 # circuit breaker applied; streaming
+        RECONCILE(policy, res.usage); LOG(request, d, res)
+        if res.ok: return res
+    return ERROR("no deployment could serve the request")
 ```
-
-**Resilience.** Circuit breaker per backend with three states [D-05]: closed (normal), open (no traffic during a cool-down), half-open (one probe decides). Opens after a number of failures; closes after a successful probe. State is shared in Redis so every gateway instance sees it. Parameters (failure threshold, window, cool-down, maximum attempts K, timeout) are TODO-confirm-with-supervisor.
-
-**Design choices to justify in the final report.** Why logistic regression (small, fast, one pass before the call, so no cascade latency [D-01, D-06]); why a linear score (inspectable weights, unlike closed commercial routers [S-05]); why a hard budget constraint instead of only a penalty (a budget is a promise to the caller).
 
 ### 3.6.6 User Interface Design
 
-The router has no end-user interface in the proposal. The visible parts are the HTTP API (error format and response fields in the OpenAI style) and Grafana dashboards [D-07]. ASSUMPTION: planned dashboard panels: cost versus quality per strategy; p95 latency per strategy; per-backend queue length, GPU use and tokens per second; breaker state; request success rate. TODO: wireframes of the dashboards; whether any operator interface beyond configuration files is wanted.
+The router has no end-user interface in the core design. The visible parts are the OpenAI-compatible API (error format and response fields), the decision log, and CSV or basic export of reports (FR-26). Usability evaluation uses four developer tasks (Section 3.9.7): point an existing OpenAI-compatible client at the gateway, choose a budget band, register a local deployment, and read a routing decision log. TODO: wireframes of any dashboard. `DECISION-NEEDED`: whether any dashboard is a deliverable.
 
 ### 3.6.7 Security and Privacy Design
 
-- Client authentication by API keys (FR-17, ASSUMPTION). Provider keys held as environment secrets, never in code or logs (NFR-10).
-- Input validation on every request before any backend is called; request size limit (TODO value).
-- Raw prompts are not logged by default; the log stores a hash (NFR-11, ASSUMPTION). Benchmark prompts are public, but prompts sent by a real user may contain personal data, so the Nigeria Data Protection Act 2023 applies in that case [CITE: Nigeria Data Protection Act 2023].
-- Transport security between client and gateway and between gateway and backends: TODO (depends on deployment).
-- Sending prompts to a hosted provider shares them with that provider. The operator must be able to restrict sensitive prompts to self-hosted backends. ASSUMPTION: a configuration flag per backend; not in the proposal.
+Keep secrets out of prompt and telemetry logs; do not store raw sensitive prompts by default; implement retention and deletion; use allowlisted backends, authentication and authorisation; validate URLs and block SSRF and private-network access unless explicitly permitted; do not publish unauthenticated local inference endpoints to the public internet; collect user-study data with consent; and never change a user's deployment or data-location choice silently during fallback (guide section 8). The Nigeria Data Protection Act 2023 applies where personal data is processed [CITE: Nigeria Data Protection Act 2023].
 
 ## 3.7 Data Collection and Preparation
 
-The project uses public benchmarks, not collected data [D-07]. Everything about the datasets beyond their names is **TODO: confirm from the benchmark papers before writing**.
+The project uses public benchmark records and small sets the team creates and scores. Everything beyond the names is `TODO: confirm licence, size, model coverage and date from the dataset papers and repositories`.
 
 | Item | Content |
 |---|---|
-| Datasets | RouterBench and MT-Bench [D-07]. Chatbot Arena is named in the proposal's literature base [SRC-07]; whether it is used as a data source is TODO. |
-| Source, size, features, licence, date | TODO for each: from the benchmark papers and repositories. Do not estimate. |
-| Whether per-prompt, per-model quality scores and costs are provided | TODO. This decides whether routing decisions can be replayed offline without calling every model, or whether live calls are needed. ASSUMPTION: offline replay for classifier and cost-versus-quality results; live calls for latency, load and failure experiments. |
-| Quality labels | Preference-based labels are noisy [R-02]. Report uncertainty as confidence intervals, not a single number. |
-| Cleaning and preprocessing | TODO: de-duplicate prompts; remove prompts that overflow a model's context; fix text encoding. |
-| Features | Prompt embedding from sentence-transformers; token counts; task type [D-01]. |
-| Split | ASSUMPTION: train, validation and test split by prompt with a fixed seed; weights tuned on validation only; test touched once. |
-| Generalisation test | Train on one model pair and test on another, for at least two pairs [R-01]. Which pairs: TODO. |
-| Class balance | TODO: report the share of "easy" and "hard" labels; handle imbalance if material. |
+| Datasets | E1: RouterBench (Hu et al., 2024) and LLMRouterBench (H. Li et al., 2026): check licences and which of the chosen models they cover; E3: LongMemEval [CITE-10] if it suits the models and budget; E2 and E3: scripted or synthetic and consented conversations created by the team |
+| Models and domains | 3 to 4 distinct models and 3 to 5 domains (for example code, math, extraction, writing). Compare only models with available outcomes or run missing models on a small controlled set; do not substitute unrelated benchmark scores. |
+| Record schema | One row per task answered by one model: task_id, task_text, domain, model_id, correctness_or_quality, input_tokens, output_tokens, measured_or_repriced_cost |
+| Correctness definitions | Per domain (for example tests for code, exact answer for math, a blinded human rubric for subjective output). An LLM judge is not unquestionable ground truth; judge and crowd labels carry measured noise (Zheng et al., 2023; Chiang et al., 2024). |
+| Split | By task, not by task–model row: training, validation and test (illustrative 60/20/20), all model outcomes for a task in the same partition; remove duplicates, version changes and leaked answers; avoid near-duplicates from the same problem family across splits |
+| Cold start and shift | Repeat with 10%, 25%, 50% and 100% of training records; rerun on a held-out domain if feasible |
+| New model test | Remove one model's records and add them back in steps (for example 0, 20, 50, 100 per domain) |
+| Reproducibility | Save configuration, dataset version, model and backend versions, seed, date, machine, pricing snapshot and raw outputs for every experiment |
 
 ## 3.8 Tools and Technologies
 
-Names and purposes are from the proposal [D-01 to D-07]. Versions are TODO until the environment is fixed (replication needs them: NFR-14).
+Names are from the guide (section 10) or the proposal where the guide does not contradict them. Versions are TODO until the environment is fixed.
 
 **Table 3.3: Tools and technologies**
 
 | Tool / technology | Purpose | Justification |
 |---|---|---|
-| Python | Implementation language for the gateway, classifier and scoring function | The scoring function is custom Python [D-04]; ecosystem for the classifier |
-| FastAPI | Asynchronous gateway exposing one OpenAI-compatible endpoint | Async Python framework suited to many concurrent calls [D-03] |
-| sentence-transformers | Turns the prompt text into vectors | Cheap features computed before the call [D-01] |
-| scikit-learn (logistic regression) | Difficulty and task-type classifier | Small, fast classifier, adds little latency [D-01] |
-| vLLM | Self-hosted GPU model serving; source of queue, GPU and throughput signals | Runs open models efficiently; exposes the metrics the router reads [D-02, D-03] |
-| Ollama | Local model serving | Simple local backend [D-03] |
-| Hosted LLM APIs | Pay-per-token backends | Strong models without own hardware [Figure 1]. TODO: providers |
-| Prometheus | Collects live metrics from vLLM | Standard metrics collector [D-02] |
-| Redis | Shared live state and health counts | Fast in-memory store shared by gateway instances [D-05] |
-| Grafana | Dashboards for cost, quality, latency | Visual comparison against baselines [D-07] |
-| RouterBench, MT-Bench | Public benchmarks | Common ground for comparing routers and answer quality [D-07] |
-| Circuit-breaker pattern | Pause traffic to repeatedly failing backends | Standard resilience pattern [D-05] |
+| Python | Implementation language | Used by the guide's reference simulation and the routing stack |
+| FastAPI | One modular gateway application | Guide: a modular FastAPI application first; asynchronous Python framework |
+| Relational database (SQLite or a server database: DECISION-NEEDED) | Registry, ledger, logs, sessions, evaluation records | Guide: relational database; prefer CSV or SQLite for initial experiments |
+| NumPy, pandas, scikit-learn | k-NN, calibration, evaluation | Guide E1; scikit-learn kept from the proposal |
+| sentence-transformers or another embedding model (DECISION-NEEDED) | Task embeddings for k-NN | ASSUMPTION: the proposal's embedding tool; the guide says "a small embedding model" |
+| Small in-process vector index | Nearest-neighbour search | Guide: prefer a small in-process index over a separate vector database |
+| Ollama, LM Studio, llama.cpp server, vLLM | Local backends through OpenAI-compatible APIs | Guide: first-class local deployments; use vLLM `/metrics` only when exposed |
+| Hosted LLM APIs | Hosted backends | TODO: providers |
+| Mock provider | Adjustable usage, delay and failure for E4 | Guide E4 |
+| pytest, coverage tool, CI | Tests, at least 80% line coverage | Guide section 9; TODO: tools |
+| RouterBench, LLMRouterBench, LongMemEval | Datasets | Guide E1, E3 |
+| Load generator | Concurrency tests | TODO: tool |
+| SUS questionnaire and consent forms | Usability and interviews | Guide section 9 |
 
-Tools not yet chosen (TODO): load generator for concurrent requests; unit and integration test framework; container and orchestration setup; version control hosting and CI; reference manager (the template suggests Zotero or Mendeley); GPU hardware and hosted-API budget.
+**Not used until a measured need (guide):** Redis, Prometheus, Grafana, a graph database, microservices. Proposal-era choices dropped for this reason are recorded in `design-reconciliation.md`.
 
 ## 3.9 Evaluation Plan
 
-**Strategies compared** (same prompts, same hardware, same time window where possible):
+Two kinds of evidence: **offline replay** for model selection, where every strategy is compared on identical tasks and already-evaluated model outcomes (E1 to E3), and **live engineering tests** on real or controlled local and hosted endpoints for latency, streaming, caching, budget concurrency, timeouts and failures (E4, E5), because replay cannot measure those reliably. Replay benchmarks store outputs and none of the reviewed routing benchmarks measures latency under load or injects failures (Hu et al., 2024; H. Li et al., 2026; Y. Lu et al., 2026).
 
-| Code | Strategy | Purpose |
-|---|---|---|
-| S1 | Always-strong | Quality and cost reference [D-07] |
-| S2 | Always-weak | Cost floor and quality floor [D-07] |
-| S3 | Load-blind router: classifier and score without live load | Isolates the effect of live load [R-03] |
-| S4 | Load-aware router: the full design | The proposed system |
-| S5 (optional) | Cascade (cheap first, then escalate) | Tests gap G6. TODO-confirm-with-supervisor; not in the proposal's plan |
+### 3.9.1 Principles, variables and measurements
 
-**Testing strategy** (template 3.9): unit tests for classifier, scoring and circuit breaker; integration tests with real and mocked backends; system tests of the full flow; failure-injection and load tests; acceptance against Table 3.1 and Table 3.2 with the test IDs in Table 4.2. TODO-confirm-with-supervisor: the proposal has no user study, and the template's usability section (System Usability Scale, at least 20 participants) is aimed at user-facing systems. Decide whether a small developer-usability check of the API and dashboards is required or marked not applicable.
-
-**Table 3.6: Evaluation plan by objective**
-
-| Objective | Question | Metric (scale) | Data and setting | Baseline | Hypothesis | Reported in |
-|---|---|---|---|---|---|---|
-| O1 | RQ1 | Requirement coverage; traceability of tests to FR IDs | Tables 3.1, 3.2 | n/a | none | 4.5.3, Table 4.2 |
-| O2 | RQ2 | Functional test pass rate (ratio); p95 router overhead, ms (ratio) | Unit, integration, system tests; load test | Direct call to a backend | none | 4.5, 4.6.5 |
-| O3 | RQ3 | Routing accuracy (ratio) with 95% CI per model pair | RouterBench, held-out and cross-pair | Best constant policy | H0/H1 of RQ3 | 4.6.1 |
-| O4 | RQ4 | p95 latency, ms (ratio); also mean latency | Load generator at low and high concurrency against vLLM | S3 load-blind | H0/H1 of RQ4 | 4.6.3 |
-| O5 | RQ5 | Request success rate (ratio); added latency, ms | Failure injection: stop or slow a backend for a period | Router without fallback | H0/H1 of RQ5 | 4.6.4 |
-| O6 | RQ6 | Mean cost per request (ratio); mean quality score; p95 latency | RouterBench and MT-Bench | S1, S2 (and S3) | H0a/H1a, H0b/H1b of RQ6 | 4.6.2 |
+**Evaluation rules for E1 to E3 (guide section 5).** Declare first: before examining results, record the primary metric, the comparison, the non-inferiority margin and how failed or missing requests are counted. A margin is a design decision justified by what quality loss a user would tolerate (informed by the interviews) and approved by the supervisor; 3 percentage points is only a placeholder in the guide, not a recommendation. Keep validation and test data separate: tune k, thresholds, the minimum-evidence rule and hysteresis on validation data or pilot sessions; use the test set once. Pair wherever possible and analyse paired differences (paired bootstrap; McNemar for paired pass or fail outcomes if a test is wanted). Report 95% intervals with raw counts. Separate three kinds of finding: meaningful, detectable but practically small, and inconclusive; claim non-inferiority only when the lower bound of the quality difference lies above the negative margin. Confirmatory tests are limited to H1 to H3; ablations, sensitivity tests and E4 and E5 are exploratory or descriptive and labelled so. Size samples from observed variability and the declared margin; if resources fall short, report the achieved interval and call the result inconclusive rather than lowering the bar. Routing benchmarks report several seeds and relative gains, baselines such as best single, random and oracle, and distance to the oracle (H. Li et al., 2026); simple baselines are hard to beat (Hu et al., 2024), so always-strong, always-weak and rule baselines are essential controls.
 
 **Variables (course module).**
 
 | Role | Variable | Scale |
 |---|---|---|
-| Independent | Routing strategy (S1 to S4) | Nominal |
-| Dependent | Cost per request | Ratio (currency unit TODO) |
-| Dependent | Answer quality score | ASSUMPTION: treated as continuous; depends on how each benchmark scores (TODO verify) |
-| Dependent | p95 latency | Ratio (ms) |
-| Dependent | Request success rate | Ratio (proportion) |
-| Dependent | Routing accuracy | Ratio (proportion) |
-| Moderating | Load level (low, high; or concurrency) | Ordinal, or ratio if concurrency |
-| Extraneous | Provider variability and time of day; prompt length; hardware differences | Controlled by running strategies on the same prompts and hardware in the same window and by fixing seeds |
+| Independent | Routing method (static cheapest eligible, domain average, k-NN, optional classifier); switching policy (locked, free, hysteresis); context policy (C0 to C3b); budget band | Nominal |
+| Dependent | Task success (correctness on objective benchmarks, or blinded rubric) | Ratio (proportion) |
+| Dependent | Total effective cost (hosted charges plus routing and context calls; local resource estimate reported separately) | Ratio (currency or tokens) |
+| Dependent | Calibration (Brier score; reliability table) and share of insufficient evidence | Ratio |
+| Dependent | p50 and p95 TTFT, end-to-end latency, router overhead | Ratio (ms) (TTFT and latency definitions: Agrawal et al., 2024b; Zhong et al., 2024) |
+| Dependent | Model switches per session; fallback count; completion and rejection rates (report the denominator, so refusal of hard requests cannot flatter a router) | Ratio |
+| Dependent | Context accuracy, evidence recall, temporal correctness, false memories, abstention correctness, tokens | Ratio |
+| Dependent | Budget overshoot, rejected requests, reconciliation failures | Ratio |
+| Extraneous or moderating | Provider caching and cold starts; pricing at test time; task domain; session length; hardware and engine versions | Controlled by recording and by warm and cold conditions |
 
-**Statistics (ASSUMPTION).** Significance level 0.05. Uncertainty reported with 95% bootstrap confidence intervals, in line with the proposal's wish to report uncertainty rather than a single number [R-02]; paired comparisons on the same prompts. Number of repeated runs: TODO. Random seeds fixed and recorded. Multiple-comparison handling for the two hypotheses in RQ6: TODO-confirm-with-supervisor.
+### 3.9.2 Experiment E1: does k-NN beat rules? (primary research; RQ1, H1; O1)
 
-**Numeric targets.** Not set [E-01]. TODO-confirm-with-supervisor, before any test is run: targets for NFR-01 to NFR-06 and the margin δ. Recording the agreement date protects against changing targets after seeing results.
+1. Choose 3 to 4 distinct models and 3 to 5 domains; define correctness per domain.
+2. Store one row per task–model pair; split by task into training, validation and test.
+3. Baselines: **A** static cheapest eligible; **B** domain average from training data only; **C** k-NN; optional comparator: lightweight classifier; reference policies: always-strong and always-weak.
+4. Tune k (for example 3, 5, 10, 25), quality thresholds and the minimum-evidence rule on validation only; add a fallback for sparse or absent neighbours. Do not use gold test outcomes when selecting models.
+5. Check calibration on validation data; compare the raw neighbour average with the uncertainty lower bound; recalibrate only if needed; report how often evidence was insufficient and how those requests were routed.
+6. Evaluate every router on the same held-out tasks at identical budgets with the primary metric declared beforehand; report total cost, success, routing decision time and the cost–quality curve across bands, not only accuracy.
+7. Repeat with 10%, 25%, 50%, 100% of training records, rerun on a held-out domain if feasible, and optionally run the new-model test.
 
-### 3.9.1 Anticipated risks and threats to validity
+If k-NN does not beat cheap rules by more than the uncertainty, keep the simpler rule and report the negative result (guide).
 
-Carried forward to Section 4.8.
+### 3.9.3 Experiment E2: does controlled switching help? (primary research; RQ2, H2; O2)
+
+Three policies: **Free** (re-select every turn), **Locked** (one model except for failures or hard incompatibility), **Hysteresis** (switch only if another eligible model has enough net advantage, with optional cooldown; mandatory exceptions allowed). Scripted multi-turn sessions with known required facts and quality checks (for example code debug, follow-up patch, new maths question); freeze scripts; keep pilot and test sessions separate. The first 30 to 50 sessions of 8 to 12 turns are a pilot for debugging the harness, estimating the variability of paired per-session differences and selecting 2 to 3 hysteresis thresholds on a common utility scale; they are not assumed enough for the final evaluation. First use recorded per-model outputs to isolate selection decisions, then a smaller live sequential test to measure caching and latency, under at least a warm repeated-prefix and a cold new-prefix condition (and, for local engines, loaded and cold-loading models). Log session, turn, chosen and previous model, reason for switch, input, output and cached tokens, cost, TTFT, end-to-end time, success and backend state. Compare mean cost per completed session, p50 and p95 TTFT, success, switch count, fallback count and completion rate with paired bootstrap intervals; report live sessions separately because model-generated outputs make them not perfectly counterfactual. Stop rule: keep hysteresis only if the benefit survives the quality constraint and the logic has tolerable overhead; no extra phase classifier unless basic hysteresis fails measurably.
+
+### 3.9.4 Experiment E3: context after switching (supporting research; RQ3, H3; O3)
+
+Test corpus: 20 to 30 synthetic or consented conversations of 10, 20 and 40 turns, with at least five fact types: early stated facts, updated or corrected decisions, multi-hop relationships, exact code, JSON or tool output, and questions whose answer is absent; later optionally sample LongMemEval [CITE-10]. Create an answer key first (correct answer, evidence message IDs, whether the fact was superseded, whether "I don't know" is correct). Compare C0 full replay, C1 bounded, C2 text or vector retrieval, and optionally C3a (hand-built graph, an optimistic reference that isolates retrieval from extraction errors) and C3b (graph built by an LLM prompt, the realistic condition). A facts table with source-message links is enough; no graph database is needed. Enforce the same maximum context-token allowance across C1 to C3b and keep the answer model, settings and questions fixed. Score context accuracy, evidence recall, temporal correctness, false memories, abstention correctness, tokens, indexing tokens and latency, retrieval latency and total cost, for cold and amortised indexing. If C1 or C2 already solves the tasks, stop: the graph is out of scope. If C3a beats C2 but C3b does not, report that the gain exists in principle but was not realised by the extraction approach tested. A graph is monetarily beneficial only if avoided context inference cost exceeds graph creation, updates, retrieval and any added verification costs, with cache discounts counted.
+
+### 3.9.5 Experiment E4: do budget bands enforce spending correctly? (software-engineering verification; RQ4; O4)
+
+Create three test policy configurations with explicit per-request and per-session limits, chosen after observing example input and output lengths and prices. Build a mock provider with adjustable token usage, delay and failure. Send one request, then 10 and 100 concurrent requests sharing one project budget. Calculate a conservative reservation from the final input-token count and `max_output_tokens`, hold it in an atomic or lock-protected ledger, and reconcile after the response. Test 429s, timeouts, partial streams and retries: an internal retry that did not bill must not be charged twice, and actual provider charges must be counted. Assert that authorised requests do not exceed the declared reservation limits and unaffordable requests are rejected before dispatch; track estimated against provider-reported billing separately; check that falling back to a local model never bypasses privacy or capability constraints. Metrics: rejected requests, cap overshoot, reserved against actual spending, average cost per completed request, reconciliation failures and p95 gateway overhead. Pass or fail assertions; no hypothesis test.
+
+### 3.9.6 Experiment E5: local backend and gateway overhead (software-engineering verification; RQ5; O5)
+
+Start one local inference engine (initially Ollama or LM Studio) and load a small model that fits the hardware; do not load several models on an 8 GB GPU merely to mimic a production pool. Point the generic adapter at its OpenAI-compatible `/v1/chat/completions` endpoint and send the same prompt directly and through the router, verifying the complete response, streaming events, cancellation and usage capture. Repeat on a second engine when available (llama.cpp server or vLLM); use native vLLM `/metrics` only when exposed and do not claim every local server supplies VRAM or queue-depth metrics. Measure proxy overhead as gateway-to-endpoint TTFT minus direct-to-endpoint TTFT under equivalent settings with repeated warmed and cold trials, plus full request time and concurrent clients (reported descriptively with intervals; a published precedent reports a median selection overhead of 2.2 to 3.5 ms for a constant-time store, Romero et al., 2021). Inject a slow response, 429, connection failure, malformed output and a mid-stream disconnect; verify timeout, circuit-breaker and fallback rules, and that an already emitted stream is never transparently continued on a different model. Record hardware, engine versions, quantisation, loaded model state, batch size, power settings and concurrency; performance and reliability targets come from the requirements and quality table, not from invented figures.
+
+### 3.9.7 Software-engineering evaluation (O6, RQ6)
+
+| Activity | Plan | Output / done condition |
+|---|---|---|
+| Requirements gathering | At least 5 developer interviews or surveys (Section 3.2) | Coded requirements with sources |
+| Requirements specification | Every requirement has an ID, acceptance criterion and MoSCoW priority; traceability matrix: requirement, design module, implementation, test case(s), experiment (E1 to E5); the guide's out-of-scope list gives the initial Won'ts | MoSCoW table and matrix updated at each step; every Must has at least one passing test or experiment |
+| Software quality | Four ISO/IEC 25010 characteristics: performance efficiency (overhead, throughput; E5), reliability (injected failures; E4, E5), security (authentication, authorisation, secrets and logs, endpoint allow-listing, SSRF controls), maintainability (modularity, testability, effort to add an adapter). Each has a measurable indicator and a target fixed before measurement. State the edition. | Quality table: characteristic, indicator, target, justification, measured result |
+| Testing | Unit (filters, budget arithmetic, rule and k-NN routers, adapters with mocks); integration (gateway, mock provider, local endpoint, database); concurrency (10 and 100 concurrent requests; E4); fault injection (429, timeout, malformed output, mid-stream disconnect; E4, E5); performance (E5). At least 80% line coverage, automatically measured and reported per module (coverage shows what the tests execute, not that behaviour is correct) | Automated suite in CI; coverage report; fault-injection log |
+| Usability | Preferably at least 8 developers complete four integration tasks, then the System Usability Scale; record completion, time on task, errors and help requests. With about 8 participants this is formative evidence, not statistical proof: report SUS as a mean with an interval and task measures descriptively | Task script, SUS scores, task measures, issues fixed or deferred |
+
+### 3.9.8 Anticipated threats and risks (carried to Section 4.8)
 
 | Threat or risk | Type | Handling |
 |---|---|---|
-| Classifier trained on one model pair generalises poorly [R-01] | External validity | Test on more than one model pair before trusting it |
-| Noisy preference-based quality labels [R-02] | Construct validity | Public benchmarks; report confidence intervals |
-| Little prior work on live-load routing [R-03] | Gap not confirmed by literature | Compare directly with the load-blind variant S3; state honestly if Chapter Two finds more prior work |
-| Competitors change [R-04] | Relevance of the gap | Re-check LiteLLM and OpenRouter docs before submission |
-| Benchmarks are not production traffic (ASSUMPTION) | External validity | State the limit; do not claim production savings |
-| Hosted-API latency varies with provider load and time (ASSUMPTION) | Internal validity | Interleave strategies in time; repeat runs; report spread |
-| Quality scoring of MT-Bench may rely on a model as judge (ASSUMPTION: verify how it is scored) | Construct validity | Read the benchmark paper; discuss judge bias if applicable |
-| Small GPU capacity limits load tests (ASSUMPTION) | Conclusion validity | Record hardware; state the load range tested |
-| Overfitting weights to the test data | Conclusion validity | Tune on validation only; touch test once |
+| k-NN estimates miscalibrated or built on unrepresentative neighbours | Construct validity | Reliability table, Brier score, lower bound, minimum-evidence rule (E1) |
+| Benchmark labels are noisy or flawed [CITE-09] | Construct validity | Objective checks where possible, blinded adjudication, intervals |
+| Replay cannot capture live caching, local load or network resilience | External validity | E2 live run, E4 and E5 live tests; state the limit |
+| Provider caching, cold starts and price changes | Internal validity | Warm and cold conditions; pricing snapshot; repeated trials |
+| Pilot sessions used to tune thresholds also used to claim results | Conclusion validity | Separate pilot and test sessions; test set used once |
+| A cheap router looks good by refusing hard requests | Construct validity | Report completion and rejection denominators |
+| Small usability sample | Conclusion validity | Treat as formative; report intervals |
+| Competitors change | Relevance | Re-fetch vendor documentation before submission (proposal R-04) |
+
+### 3.9.9 Optional extension X1: live-load signals
+
+If time allows (`DECISION-NEEDED`): add registry-level health, latency and queue estimates and, where a server exposes it, vLLM `/metrics` (queue length, KV-cache use, latency histograms) to the ranking step, and compare a load-aware with a load-blind variant on p95 TTFT under concurrent load. Evidence from the literature: request counts are weak signals (join-shortest-queue was only 0.46% better than round-robin in Jain et al., 2024, a preprint); memory- and token-based load is stronger (Sun et al., 2024; Kossmann et al., 2024); correcting between scrapes avoids acting on stale values (Kossmann et al., 2024; Da & Kalyvianaki, 2026); scrape-interval sensitivity is reported by no paper and would be a contribution if measured. Prediction error rises near saturation, so a backend above about 85% of capacity should be treated as unable to meet tight deadlines (Agrawal et al., 2024c).
 
 ## 3.10 Ethical Considerations
 
-- **Human participants:** none planned [proposal]. Consent forms are not needed unless interviews or a user study are added (see 3.2 and 3.9). TODO-confirm-with-supervisor: whether department ethical approval is still required for a project without human participants.
-- **Data:** public benchmark data only; check each licence and cite it [D-07]. No personal data is collected. If real prompts are ever used, apply the Nigeria Data Protection Act 2023, store hashes not text, and anonymise [CITE: Nigeria Data Protection Act 2023].
-- **Third-party services:** sending benchmark prompts to hosted providers must follow each provider's terms of use (ASSUMPTION: to check). Provider keys are kept secret (NFR-10).
-- **Research integrity:** targets agreed before testing; results reported as measured, including failures; replication package shared (module: replicability and objectivity).
-- **Generative AI:** any use is declared in the front matter table.
+- **Human participants.** Developer interviews (at least 5) and a usability study (preferably at least 8) involve participants. Obtain consent, avoid storing identifying details, anonymise, store data securely, and give consent forms and the interview guide in Appendix C. `DECISION-NEEDED`: whether department ethical approval is required and the consent approach agreed with the supervisor.
+- **Data.** Public benchmark data only for E1; check each licence and cite it. Conversations for E2 and E3 are synthetic or consented. No raw sensitive prompts are stored by default. Where personal data is processed, apply the Nigeria Data Protection Act 2023 [CITE: Nigeria Data Protection Act 2023].
+- **Third-party services.** Sending prompts to hosted providers must follow each provider's terms of use and the router's privacy policy; provider keys are kept secret (NFR-06). ASSUMPTION: terms of use to be checked.
+- **Research integrity.** Primary metrics and margins declared before results; failures and negative results reported; synthetic assumptions never labelled as observed results (the guide's synthetic simulation is a design sanity check only); replication package shared.
+- **Generative AI.** Any use is declared in the front-matter table.
 
 ## 3.11 Chapter Summary
 
-TODO: one or two paragraphs once the chapter is final. Content to cover: Design Science Research with three iterations tied to the three phases; requirements from the existing-solutions review; a pipeline of classifier, scoring engine, live state, backends and resilience; a linear scoring function with hard latency budget and circuit breaker; public benchmarks with always-strong, always-weak and load-blind baselines; and an evaluation plan with hypotheses and uncertainty reporting.
+TODO: one or two paragraphs when the chapter is final. Content to cover: Design Science with a nine-step build order; requirements from at least five developer interviews with MoSCoW and a traceability matrix; one modular FastAPI application with eligibility filtering, k-NN competence estimates with a lower bound, budget bands with atomic reservation, hysteresis, bounded retries and a circuit breaker; offline replay experiments E1 to E3 and live verification E4 and E5; and a software-engineering evaluation with an ISO/IEC 25010 table, at least 80% line coverage and a SUS study.

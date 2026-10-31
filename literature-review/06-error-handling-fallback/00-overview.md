@@ -25,7 +25,7 @@ Error handling and fallback covers what a gateway does when a backend is slow, r
 5. **Practice leads research.** Gateway features (fallback chains, retries, circuit breakers) exist in products long before any peer-reviewed evaluation, which is why section 8 relies on grey sources for design justification.
 
 ## 4. Strongest three papers for the proposal
-1. **Pandey & Singh (2026), ContinuityBench:** the only direct study of gateway failover; supplies metrics (CPR, CLO), a fault-injection design and the retry-storm and race-condition lessons. Use with care: preprint, vendor authors, strawman baseline.
+1. **Pandey & Singh (2026a), ContinuityBench:** the only direct study of gateway failover; supplies metrics (CPR, CLO), a fault-injection design and the retry-storm and race-condition lessons. Use with care: preprint, vendor authors, strawman baseline.
 2. **Huang et al. (2022), Metastable Failures:** peer-reviewed grounding for bounded retries, backoff, load shedding and for checking the target's headroom before failing over.
 3. **Yan et al. (2025), GenAI incidents:** empirical evidence on how hosted LLM services fail (degradation most of all), which justifies latency-aware circuit breakers and output checks. Preprint, but it is the only incident study of GenAI services.
 
@@ -39,8 +39,8 @@ Error handling and fallback covers what a gateway does when a backend is slow, r
 - **Client-side provider reliability data are missing.** Yan et al. give provider-side incident statistics only; no study reports error and latency rates seen by API clients across providers.
 
 ## 6. Paper files (this topic)
-- [Pandey & Singh (2026), ContinuityBench](pandey-2026-continuitybench.md)
-- [Pandey & Singh (2026), FailureAtlas](pandey-2026-failureatlas.md)
+- [Pandey & Singh (2026a), ContinuityBench](pandey-2026-continuitybench.md)
+- [Pandey & Singh (2026b), FailureAtlas](pandey-2026-failureatlas.md)
 - [Miao et al. (2024), SpotServe](miao-2024-spotserve.md)
 - [Strati et al. (2024), DéjàVu](strati-2024-dejavu.md)
 - [Jayakody et al. (2026), GhostServe](jayakody-2026-ghostserve.md)
@@ -84,7 +84,7 @@ Searches ran on 2026-10-30 and 2026-10-31. I did not keep numeric hit counts; th
 
 **Counts:** screened 17 candidate titles (the grey sources in section 8 are not counted); included 10 full files (3 assigned, 7 added); read in full text: all 10.
 
-**Assigned papers:** ContinuityBench, SpotServe, DéjàVu all retained. None dropped. SpotServe's ACM DOI is unverified (the PDF shows a placeholder), so the arXiv DOI is used.
+**Assigned papers:** ContinuityBench, SpotServe, DéjàVu all retained. None dropped. SpotServe's ACM DOI (10.1145/3620665.3640411) is confirmed through its Crossref record (title, authors, proceedings, pages 1112–1127); the ACM page itself returned 403 and the preprint PDF shows only a placeholder.
 
 **Added:** FailureAtlas (preprint), Metastable Failures in the Wild (OSDI 2022), ServerlessLLM (OSDI 2024), SkyServe (EuroSys 2025), Yan et al. incidents (preprint), GhostServe (MLSys 2026), ResilienceBench-Operator (JSERD 2026). Of the ten, six are conference papers (SpotServe, DéjàVu, GhostServe, ServerlessLLM, SkyServe, Metastable Failures), one is a journal article, and three are preprints (ContinuityBench, FailureAtlas, Yan et al.); SpotServe's venue rests on the arXiv comment field and GhostServe's on the MLSys page.
 

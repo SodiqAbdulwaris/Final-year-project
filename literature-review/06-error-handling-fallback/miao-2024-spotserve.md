@@ -5,15 +5,15 @@
 | Topic (home) | 06 Error handling and fallback |
 | Also relevant to | 04 Cost reduction, 05 Serving systems |
 | Paper type | system |
-| Venue and status | peer-reviewed (ASPLOS 2024, per the arXiv comment field) |
-| Source read | full text, arXiv v1 (https://arxiv.org/pdf/2311.15566); the final ACM DOI could not be verified (the PDF shows a template placeholder) |
-| Verified on | 2026-10-31, against the arXiv abstract page |
+| Venue and status | peer-reviewed (ASPLOS 2024, pp. 1112–1127; arXiv comment field and Crossref record) |
+| Source read | full text, arXiv v1 (https://arxiv.org/pdf/2311.15566); the preprint PDF shows a template placeholder instead of the ACM DOI |
+| Verified on | 2026-10-31, against the arXiv abstract page and the Crossref record for the DOI (the ACM Digital Library page returned 403 and was not read) |
 | Relevance to project | Medium |
 
 ## APA 7 reference
-Miao, X., Shi, C., Duan, J., Xi, X., Lin, D., Cui, B., & Jia, Z. (2024). SpotServe: Serving generative large language models on preemptible instances. In *Proceedings of the 29th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2*. ACM. https://doi.org/10.48550/arXiv.2311.15566
+Miao, X., Shi, C., Duan, J., Xi, X., Lin, D., Cui, B., & Jia, Z. (2024). SpotServe: Serving generative large language models on preemptible instances. In *Proceedings of the 29th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2* (pp. 1112–1127). ACM. https://doi.org/10.1145/3620665.3640411
 
-*Preprint DOI shown; replace with the ACM DOI once confirmed.*
+*DOI status: the Crossref record for this DOI returns the same title, authors, proceedings, year and pages; the ACM page itself was blocked (403), so it was not read there. Preprint DOI: https://doi.org/10.48550/arXiv.2311.15566.*
 
 ## In-text citation forms
 (Miao et al., 2024) · Miao et al. (2024)
@@ -27,7 +27,7 @@ Spot GPUs cost up to 90% less than on-demand ones, but a preemption stops an ent
 ## 3. Proposed solution
 1. **Dynamic reparallelization.** A controller chooses data, pipeline and tensor parallel degrees for the current instance count and arrival rate, minimising latency when capacity suffices and maximising throughput otherwise; it can also acquire on-demand instances.
 2. **Cheap migration.** Mapping surviving GPUs to the new device mesh is a bipartite matching solved with the Kuhn-Munkres algorithm so that the most model parameters and KV cache stay in place; migration is overlapped with pipeline execution.
-3. **Stateful inference recovery.** Using the cloud's grace period (30 s on AWS) the engine commits progress per token and migrates the KV cache of finished tokens, so interrupted requests resume rather than restart.
+3. **Stateful inference recovery.** Using the cloud's grace period (the introduction gives 30 s for AWS spot instances; Section 3 says "30 seconds on Azure", so the paper states both) the engine commits progress per token and migrates the KV cache of finished tokens, so interrupted requests resume rather than restart.
 
 **How cost is modelled.** Dollar cost per hour of instances and cost per token; the optimiser trades throughput, latency and monetary cost. For GPT-20B the paper compares spot at 1.9 USD/h with on-demand at 3.9 USD/h. The intro also states that serving GPT-3 on AWS takes over 16 A100-40GB GPUs, costing more than $66 per hour per pipeline.
 
@@ -41,9 +41,9 @@ Spot GPUs cost up to 90% less than on-demand ones, but a preemption stops an ent
 - Rerouting overloads once an instance is lost because it drops a whole pipeline; the ablation (Figure 9) shows that removing the parallelization controller changes tail latency by 179% (the text's wording is ambiguous, so I do not rely on the direction).
 
 ## 6. Limitations
-*Stated by the authors:* only latency minimisation is the optimisation target; strict SLOs or throughput targets and newer architectures such as mixture-of-experts are future work.
+*Stated by the authors (Section 8):* the approach strongly relies on the grace period offered by the cloud provider (the authors suggest combining it with workload or availability prediction); it mainly targets single-type GPU instances, with heterogeneous or multi-cloud instances left open; and it takes inference latency minimisation as the only optimisation target, with strict SLOs, throughput targets and newer architectures such as mixture-of-experts as future work.
 
-*My observations:* a single model per cluster in one region; it relies on the grace-period warning, so sudden failures are not handled (DéjàVu makes the same point). Evaluation uses small T4 GPUs. SkyServe (Mao et al., 2025) later reports SpotServe failing 2.0 to 75.9% of requests depending on region when spot capacity is unavailable, because it does no provisioning or placement.
+*My observations:* a single model per cluster in one region; because it relies on the grace-period warning, sudden failures are not handled (DéjàVu makes the same point). Evaluation uses small T4 GPUs. SkyServe (Mao et al., 2025) later reports SpotServe failing 2.0 to 75.9% of requests depending on region when spot capacity is unavailable, because it does no provisioning or placement.
 
 ## 7. Relevance to the AI Request Router
 - Quantifies why **backend loss is costly for self-hosted LLMs** (minutes to reload, restart from scratch) and why the router should avoid sending traffic to a backend that is about to be reclaimed. A preemption warning is a health signal the circuit breaker could consume.

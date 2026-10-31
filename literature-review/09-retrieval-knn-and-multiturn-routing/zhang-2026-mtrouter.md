@@ -51,7 +51,7 @@ Identified by me: the paper only notes, without measuring, that switching models
 - Reuse: evaluate with repeated runs and intervals; compare against a "switch after each error" reactive baseline; report stay-versus-switch rates after errors; use a random-router plus single-model data mix to cover the pool when logging data.
 - What the project must decide, and this paper does not answer: hysteresis thresholds (how much better the new model's estimate must be, and for how many turns), a cache-aware cost term for switching, and hard-failure exceptions that override stickiness.
 - Not covered: k-NN or retrieval of past outcomes, calibration, minimum evidence, local models, live load.
-- Related: prefix-sharing in serving is studied in [Preble (Srivatsa et al., 2025)](../03-load-balancing/srivatsa-2025-preble.md); the cache-loss effect of switching is also the premise of [Context Is Not Free](zhang-2026-context-is-not-free.md) if that file is present in this folder.
+- Related: prefix-sharing in serving is studied in [Preble (Srivatsa et al., 2025)](../03-load-balancing/srivatsa-2025-preble.md); the cache-loss effect of switching is quantified in [Parashar et al. (2026)](parashar-2026-whose-turn-is-it.md).
 
 ## 8. How to use it in the report
 - Chapter 2 on multi-turn and session routing, and the motivation for session-aware hysteresis in Chapter 3.

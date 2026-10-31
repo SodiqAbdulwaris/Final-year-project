@@ -33,7 +33,7 @@ Prices (Table 6, input / output, $ per 1M tokens): GPT-4o 5 / 15; GPT-3.5-turbo 
 
 ## 4. Data, models and tools
 - New 10K-instruction dataset (QA, coding, safety; 8K / 1K / 1K split); 20 responses per example from each of 8 LLMs; out-of-distribution test on MT-Bench; quality by armoRM scores.
-- Baselines (Srivatsa et al., 2024): N-class, N-label, clustering routers; cascades (Yue et al., 2024) in the appendix. One A100 GPU. Code: https://github.com/microsoft/best-route-llm.
+- Baselines: N-class, N-label and clustering-based routers. The main text says all three come from prior work of Srivatsa et al. (2024), but the appendix attributes only N-label and clustering to Srivatsa et al. (2024) and gives no citation for N-class, so the origin of N-class is ambiguous. Model cascades (appendix, Appendix B.2) follow Yue et al., which the paper's own reference list dates 2023 (the ICLR version is 2024). One A100 GPU. Code: https://github.com/microsoft/best-route-llm.
 
 ## 5. Key results
 - Table 1 (quality drop vs always using GPT-4o at 10 / 20 / 40 / 60% cost reduction): BEST-Route 0.19 / 0.21 / 0.47 / 0.80%; N-label 0.63 / 1.17 / 3.26 / 5.08%. N-class and clustering almost always pick GPT-4o (0.07% and 0% saving).
