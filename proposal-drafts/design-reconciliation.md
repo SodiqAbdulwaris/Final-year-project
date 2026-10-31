@@ -1,5 +1,7 @@
 # Design reconciliation: 16 Oct proposal versus 26 Oct team guide
 
+**31 October 2026 update:** The owner selected a hybrid, constraint-aware design under D01. See [hybrid-design-direction.md](hybrid-design-direction.md) for the complete direction and decision status. It supersedes the earlier guide-governs assumption. Detailed sections below await reconciliation after D04, D05, D03 and D02; they must not be treated as the final agreed design.
+
 **Status: DECISION-NEEDED (user and team to confirm).** The supervisor session decided, in the user's absence, that the later team document governs where the two conflict. The drafts in this folder follow that decision.
 
 | Document | Date | Where it is kept | Role in the drafts |

@@ -1,5 +1,9 @@
 # D04: How to word the research gap and the novelty claim
 
+## 31 October 2026 recommendation after D01
+
+**Status: awaiting owner decision.** The owner asked what is recommended and requested documentation. Recommend the evaluation-focused wording in [hybrid-design-direction.md](../proposal-drafts/hybrid-design-direction.md#d04-recommendation-awaiting-owner-decision): compare the hybrid with simpler baselines and ablations; evaluate fallback separately. Claim a decision policy, integration and empirical evidence without assuming improvements or novelty. This recommendation replaces the guide-specific recommendation below; it is not yet owner approval.
+
 | | |
 |---|---|
 | Status | **OPEN, needs your decision** |

@@ -1,5 +1,7 @@
 # CHAPTER THREE: METHODOLOGY, SYSTEM ANALYSIS AND DESIGN (draft, reworked to follow the 26 Oct team guide)
 
+**31 October 2026 update:** The owner selected a hybrid, constraint-aware design under D01. See [hybrid-design-direction.md](hybrid-design-direction.md) for the complete direction and decision status. It supersedes the earlier guide-governs assumption. Detailed sections below await reconciliation after D04, D05, D03 and D02; they must not be treated as the final agreed design.
+
 **Drafting notes (delete before pasting)**
 
 - **Governing design.** Follows the 26 Oct 2026 team guide where it conflicts with the 16 Oct proposal (supervisor decision, user to confirm). `design-reconciliation.md` lists every conflict. Items still open are marked `DECISION-NEEDED`. Proposal-only elements kept because the guide does not contradict them: OpenAI-compatible gateway, hosted plus self-hosted backends, circuit breaker, p95 latency, RouterBench, always-strong and always-weak baselines.

@@ -1,5 +1,7 @@
 # CHAPTER TWO: LITERATURE REVIEW (draft, filled from the literature review; reworked to follow the 26 Oct team guide)
 
+**31 October 2026 update:** The owner selected a hybrid, constraint-aware design under D01. See [hybrid-design-direction.md](hybrid-design-direction.md) for the complete direction and decision status. It supersedes the earlier guide-governs assumption. Detailed sections below await reconciliation after D04, D05, D03 and D02; they must not be treated as the final agreed design.
+
 **Drafting notes (delete before pasting)**
 
 - Built from `literature-review/` (81 papers in 8 topics, grey-literature review of existing routers, `gaps-and-synthesis.md`). Citations are APA 7 author-date and every one has an entry in `literature-review/references.md` (checked by script, see `README.md`). Where two first authors share a surname in the same list, initials are added as APA 7 requires (for example S. Chen et al., 2024 and L. Chen et al., 2024).

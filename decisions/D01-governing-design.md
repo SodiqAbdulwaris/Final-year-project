@@ -1,11 +1,17 @@
 # D01: Which design governs: 16 Oct proposal or 26 Oct team guide?
 
+## Owner decision: hybrid constraint-aware design
+
+The owner supplied a new hybrid direction rather than selecting the original A/B/C wording. Lightweight classification and embedding-derived features inform model-specific suitability; constrained cost–quality–latency selection and deterministic operational fallback have separate responsibilities. Embedding value is tested by ablation; quality cascading is optional. Neither source document alone governs. Supervisor approval remains unconfirmed.
+
+The complete response, scope, phases, example-only thresholds and unresolved choices are documented in [hybrid-design-direction.md](../proposal-drafts/hybrid-design-direction.md). Earlier analysis below is retained as history, not the current decision.
+
 | | |
 |---|---|
-| Status | **OPEN, needs your decision** |
+| Status | **RESOLVED by owner response on 31 October 2026; draft reconciliation pending** |
 | Who decides | You, the team, and the supervisor (the proposal may already have been submitted) |
 | Blocks | Chapter 1 aim, objectives and RQs; Chapter 3 requirements and design; Chapter 4 experiments; the gap statement |
-| Default used meanwhile | The 26 Oct guide governs; proposal elements it does not contradict are kept; conflicts are marked `DECISION-NEEDED` in `proposal-drafts/design-reconciliation.md` |
+| Superseded drafting default | The 26 Oct guide governs; proposal elements it does not contradict are kept; conflicts are marked `DECISION-NEEDED` in `proposal-drafts/design-reconciliation.md` |
 
 ## The question
 The proposal (16 Oct) plans a sentence-embedding + logistic-regression difficulty classifier, live queue/GPU signals via vLLM + Prometheus, Redis health state, and a per-request latency budget. The team guide (26 Oct, Rev 2) plans k-NN competence estimation over past outcomes, cost budget bands, session hysteresis, a context policy, five experiments (E1-E5), and a simple one-process architecture. They are two different projects in emphasis.

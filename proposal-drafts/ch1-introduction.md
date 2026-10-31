@@ -1,5 +1,7 @@
 # CHAPTER ONE: INTRODUCTION (draft, reworked to follow the 26 Oct team guide)
 
+**31 October 2026 update:** The owner selected a hybrid, constraint-aware design under D01. See [hybrid-design-direction.md](hybrid-design-direction.md) for the complete direction and decision status. It supersedes the earlier guide-governs assumption. Detailed sections below await reconciliation after D04, D05, D03 and D02; they must not be treated as the final agreed design.
+
 **Drafting notes (delete before pasting into the template)**
 
 - **Governing design.** This draft follows the 26 Oct 2026 team guide where it conflicts with the 16 Oct proposal (supervisor decision, user to confirm). See `design-reconciliation.md`. Unresolved conflicts are marked `DECISION-NEEDED`. The proposal's verified facts are still recorded in `00-source-facts.md` (IDs such as [P-01] below refer to it); the guide's content is cited as "the team guide" and is not in the fact file.
