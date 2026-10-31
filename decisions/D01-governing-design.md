@@ -1,23 +1,36 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D01 current outcome
+
+Hybrid design governs. See proposal-drafts/_meta/hybrid-design.md; prior A/B/C recommendations are superseded.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D01: Which design governs: 16 Oct proposal or 26 Oct team guide?
 
 ## Owner decision: hybrid constraint-aware design
 
 The owner supplied a new hybrid direction rather than selecting the original A/B/C wording. Lightweight classification and embedding-derived features inform model-specific suitability; constrained cost–quality–latency selection and deterministic operational fallback have separate responsibilities. Embedding value is tested by ablation; quality cascading is optional. Neither source document alone governs. Supervisor approval remains unconfirmed.
 
-The complete response, scope, phases, example-only thresholds and unresolved choices are documented in [hybrid-design-direction.md](../proposal-drafts/hybrid-design-direction.md). Earlier analysis below is retained as history, not the current decision.
+The complete response, scope, phases, example-only thresholds and unresolved choices are documented in [hybrid-design-direction.md](../proposal-drafts/_meta/hybrid-design.md). Earlier analysis below is retained as history, not the current decision.
 
 | | |
 |---|---|
 | Status | **RESOLVED by owner response on 31 October 2026; draft reconciliation pending** |
 | Who decides | You, the team, and the supervisor (the proposal may already have been submitted) |
 | Blocks | Chapter 1 aim, objectives and RQs; Chapter 3 requirements and design; Chapter 4 experiments; the gap statement |
-| Superseded drafting default | The 26 Oct guide governs; proposal elements it does not contradict are kept; conflicts are marked `DECISION-NEEDED` in `proposal-drafts/design-reconciliation.md` |
+| Superseded drafting default | The 26 Oct guide governs; proposal elements it does not contradict are kept; conflicts are marked `DECISION-NEEDED` in `proposal-drafts/_meta/decisions-applied.md` |
 
 ## The question
 The proposal (16 Oct) plans a sentence-embedding + logistic-regression difficulty classifier, live queue/GPU signals via vLLM + Prometheus, Redis health state, and a per-request latency budget. The team guide (26 Oct, Rev 2) plans k-NN competence estimation over past outcomes, cost budget bands, session hysteresis, a context policy, five experiments (E1-E5), and a simple one-process architecture. They are two different projects in emphasis.
 
 ## What I found
-- The guide is later and states the team's own decisions (`Research Review/Research Paper Review.docx`; summary in `proposal-drafts/team-design-guide-notes.md`).
+- The guide is later and states the team's own decisions (`Research Review/Research Paper Review.docx`; summary in `proposal-drafts/_meta/history/team-design-guide-notes.md`).
 - Literature check: the proposal's live-load gap is narrower than claimed (RouteBalance, vLLM Semantic Router, several 2026 preprints; see `literature-review/gaps-and-synthesis.md`). k-NN retrieval routing is supported by Varangot-Reille et al. (2026, EACL SRW) and LLMRouterBench finds simple baselines often competitive.
 - The guide makes failover, TTFT measurement and local-backend integration part of E4/E5, so the proposal's resilience goals are mostly preserved. The parts dropped from the MVP are Prometheus/Redis live-load routing and the learned difficulty classifier.
 - The guide's own synthetic simulation found k-NN no better than rules (80.5% vs 81.7%): invented numbers, not evidence, but a reminder that RQ1 may come out negative (the guide accepts that).
@@ -34,8 +47,8 @@ The proposal (16 Oct) plans a sentence-embedding + logistic-regression difficult
 
 ## Consequences and things to watch
 - If the proposal was already approved, changes to objectives usually need supervisor/department approval.
-- Do not delete the proposal's facts: `proposal-drafts/00-source-facts.md` keeps them.
+- Do not delete the proposal's facts: `proposal-drafts/_meta/source-facts.md` keeps them.
 - Whichever option is picked, update the gap statement (D04) to match.
 
 ## Where this shows up in the files
-`proposal-drafts/team-design-guide-notes.md`, `proposal-drafts/design-reconciliation.md`, `proposal-drafts/ch1-introduction.md`, `ch3-methodology-design.md`, `literature-review/gaps-and-synthesis.md`
+`proposal-drafts/_meta/history/team-design-guide-notes.md`, `proposal-drafts/_meta/decisions-applied.md`, `proposal-drafts/01-introduction/00-overview.md`, `ch3-methodology-design.md`, `literature-review/gaps-and-synthesis.md`

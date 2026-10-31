@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Topic 01: AI model routing algorithms (overview)
 
 Verified 2026-10-31. Eleven full paper files (ten seed papers plus one added by the discovery search), all published 2023 or later, all read in full text (survey paradigm sections skimmed, see their files).
@@ -15,7 +20,7 @@ Model routing is the choice, for each incoming request, of which LLM (or which c
 | [Hybrid LLM](ding-2024-hybrid-llm.md) | 2024 | method | ICLR | Small vs large model per query | DeBERTa quality-gap router, three label designs | Up to 40% fewer large calls, no drop | Two models; no OOD |
 | [AutoMix](aggarwal-2024-automix.md) | 2024 | method | NeurIPS | Cascade with noisy self-check | Few-shot self-verification plus POMDP | Over 50% cost cut at comparable quality | Context tasks only; sequential calls |
 | [RouterDC](chen-2024-routerdc.md) | 2024 | method | NeurIPS | Several models equally good | Dual contrastive losses on LLM embeddings | 58.54% vs 54.56% best single; survives model removal | 7-8B models; accuracy only |
-| [RouteLLM](ong-2025-routellm.md) | 2025 | method + framework | ICLR | Strong/weak routing from preferences | Four routers on Arena data plus augmentation | 3.66x fewer GPT-4 calls than random routing at 95% quality (MT-Bench) | Two models; fixed price |
+| [RouteLLM](ong-2025-routellm.md) | 2025 | method + framework | ICLR | Strong/weak routing from preferences | Four routers on Arena data plus augmentation | Table 6: 3.66x cost-saving ratio over GPT-4 at 95% of its MT-Bench quality | Two models; fixed price |
 | [CSCR (Shirkavand et al.)](shirkavand-2025-cscr.md) | 2025 | method | NeurIPS | Cost-aware routing over dynamic pools | Cost-banded contrastive router, logit and perplexity fingerprints, k-NN lookup | Highest AUDC on EmbedLLM, MixInstruct, RouterBench; robust to new models | Static cost; no live load |
 | [Varangot-Reille et al.](varangot-reille-2026-routing-survey.md) | 2026 (preprint 2025) | survey | JAIR | Unify routing view | Objective / timing / strategy taxonomy | Lightweight pre-generation routers suffice | No live-load view |
 | [Moslem & Kelleher](moslem-2026-routing-cascading-survey.md) | 2026 | survey | TMLR | Map routing and cascading | Six paradigms plus when/what/how framework | Evaluations not comparable; four failure modes | No re-evaluation |
@@ -100,5 +105,5 @@ Two phases. Phase A (2026-10-30 to 10-31) verified the ten seed papers supplied 
 - **AutoMix author order** in the user's reference list is alphabetical, not the paper's order.
 - **RouterDC abstract** says +2.76% in-distribution, but Table 1 gives +3.98 points over the best single LLM and +2.77 over LoraRetriever; the file uses table values.
 - **Numbers read from arXiv preprints, not camera-ready versions:** FrugalGPT, Hybrid LLM, Zooter, RouterDC (v1 of each); Varangot-Reille (v3, before the JAIR version). Check against final versions if exact figures are quoted.
-- **No DOI exists** for ICLR, NeurIPS or TMLR papers; references give the venue URL plus the arXiv DOI.
+- **DOIs require per-paper checks.** RouterDC has proceedings DOI 10.52202/079017-2120 and AutoMix has 10.52202/079017-4164; earlier blanket claims that NeurIPS has no DOI were incorrect. ICLR/TMLR entries retain venue URLs and labelled preprint identifiers where no proceedings DOI was established.
 - **Not checked:** editor lists for the two NeurIPS references; the independent RouterBench study cited by Varangot-Reille et al. about AutoMix.

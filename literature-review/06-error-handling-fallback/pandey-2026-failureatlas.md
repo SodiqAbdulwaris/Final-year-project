@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # FailureAtlas: failure modes of multi-provider LLM gateways (Pandey & Singh, 2026)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Section 2.5 and the risk analysis. "Pandey and Singh (2026b) catalog five reprod
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Pandey & Singh (2026b) | Classify failures of multi-provider LLM gateways | Layer × detectability taxonomy; five verified entries with reproductions | LiteLLM, Portkey, OpenRouter issue trackers; mock provider | Worst failures are silent (HTTP 200) | Five entries; preprint; vendor authors; no prevalence data |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2607.17525.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: FailureAtlas: A Taxonomy of Failure Modes in Multi-Provider LLM Serving Infrastructure. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

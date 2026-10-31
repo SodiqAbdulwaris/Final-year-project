@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Avengers-Pro: embed, cluster, score and route (Zhang et al., 2025)
 
 | Field | Value |
@@ -63,3 +68,11 @@ Identified by me: strong frontier models and hard benchmarks only, with a single
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhang et al. (2025) | Training-free routing across performance-efficiency trade-offs | Embedding, k-means clusters, per-cluster α-weighted score, nearest-cluster vote | 6 benchmarks (2,603 questions), 8 frontier models via OpenRouter | +7% accuracy at similar cost; 27% cheaper at equal accuracy; Pareto frontier over single models | Frontier models only, single split, no calibration or evidence rule, cluster inconsistency |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2508.12631.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Beyond GPT-5: Making LLMs Cheaper and Better via Performance-Efficiency Optimized Routing. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

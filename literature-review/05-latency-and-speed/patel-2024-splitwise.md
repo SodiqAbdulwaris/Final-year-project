@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Splitwise: phase splitting for LLM inference (Patel et al., 2024)
 
 | Field | Value |
@@ -54,3 +59,11 @@ Even with continuous batching, token generation under-uses GPU compute and does 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Patel et al. (2024) | Cut cost and power of LLM serving | Phase splitting across machine pools; JSQ on pending tokens; mixed pool | Azure traces, BLOOM-176B, Llama2-70B, A100/H100, vLLM | 1.4× throughput at 20% lower cost, or 2.35× at same power and cost | Simulated clusters; fleet-operator view |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2311.18677.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Splitwise: Efficient generative LLM inference using phase splitting. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

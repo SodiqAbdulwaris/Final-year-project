@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # SkyWalker: cross-region load balancing with selective pushing (Xia et al., 2026)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Reserved or on-premise GPUs are provisioned per region for its own daily peak, s
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Xia et al. (2026) | Cut cost via cross-region load balancing without losing KV-cache locality | Regional balancers, selective pushing on pending requests (100 ms probes), prefix-aware routing | SkyServe, vLLM/SGLang, ChatBot Arena, WildChat, up to 12 replicas | 1.12–2.06× throughput, 1.74–6.30× lower latency, 25% cost saving | Homogeneous replicas; GDPR and cache side-channel concerns |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2505.24095.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: SkyWalker: A Locality-Aware Cross-Region Load Balancer for LLM Inference. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

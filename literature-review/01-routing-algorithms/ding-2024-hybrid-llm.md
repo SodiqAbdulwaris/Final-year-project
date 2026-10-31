@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Hybrid LLM: quality-aware query routing (Ding et al., 2024)
 
 | Field | Value |
@@ -58,3 +63,11 @@ MixInstruct (10K training queries, 10 responses per model; 5K validation and tes
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Ding et al. (2024) | Cut large-model calls, keep quality | DeBERTa router on quality-gap labels (deterministic, probabilistic, transformed); threshold | MixInstruct; Llama-2, FLAN-T5, GPT-3.5; BART score | Up to 40% fewer large calls, no drop for close pairs | Two models, one dataset, no OOD, load or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2404.14618.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Hybrid LLM: Cost-Efficient and Quality-Aware Query Routing. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

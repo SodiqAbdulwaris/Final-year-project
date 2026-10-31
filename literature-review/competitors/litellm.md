@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation linked below
+Open items: Pinned release/configuration and feature checks before submission
+
+## 31 October 2026 current-source recheck
+
+Core Router documents deployment balancing, cooldowns, fallbacks, timeouts and retries. Auto Router is separate. No performance claim was independently tested. [Vendor documentation](https://docs.litellm.ai/docs/routing), accessed 31 October 2026. This note supersedes conflicting rows below; the earlier review is retained as history.
+
 # LiteLLM Router and Auto Router (grey literature: vendor documentation)
 
 | Field | Value |

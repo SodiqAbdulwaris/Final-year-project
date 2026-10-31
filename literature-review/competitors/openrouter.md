@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation linked below
+Open items: Pinned release/configuration and feature checks before submission
+
+## 31 October 2026 current-source recheck
+
+Current Auto Router documents task/market-based per-prompt model selection. The older provider-only description is obsolete. Do not preserve a claim that only providers, never models, are selected. [Vendor documentation](https://openrouter.ai/docs/guides/routing/routers/auto-router), accessed 31 October 2026. This note supersedes conflicting rows below; the earlier review is retained as history.
+
 # OpenRouter (grey literature: vendor documentation)
 
 | Field | Value |

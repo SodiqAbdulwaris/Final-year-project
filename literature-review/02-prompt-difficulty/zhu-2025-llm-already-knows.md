@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # The LLM already knows: difficulty from hidden states (Zhu et al., 2025)
 
 | Field | Value |
@@ -60,3 +65,11 @@ Identified by me: difficulty is model-specific (labels depend on one model and t
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhu et al. (2025) | Estimate LLM-perceived question difficulty without generating tokens | Value function on initial hidden state, trained by TD learning; drives adaptive SC/BoN/SR | MMBench, ScienceQA, MathVista, GSM8K and others; Qwen2.5-VL, InternVL3 | ROC-AUC 93.09 on ScienceQA; fewer tokens at higher accuracy; near-chance cross-model transfer | Needs hidden states, per-model training, single-turn, no cost or load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2509.12886.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: The LLM Already Knows: Estimating LLM-Perceived Question Difficulty via Hidden Representations. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

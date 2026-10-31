@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Llumnix: dynamic rescheduling of LLM requests across instances (Sun et al., 2024)
 
 | Field | Value |
@@ -57,3 +62,10 @@ All from Section 6.
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Sun et al. (2024) | Balance load, fragmentation, priorities and scaling across LLM instances | Live KV-cache migration; virtual-usage "freeness" metric; global scheduler plus per-instance llumlets | vLLM, 16×A10, LLaMA-7B/30B, ShareGPT, BurstGPT, synthetic lengths | Up to 26.6× better mean prefill than round-robin, 5.5× better P99 prefill than INFaaS++, up to 36% cost saving | Single model; needs engine internals; report staleness not studied |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://www.usenix.org/system/files/osdi24-sun-biao.pdf;.
+- Scope: Current source fetch failed; earlier venue/details remain unverified in this session. HTTP Error 404: Not Found
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

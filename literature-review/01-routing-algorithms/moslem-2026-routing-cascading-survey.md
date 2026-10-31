@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Dynamic model routing and cascading: a survey (Moslem & Kelleher, 2026)
 
 | Field | Value |
@@ -54,3 +59,11 @@ No experiments; it collects reported results. Tables 2 to 4 gather published res
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Moslem & Kelleher (2026) | Map multi-LLM routing and cascading | Survey; six paradigms plus when/what/how framework | Reported results on RouterBench, MT-Bench, MixInstruct | Evaluations not comparable; four failure modes; no method joins response signals with online adaptation | No re-evaluation; load and failover out of scope |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2603.04445.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Dynamic Model Routing and Cascading for Efficient LLM Inference: A Survey. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

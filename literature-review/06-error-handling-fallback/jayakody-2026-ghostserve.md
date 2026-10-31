@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # GhostServe: erasure-coded checkpointing for fault-tolerant LLM serving (Jayakody et al., 2026)
 
 | Field | Value |
@@ -56,3 +61,11 @@ Section 2.5, a sentence situating engine-internal recovery below the gateway. "G
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Jayakody et al. (2026) | Cheap, fast KV-cache fault tolerance for long contexts | Chunk-level erasure coding with GPU kernels; hybrid recompute and reconstruct | LLaMA-3, GPT-OSS, DeepSeek-R1 on 8 H200 GPUs; SGLang | Up to 2.7x faster checkpointing; 2.1x faster recovery | Single node; simulated faults; synthetic traces |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2605.00831.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: GhostServe: A Lightweight Checkpointing System in the Shadow for Fault-Tolerant LLM Serving. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

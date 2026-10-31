@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouterEval: routing LLMs and model-level scaling up (Huang et al., 2025)
 
 | Field | Value |
@@ -62,3 +67,11 @@ Identified by me: cost and latency are explicitly not modelled (Section 2 says p
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Huang et al. (2025) | Large open benchmark for routers and study of pool-size effects | m-way classification labels; pool groups of varying strength; μ_o, V_R, V_B, entropy | 12 evaluations, 8,500+ LLMs, 200M+ records; RoBERTa and other encoders | Model-level scaling up with capable routers; existing routers far below oracle | Performance-only, no cost or latency, benchmark-style tasks |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2503.10657.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouterEval: A Comprehensive Benchmark for Routing LLMs to Explore Model-level Scaling Up in LLMs. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

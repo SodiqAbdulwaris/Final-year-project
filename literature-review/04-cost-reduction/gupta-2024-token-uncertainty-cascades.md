@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Language model cascades: token-level uncertainty (Gupta et al., 2024)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Section 2.4 (uncertainty-based cascading) and the failover and escalation design
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Gupta et al. (2024) | When should a small LM defer a generative task to a larger one? | Chow-Quantile scores; learned post-hoc deferral on token-probability quantiles and embeddings | FLAN-T5 Small to XXL; 17 NLP task sets (MNLI, TriviaQA, WMT, others) | Sum/average confidence can be worse than random; learned rule most consistent (e.g. MNLI +12.2% over random) | Encoder-decoder only; needs logprobs; abstract cost; two models |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2404.10136.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Language Model Cascades: Token-level uncertainty and beyond. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

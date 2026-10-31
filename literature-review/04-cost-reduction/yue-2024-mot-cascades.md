@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # LLM cascades with mixture of thought representations (Yue et al., 2024)
 
 | Field | Value |
@@ -67,3 +72,11 @@ Section 2.4 (cascading as cost reduction) and as a contrast to classifier-based 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Yue et al. (2024) | Cut GPT-4 cost on reasoning without losing accuracy | Two-LLM cascade; vote or verification over answer consistency, sampling CoT and PoT | GSM8k, ASDiv, TabMWP, DATE, Navigate, CREPE; GPT-3.5-turbo and GPT-4 | 0.929 vs 0.931 accuracy at about 40% of GPT-4 self-consistency cost | Verifiable-answer tasks only; many weak-model samples; two API models; no load or latency model |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2310.03094.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Large Language Model Cascades with Mixture of Thoughts Representations for Cost-efficient Reasoning. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

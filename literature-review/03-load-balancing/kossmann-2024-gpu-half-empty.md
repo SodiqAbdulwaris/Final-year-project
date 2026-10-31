@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Practical scheduling techniques for LLM serving: LARRY and SAL (Kossmann et al., 2024)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Research schedulers often need engine surgery (such as Llumnix's KV migration) o
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Kossmann et al. (2024) | Practical drop-in scheduling for replicated LLM servers | SAL balancer (queued tokens and free memory, polled at 10 Hz) and LARRY queue reordering | Modified vLLM, Azure arrival and token traces, H100/A100, Llama-3 8B/70B | SAL 1.0–1.5× lower p50 TTFT than next-best balancer; P2C and random similar | Small margins over P2C; single model; replayed traces; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2410.17840.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Is the GPU Half-Empty or Half-Full? Practical Scheduling Techniques for LLMs. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

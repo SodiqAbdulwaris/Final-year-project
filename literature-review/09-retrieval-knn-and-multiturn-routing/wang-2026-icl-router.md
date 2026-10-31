@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # ICL-Router: onboarding new models through in-context capability profiles (Wang et al., 2026)
 
 | Field | Value |
@@ -63,3 +68,11 @@ Identified by me: the router is a 7B LLM plus an 8B embedder, which is heavy and
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Wang et al. (2026) | Route without retraining when models are added | Query-reconstruction pre-training, then LLM router reading in-context (query, correct?) profiles | 10 benchmarks, eight 7–9B open models; Qwen3-Embedding-8B, Qwen2.5-7B | 76.30 vs EmbedLLM 74.16 average in-distribution; +3.65% OOD; new models need no retraining | 7B router, small pool, no calibration, no cost or latency |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2510.09719.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: ICL-Router: In-Context Learned Model Representations for LLM Routing. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

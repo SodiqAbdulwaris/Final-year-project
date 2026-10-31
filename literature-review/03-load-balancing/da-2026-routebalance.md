@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouteBalance: fusing model routing and load balancing (Da & Kalyvianaki, 2026)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Model routers (FrugalGPT, RouteLLM, BEST-Route, Avengers-Pro) choose by quality 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Da & Kalyvianaki (2026) | Jointly choose model and instance under load | Weighted quality–latency–cost score; KNN quality estimator; dead-reckoned load; LPT-greedy batches | 13 instances/28 GPUs, Qwen2.5 3B–72B, 18,608 prompts | Quality 0.419; 2.6–4.1× faster than enhanced BEST-Route at high load | One family; offline quality labels; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2606.17949.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouteBalance: Fused Model Routing and Load Balancing for Heterogeneous LLM Serving. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

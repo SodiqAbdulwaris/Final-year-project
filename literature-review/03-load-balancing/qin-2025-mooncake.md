@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Mooncake: KVCache-centric scheduling for the Kimi service (Qin et al., 2025)
 
 | Field | Value |
@@ -56,3 +61,11 @@ In a large chat service long prompts often repeat earlier context. Routing to th
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Qin et al. (2025) | Maximise SLO-compliant throughput of a long-context chatbot | KVCache-centric disaggregation; Conductor scoring by queue + prefill + transfer time; early rejection with load prediction | Kimi traces, 16×8 A800, vLLM baselines | 59%–498% higher effective capacity; global cache-aware mean TTFT 3.07 s vs 19.65 s random | Single model; manual thresholds; infrastructure heavy |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2407.00079.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving. Latest listed version: v5; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Topic overviews; paper records; current proposal audit
+Open items: Final metadata, team reading and submission-date checks
+
 # Literature review: AI Request Router
 
 Markdown literature review for the final-year project (Nile University of Nigeria, Software Engineering). 90 papers across nine topics (9–11 fully documented papers each, all published 2020 or later), plus a grey-literature review of existing routers.
@@ -38,4 +43,8 @@ Each file follows `_templates/paper-template.md`: verified APA citation, problem
 - Where a file says a number comes from arXiv v1 rather than the camera-ready, check it before quoting.
 
 ## Report requirements met (template Chapter 2)
-At least 25 works in depth (90), at least 40 references (90 plus grey sources), APA 7 with DOIs where they exist, 2020 or later. The 70%-in-last-five-years rule is met for every paper (all are 2020 or later). Peer-reviewed share varies by topic; see each overview.
+At least 25 works in depth (90), at least 40 references (90 plus grey sources), APA 7 with DOIs where they exist, 2020 or later. The 2020 inclusion rule alone does not establish a five-year share. The active proposal cites 45 works from 2022 onward (100% recent under the stated window); see its Chapter 2 methodology. Peer-reviewed share varies by topic; see each overview.
+
+## Current proposal and verification
+
+Use [the split proposal package](../proposal-drafts/README.md), governed by the owner-approved hybrid design. The [L03 audit](../limitations/L03-unconfirmed-citations.md) distinguishes confirmed identifiers from unverified publication metadata; [L07](../limitations/L07-fact-check-sample.md) records 20 fresh full-text samples across all topics. Historical paper numbers outside that sample are not automatically cleared for use. The master now includes the nine topic-09 entries previously omitted.

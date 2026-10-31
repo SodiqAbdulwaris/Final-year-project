@@ -1,3 +1,16 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D05 current outcome
+
+Three to four benchmark-covered models spanning cheap/small, mid-tier and frontier. Exact identities pending aligned coverage; recommendations in decisions-applied.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D05: Which 3-4 models to route between
 
 | | |
@@ -29,4 +42,4 @@ Which 3-4 differentiated models/deployments (local and hosted) will the router c
 Provider updates change model behaviour; record version and date. API cost for scoring tasks is a real budget line.
 
 ## Where this shows up in the files
-`literature-review/07-testing-and-benchmarking/`, `proposal-drafts/ch3-methodology-design.md` (3.7)
+`literature-review/07-testing-and-benchmarking/`, `proposal-drafts/03-methodology-design/00-overview.md` (3.7)

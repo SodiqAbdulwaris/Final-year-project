@@ -1,8 +1,21 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D04 current outcome
+
+Use the exact evaluation-focused gap wording in the current owner task; no first-of-its-kind claim.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D04: How to word the research gap and the novelty claim
 
 ## 31 October 2026 recommendation after D01
 
-**Status: awaiting owner decision.** The owner asked what is recommended and requested documentation. Recommend the evaluation-focused wording in [hybrid-design-direction.md](../proposal-drafts/hybrid-design-direction.md#d04-recommendation-awaiting-owner-decision): compare the hybrid with simpler baselines and ablations; evaluate fallback separately. Claim a decision policy, integration and empirical evidence without assuming improvements or novelty. This recommendation replaces the guide-specific recommendation below; it is not yet owner approval.
+**Status: awaiting owner decision.** The owner asked what is recommended and requested documentation. Recommend the evaluation-focused wording in [hybrid-design-direction.md](../proposal-drafts/_meta/hybrid-design.md#d04-recommendation-awaiting-owner-decision): compare the hybrid with simpler baselines and ablations; evaluate fallback separately. Claim a decision policy, integration and empirical evidence without assuming improvements or novelty. This recommendation replaces the guide-specific recommendation below; it is not yet owner approval.
 
 | | |
 |---|---|
@@ -34,4 +47,4 @@ Use **Option 3 as the main claim with Option 2 as the contribution**, and keep O
 Never claim to be first. Several supporting sources are preprints (see L02).
 
 ## Where this shows up in the files
-`literature-review/gaps-and-synthesis.md`, `competitors/00-overview.md`, `proposal-drafts/ch1-introduction.md`, `ch2-literature-review.md` (2.7)
+`literature-review/gaps-and-synthesis.md`, `competitors/00-overview.md`, `proposal-drafts/01-introduction/00-overview.md`, `ch2-literature-review.md` (2.7)

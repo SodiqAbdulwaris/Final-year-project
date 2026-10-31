@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # MuxServe: spatial-temporal multiplexing for serving multiple LLMs (Duan et al., 2024)
 
 | Field | Value |
@@ -55,3 +60,11 @@ Llama-family models from 4B to 70B, with 12, 4, 2 and 1 models per size bucket i
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Duan et al. (2024) | Efficiently serve multiple LLMs with uneven popularity | Popularity-aware colocation; prefill and decode multiplexing; adaptive batch scheduling; unified resource manager | Llama 4B to 70B; 32 A100 GPUs; ShareGPT; ChatLMSYS trace | Up to 1.8x throughput; 2.9x more requests within 99% SLO | Needs known rates; model already named; no failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2404.02015.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: MuxServe: Flexible Spatial-Temporal Multiplexing for Multiple LLM Serving. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Can LLMs express their uncertainty? Black-box confidence calibration (Xiong et al., 2024)
 
 | Field | Value |
@@ -66,3 +71,11 @@ Identified by me: all methods are post-answer, so they need at least one generat
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Xiong et al. (2024) | Benchmark black-box confidence elicitation in LLMs | Prompting, sampling and aggregation strategies; ECE and AUROC evaluation | Eight QA/reasoning datasets; GPT-3/3.5/4, Vicuna 13B, LLaMA 2 70B | Overconfident verbalised scores; consistency and aggregation help; white-box only slightly better | Needs generation per query, unique-answer QA only, weak AUROC in hard domains |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2306.13063.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

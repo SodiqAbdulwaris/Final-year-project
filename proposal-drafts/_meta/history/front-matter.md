@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: Superseded earlier design
+Sources: Original draft preserved by git mv
+Open items: Archived historical text; excluded from assembly and active placeholder register
+
 # Front matter (draft)
 
 Paste each block into the matching page of `Template_for_Final_Year_Project_Revised.docx`. Nothing here invents a name, ID or date: gaps are `TODO`. Facts come from `00-source-facts.md`.

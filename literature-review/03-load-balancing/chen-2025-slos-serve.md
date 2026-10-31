@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # SLOs-Serve: admission control and SLO-driven routing for multi-SLO LLMs (Chen et al., 2025)
 
 | Field | Value |
@@ -56,3 +61,11 @@ Applications want different SLO shapes: a summariser needs fast prefill, a code 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Chen et al. (2025) | Meet per-stage SLOs for mixed LLM applications, including across replicas | DP token-budget scheduler, soft admission control, SLO-attainability routing | vLLM, 4×A100, ShareGPT, HumanEval, ToolBench, Azure traces | 2.2× per-GPU capacity vs SOTA; 4.61× ChatBot capacity on 4 replicas | Needs per-GPU profiling; ≤4 replicas; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2504.08784.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: SLOs-Serve: Optimized Serving of Multi-SLO LLMs. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

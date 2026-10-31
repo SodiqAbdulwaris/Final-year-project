@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # DéjàVu: KV-cache streaming for fault-tolerant LLM serving (Strati et al., 2024)
 
 | Field | Value |
@@ -56,3 +61,11 @@ Section 2.5, in the paragraph separating engine-internal fault tolerance from ga
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Strati et al. (2024) | Fast recovery of pipeline LLM serving after failures | KV-cache streaming and replication; heartbeats; disaggregation; swapping | OPT-66B, BLOOM-176B; A100/V100 VMs; LMSys | Failure latency 1.24x vs 1.91x; up to 2x throughput | Pipeline parallel only; central controller; single failures |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2403.01876.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: D\'ej\`aVu: KV-cache Streaming for Fast, Fault-tolerant Generative LLM Serving. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

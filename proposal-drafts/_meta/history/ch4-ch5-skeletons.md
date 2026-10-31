@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: Superseded earlier design
+Sources: Original draft preserved by git mv
+Open items: Archived historical text; excluded from assembly and active placeholder register
+
 # CHAPTERS FOUR AND FIVE: SKELETONS (reworked to follow the 26 Oct team guide)
 
 **Rules for this file**

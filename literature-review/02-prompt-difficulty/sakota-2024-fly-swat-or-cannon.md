@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Fly-swat or cannon: a small meta-model predicts which LM will succeed (Šakota et al., 2024)
 
 | Field | Value |
@@ -61,3 +66,11 @@ Identified by me: the pool is four old OpenAI models from one family, so heterog
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Šakota et al. (2024) | Cheapest LM that solves each query, chosen before running | DistilBERT meta-model for per-LM success + ILP/greedy assignment under budget | 14 HELM datasets, 4 OpenAI models; PuLP | About 63% cost cut at largest-model accuracy; meta-accuracy 81.57%; calibrated | Old single-vendor pool, price-only cost, no latency or load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2308.06077.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Fly-Swat or Cannon? Cost-Effective Language Model Choice via Meta-Modeling. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

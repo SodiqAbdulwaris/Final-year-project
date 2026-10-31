@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Survey of efficient generative LLM serving (Miao et al., 2025)
 
 | Field | Value |
@@ -53,3 +58,11 @@ No experimental results. Counts I verified: Table 2 lists ten GPU-based serving 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Miao et al. (2025) | Organise the field of efficient generative LLM serving | Survey with taxonomy of algorithmic and system optimisations; framework comparison | Literature; ten open-source GPU serving frameworks compared | No fair, comprehensive serving benchmark yet; latency and throughput conflict | No gateway, multi-model routing or failover coverage; cutoff early 2025 |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2312.15234.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Towards Efficient Generative Large Language Model Serving: A Survey from Algorithms to Systems. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

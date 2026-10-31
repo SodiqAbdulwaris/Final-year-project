@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Orca: iteration-level scheduling (Yu et al., 2022)
 
 | Field | Value |
@@ -55,3 +60,10 @@ In request-level serving, such as Triton in front of FasterTransformer, a batch 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Yu et al. (2022) | Cut queueing and early-finish waiting in generative serving | Iteration-level scheduling, selective batching, FCFS with max batch size | GPT 13B–341B, A100 VMs, FasterTransformer | 36.9× throughput at equal median normalised latency (175B) | Long prompts can stall batch; per-request max-length memory; no tail metrics |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://www.usenix.org/system/files/osdi22-yu.pdf.
+- Scope: Source retrieval did not yield a usable abstract/metadata parse; no fresh detailed claim verification. Historical claims remain unverified.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # LLMRouterBench: large benchmark with a unified routing framework (Li et al., 2026)
 
 | Field | Value |
@@ -61,3 +66,11 @@ Identified by me: quality labels are correctness from automated dataset scorers 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Li et al. (2026) | Unified, current benchmark and framework for LLM routing | Collector/Evaluator/Adaptor; Gain, Gap@O, CostSave, ParetoDist; ten routers | 21 datasets, 33 models, 391,645 instances; 1.8B tokens | Routers converge; many do not beat Best Single; large Oracle gap | Approximate latency, public routers only, automated labels |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2601.07206.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: LLMRouterBench: A Massive Benchmark and Unified Framework for LLM Routing. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

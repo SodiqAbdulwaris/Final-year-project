@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D01–D12; decisions-applied.md
+Sources: owner design response and proposal-building task
+Open items: Final title; model identities; estimator; pilot targets
+
 # Hybrid routing direction: owner response to D01
 
 Recorded: 31 October 2026. Source: the owner's D01 response in this chat.
@@ -77,22 +82,22 @@ Live GPU/queue telemetry, Redis/Prometheus, session hysteresis, router-managed c
 2. Build the hybrid using classification and embedding-derived features. Compare with simpler baselines and ablations that isolate each component. Evaluate the quality–cost–latency trade-off and constraint satisfaction; do not assume the scoring formula is optimal.
 3. Add provider-health tracking, circuit breakers, bounded retries and operational fallback. Test injected failures separately. Add a quality cascade only if time and evaluation budget allow.
 
-Model pool, hardware, evaluation budget, datasets and exact measures remain open under D05/D03. The examples of 90% predicted success and $0.01 cost in the owner's explanation are illustrative, **not project targets**. No numeric targets or results are adopted here.
+The owner has specified two RTX 4070 machines and a minimal API budget. Use benchmark-covered model slots pending aligned coverage checks; numeric targets remain provisional under D03. The examples of 90% predicted success and $0.01 cost in the owner's explanation are illustrative, **not project targets**. No numeric targets or results are adopted here.
 
-## D04 recommendation: awaiting owner decision
+## D04: approved by owner on 31 October 2026
 
 Recommended wording:
 
 > This project investigates whether combining lightweight classification and embedding-derived suitability features with constrained cost–quality–latency selection improves on simpler routing baselines. Operational fallback is evaluated separately for resilience.
 
-The contribution is the formal decision policy, integration and empirical evaluation. Do not claim first-of-its-kind status, a fundamentally new ML algorithm or demonstrated improvement without evidence. The owner asked for a recommendation and documentation; acceptance of this exact wording has not yet been recorded.
+The contribution is the formal decision policy, integration and empirical evaluation. Do not claim first-of-its-kind status, a fundamentally new ML algorithm or demonstrated improvement without evidence. The owner explicitly approved this exact wording in the proposal-building task.
 
 Hybrid LLM, RouteLLM, RouterDC and FrugalGPT were named as inspirations in the response. This record does not verify their claims, citations, versions or DOIs. Verify them under D12 and the source spot-check before using paper-specific assertions in the report.
 
 ## Remaining decisions and reconciliation
 
-Continue in the requested order: D04 wording, D05 models/deployments, D03 numeric targets, then D02 identity and submission details. D10 manuscript expansion still requires an explicit yes. D12 citation verification follows those decisions.
+The proposal-building task supplies D01–D12 outcomes. Use decisions-applied.md; do not re-ask them. D10 is no manuscript now.
 
-After these answers, reconcile Chapters 1–3 and the design conflict table throughout. Until then, their older detailed sections remain provisional and may contradict this direction; this record takes precedence for D01. Do not treat the documentation update as completion of that full rewrite.
+The active split Chapters 1–3 will follow this design. Earlier drafts and conflict tables are retained under history/ and are not governing text.
 
-The owner authorised Markdown documentation, a final commit/push to main-j4psad and no PR. Original DOCX files and Rejected/, Research Review/ and Team Briefs/ remain outside the editing scope.
+The owner now authorises Markdown proposal drafting, commit/push to main and no PR. Original DOCX files and Rejected/, Research Review/ and Team Briefs/ remain outside the editing scope.

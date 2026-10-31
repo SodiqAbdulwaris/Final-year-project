@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Q-DAPS: question difficulty from answer plausibility (Mozafari et al., 2026)
 
 | Field | Value |
@@ -62,3 +67,11 @@ Identified by me: it needs several LLM calls per question (candidate generation)
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Mozafari et al. (2026) | LLM-oriented question difficulty for QA | Entropy of popularity-debiased plausibility scores of generated wrong answers | TriviaQA, NQ, MuSiQue, QASC; ten LLMs; LLaMA 3.3 generator | Listwise: ρ −0.61 to −0.96 with model-success count; beats readability, retrieval and prompt baselines | Multi-call, needs gold answer, factoid QA only, English |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2605.12398.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Question Difficulty Estimation for Large Language Models via Answer Plausibility Scoring. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

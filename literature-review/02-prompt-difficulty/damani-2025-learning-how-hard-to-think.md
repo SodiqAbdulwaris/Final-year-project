@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Learning how hard to think: predicting per-query compute needs (Damani et al., 2025)
 
 | Field | Value |
@@ -61,3 +66,11 @@ Identified by me: only one model family per setting, and the predictor is tied t
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Damani et al. (2025) | Allocate decoding compute per query by predicted benefit | Probe/LoRA predicts marginal reward; greedy budget allocation; routing variant | NuminaMath, TACO, LMSYS-Chat, Anthropic HH; Mathstral, StarCoder, Gemma | Up to 50% less compute on math/code; 25–40% fewer expensive calls in routing; predictor accuracy 72–84% | Two-option routing, hidden-state input, sample-count cost, no latency or load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2410.04707.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Learning How Hard to Think: Input-Adaptive Allocation of LM Computation. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

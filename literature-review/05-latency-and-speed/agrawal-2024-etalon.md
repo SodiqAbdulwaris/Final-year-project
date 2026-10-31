@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Etalon: a fluidity-based evaluation framework for LLM serving (Agrawal et al., 2024a)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Etalon argues that the usual latency metrics for LLM serving give a misleading p
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Agrawal et al. (2024a) | Better user-facing latency evaluation for LLM serving | Fluidity-index with per-token deadlines; black-box API probing | vLLM, Sarathi-Serve, Anyscale, Groq, Fireworks; ShareGPT, Arxiv-Summarization | Tail-TBT throughput of vLLM 3× worse than Sarathi while TPOT shows parity | Preprint; targets chosen empirically |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2407.07000.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Etalon: Holistic Performance Evaluation Framework for LLM Inference Systems. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

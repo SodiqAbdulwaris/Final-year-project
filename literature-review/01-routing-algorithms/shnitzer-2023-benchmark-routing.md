@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # LLM routing learned from benchmark datasets (Shnitzer et al., 2023)
 
 | Field | Value |
@@ -54,3 +59,11 @@ HELM: 29 datasets, 18 open models (3B to 70B), leave-one-task-out. MixInstruct: 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Shnitzer et al. (2023) | Pick the best LLM for a new task from benchmark data | Per-LLM kNN correctness predictors; three scores, S3 corrects OOD error | HELM (29 datasets, 18 models), MixInstruct | Accuracy 0.694 vs 0.688 best on average, with smaller models; predictors 0.59 OOD | Task-level; small gain; no price, load; preprint/workshop only |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2309.15789.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Large Language Model Routing with Benchmark Datasets. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

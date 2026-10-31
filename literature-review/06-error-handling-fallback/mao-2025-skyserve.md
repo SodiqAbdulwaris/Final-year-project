@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # SkyServe: serving AI models across regions and clouds with spot instances (Mao et al., 2025)
 
 | Field | Value |
@@ -53,3 +58,11 @@ Section 2.5 and the design rationale for the fallback chain. "Mao et al. (2025) 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Mao et al. (2025) | Serve AI models cheaply and available on spot GPUs | SpotHedge: cross-region spread, over-provisioned spot, on-demand fallback | AWS and GCP deployments and traces; vLLM and other servers | 43% cheaper; P99 2.1x better; pure spot fails 49.4% | Replica-level only; prices time-varying; few workloads |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2411.01438.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: SkyServe: Serving AI Models across Regions and Clouds with Spot Instances. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # FrugalGPT: LLM cascades to cut API cost (Chen et al., 2024)
 
 | Field | Value |
@@ -52,3 +57,11 @@ Prompt adaptation shortens or batches prompts; approximation uses a cache or a c
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Chen et al. (2024) | Cut LLM API cost, keep accuracy | Learned cascade (DistilBERT scorer, thresholds, budget optimiser) | HEADLINES, OVERRULING, COQA; 12 APIs | Up to 98% saving at GPT-4 accuracy | Sequential latency; needs in-distribution labels; no load or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2305.05176.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

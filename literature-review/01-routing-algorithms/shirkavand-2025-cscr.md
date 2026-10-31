@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # CSCR: cost-aware contrastive routing for LLMs (Shirkavand et al., 2025)
 
 | Field | Value |
@@ -11,7 +16,7 @@
 | Relevance to project | High |
 
 ## APA 7 reference
-Shirkavand, R., Gao, S., Yu, P., & Huang, H. (2025). Cost-aware contrastive routing for LLMs. *Advances in Neural Information Processing Systems, 38*. https://proceedings.neurips.cc/paper_files/paper/2025/hash/e46eb6403af68506331f941282d838aa-Abstract-Conference.html. NeurIPS has no DOI; editors, volume and arXiv DOI not checked (the arXiv API was rate-limited).
+Shirkavand, R., Gao, S., Yu, P., & Huang, H. (2025). Cost-aware contrastive routing for LLMs. *Advances in Neural Information Processing Systems, 38*. https://proceedings.neurips.cc/paper_files/paper/2025/hash/e46eb6403af68506331f941282d838aa-Abstract-Conference.html. Proceedings DOI, editors and arXiv identifier remain unverified for this entry; do not infer DOI absence from the venue.
 
 ## In-text citation forms
 (Shirkavand et al., 2025) · Shirkavand et al. (2025)
@@ -56,3 +61,10 @@ Datasets: EmbedLLM, MixInstruct, RouterBench. Cost is parameter count for EmbedL
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Shirkavand et al. (2025) | Cost-aware routing over dynamic model pools | Contrastive router, cost-banded InfoNCE, logit and perplexity fingerprints, FAISS k-NN | EmbedLLM, MixInstruct, RouterBench | Highest AUDC on all three; robust to unseen models and OOD prompts | Static cost; no live load or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://proceedings.neurips.cc/paper_files/paper/2025/hash/e46eb6403af68506331f941282d838aa-Abstract-Conference.html..
+- Scope: Current source fetch failed; earlier venue/details remain unverified in this session. HTTP Error 404: Not Found
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

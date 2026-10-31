@@ -14,3 +14,7 @@ Each limitation has its own file with the evidence, the effect on the report, an
 | [L08](L08-numbers-from-arxiv-v1.md) | Some numbers come from arXiv v1, not the camera-ready paper |
 | [L09](L09-drafts-have-gaps.md) | Proposal drafts are skeletons with deliberate gaps |
 | [L10](L10-time-sensitivity.md) | Time-sensitive facts |
+
+## Current proposal snapshot
+
+D01–D12 outcomes are recorded in [decisions-applied.md](../proposal-drafts/_meta/decisions-applied.md). L03 and L07 now contain fresh source checks. Hardware is owner-confirmed as two RTX 4070 machines; models, pilot thresholds and administrative details remain unresolved placeholders. Earlier L09 statements about the governing design/hardware are historical; use the active split proposal package.

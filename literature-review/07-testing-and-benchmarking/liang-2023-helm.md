@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # HELM: holistic, multi-metric evaluation of language models (Liang et al., 2023)
 
 | Field | Value |
@@ -65,3 +70,11 @@ Identified by me: HELM models are 2022-era and many scenarios are multiple choic
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Liang et al. (2023) | Standardised, transparent, multi-metric evaluation of LMs | Taxonomy; 7 metrics (incl. calibration, robustness, efficiency); denoised and idealized runtime | 30 models, 42 scenarios; open toolkit and raw outputs | Coverage 17.9% to 96.0%; accuracy not tied to efficiency; calibration varies by scenario | 2022 models, prompting only, contamination, no routing or load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2211.09110.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Holistic Evaluation of Language Models. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Routoo: predicting each model's correctness per prompt (Mohammadshahi et al., 2024)
 
 | Field | Value |
@@ -66,3 +71,11 @@ Identified by me:
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Mohammadshahi et al. (2024) | Pick the cheapest adequate LLM per prompt from a large pool without running it | LLM-based correctness predictor + greedy cost-aware selector + universe constructor | MMLU; Mistral 7B encoder (LoRA); about 75k training prompts; LLaMA-2, Mixtral, GPT-3.5/4 baselines | 75.87% vs Mixtral 70.6% at equal cost; near GPT-4 accuracy at about half the cost | One benchmark, heavy predictor, average (not live) cost, no latency or load, preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2401.13979.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Routoo: Learning to Route to Large Language Models Effectively. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

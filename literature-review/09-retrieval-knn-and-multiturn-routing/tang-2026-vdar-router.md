@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # VDAR-Router: retrieving past performance by verbalised difficulty (Tang et al., 2026)
 
 | Field | Value |
@@ -63,3 +68,11 @@ Identified by me: a single seed and a single split, with no intervals or paired 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Tang et al. (2026) | Better neighbours for retrieval-based routing | LLM-written difficulty analysis as retrieval key; neighbour reward α·perf − β·cost | RouterBench, LLMRouterBench, ArenaExpert5K; Qwen3-Embedding, FAISS | Best reward on both benchmark datasets; analysis step is 1.43 of 1.46 s routing latency | Preprint, one seed, LLM call per request, no calibration or evidence rule |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2607.18098.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: VDAR-Router: Adaptive LLMs Routing via Verbalized Query Difficulty Analysis Retrieval. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

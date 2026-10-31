@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # PORT: training-free online routing with approximate nearest neighbours and a token budget (Wu & Silwal, 2025)
 
 | Field | Value |
@@ -61,3 +66,11 @@ Identified by me: performance scores are benchmark labels; the neighbour count i
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Wu & Silwal (2025) | Online routing under a token budget at high volume | HNSW nearest-neighbour estimates; dual-weight routing fitted on early queries; 1 − o(1) competitive ratio | RouterBench, SPROUT, Open LLM Leaderboard v2; bge-base-en-v1.5; 8 baselines | 3.55× performance, 1.85× cost efficiency, 4.25× throughput over baselines | Only quality and cost, excludes system load, no calibration, simulation |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2509.02718.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Efficient Training-Free Online Routing for High-Volume Multi-LLM Serving. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

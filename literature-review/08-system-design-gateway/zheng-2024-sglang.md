@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # SGLang: a language and runtime for efficient LLM programs (Zheng et al., 2024)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Llama-2 7B to 70B, Mixtral-8x7B, LLaVA image and video models, and GPT-3.5 throu
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zheng et al. (2024) | Efficient execution of multi-call LLM programs | RadixAttention prefix cache reuse; cache-aware scheduling; compressed FSM decoding; API speculative execution | Llama-2, Mixtral, LLaVA, GPT-3.5; A10G and A100; MMLU, agents, JSON, chat | Up to 6.4x throughput, 3.7x lower latency vs Guidance, vLLM 0.2.5, LMQL; 52.4% to 74.1% cache hit in Chatbot Arena | Engine-level only; old vLLM baseline; no multi-model routing or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2312.07104.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: SGLang: Efficient Execution of Structured Language Model Programs. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

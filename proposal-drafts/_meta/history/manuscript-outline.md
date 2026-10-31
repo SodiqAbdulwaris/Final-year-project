@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: Superseded earlier design
+Sources: Original draft preserved by git mv
+Open items: Archived historical text; excluded from assembly and active placeholder register
+
 # Manuscript outline (optional, low priority)
 
 Re-cuts the project as a journal article using `Scopus_Journal_Manuscript_Template.docx`. **Nothing here is written as a result.** Do not start this until Chapter 4 has real numbers. Journal choice is TODO and must follow the template's checklist (confirm Scopus indexing in the Scopus Sources list, not the journal's own claim; follow the journal's own template and reference style if it has one).

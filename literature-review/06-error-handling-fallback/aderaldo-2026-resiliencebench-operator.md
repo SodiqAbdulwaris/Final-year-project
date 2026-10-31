@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # ResilienceBench-Operator: benchmarking retry and circuit-breaker patterns (Aderaldo & Mendonça, 2026)
 
 | Field | Value |
@@ -55,3 +60,10 @@ Section 2.5 (resilience patterns) and the test design in 3.9. "Aderaldo and Mend
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Aderaldo & Mendonça (2026) | Systematic evaluation of retry and circuit breaker | Declarative scenarios on Kubernetes; fault injection; Pareto and correlation analysis | Online Boutique; 222 scenarios; k6 | Max attempts drives success; best backoff varies by failure rate | One connector; abort faults; no breaker data here |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: No machine-selected URL; manual check still needed.
+- Scope: Current source fetch failed; earlier venue/details remain unverified in this session. unknown url type: 'None'
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

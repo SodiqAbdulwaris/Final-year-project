@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: Superseded earlier design
+Sources: Original draft preserved by git mv
+Open items: Archived historical text; excluded from assembly and active placeholder register
+
 # CHAPTER ONE: INTRODUCTION (draft, reworked to follow the 26 Oct team guide)
 
 **31 October 2026 update:** The owner selected a hybrid, constraint-aware design under D01. See [hybrid-design-direction.md](hybrid-design-direction.md) for the complete direction and decision status. It supersedes the earlier guide-governs assumption. Detailed sections below await reconciliation after D04, D05, D03 and D02; they must not be treated as the final agreed design.

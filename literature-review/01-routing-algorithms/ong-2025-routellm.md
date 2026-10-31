@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouteLLM: learning to route with preference data (Ong et al., 2025)
 
 | Field | Value |
@@ -31,7 +36,7 @@ Training: Chatbot Arena (65K comparisons across 64 models after filtering). Eval
 ## 5. Key results
 - Abstract: over 2x cost reduction without quality loss.
 - MT-Bench (Table 1, Arena + judge data): matrix factorisation CPT(50%) = 13.40% against 49.03% for random.
-- Table 6 (Section 5.4), cost saving ratio against a random-routing baseline at the same quality, taken as the inverse of the ratio of GPT-4 calls (best router at CPT(50%) versus random): 3.66x on MT-Bench (95% of GPT-4 quality), 1.41x on MMLU (92%), 1.49x on GSM8K (87%). It is not a saving against sending every query to GPT-4.
+- Table 6 (Section 5.4) reports cost-saving ratios over GPT-4: 3.66x on MT-Bench at 95% GPT-4 quality, 1.41x on MMLU at 92%, and 1.49x on GSM8K at 87%. These are operating-point-specific comparisons, not equal-quality savings or the separate random-routing comparison.
 - Arena-only routers sit near random on MMLU and GSM8K; golden-label augmentation lifts MMLU APGR by 14 to 21% over random (Table 2).
 - New model pairs without retraining (Table 4): SW ranking CPT(50%) of 23.27% (Claude pair) and 21.18% (Llama pair).
 - Overhead (Table 7): at most 0.4% of GPT-4 generation cost; 155 requests/s for matrix factorisation on one L4 GPU.
@@ -54,4 +59,13 @@ Training: Chatbot Arena (65K comparisons across 64 models after filtering). Eval
 ## 9. Row for Table 2.3
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
-| Ong et al. (2025) | Cut LLM cost by routing between strong and weak model | Win-probability router with cost threshold; data augmentation | Chatbot Arena; MMLU, MT-Bench, GSM8K; GPT-4 vs Mixtral | Needs 3.66x fewer GPT-4 calls than random routing at 95% of GPT-4 quality (MT-Bench); transfers to new pairs | Two models; fixed price; no load or failover |
+| Ong et al. (2025) | Cut LLM cost by routing between strong and weak model | Win-probability router with cost threshold; data augmentation | Chatbot Arena; MMLU, MT-Bench, GSM8K; GPT-4 vs Mixtral | Table 6: 3.66x cost-saving ratio over GPT-4 at 95% of its MT-Bench quality; transfers studied on new pairs | Two models; fixed price; no load or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2406.18665.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouteLLM: Learning to Route LLMs with Preference Data. Latest listed version: v4; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.
+- Correction: the full-text Table 6 identifies the 3.66 cost-saving ratio as relative to GPT-4 at the stated quality operating point. Savings relative to random routing are a different comparison (Table 1). Do not exchange these denominators.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouterArena: open leaderboard for comparing LLM routers (Lu et al., 2026)
 
 | Field | Value |
@@ -65,3 +70,11 @@ Identified by me: labels are automatic correctness checks, and "difficulty" depe
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Lu et al. (2026) | Open platform and leaderboard for comparing routers | DDC/Bloom dataset with empirical difficulty; accuracy, cost, optimality, robustness, router latency; arena score | about 8,000 (8,400) queries, 44 categories, 42 LLMs; 12 routers incl. commercial | No router wins all metrics; commercial not better; low robustness; some routers add 250–550 ms | Router overhead only, no backend load, automatic labels |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2510.00202.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouterArena: An Open Platform for Comprehensive Comparison of LLM Routers. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

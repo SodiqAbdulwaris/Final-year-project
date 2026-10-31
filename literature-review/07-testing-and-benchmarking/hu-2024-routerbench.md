@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouterBench: cost-quality benchmark for multi-LLM routing (Hu et al., 2024)
 
 | Field | Value |
@@ -60,3 +65,11 @@ Identified by me: the schema holds one cost number per response with no timing, 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Hu et al. (2024) | Standard benchmark for comparing LLM routers | Pre-computed responses; cost-quality plane; convex hull and AIQ; KNN, MLP, cascade routers | 405k samples, 11 LLMs, seven datasets plus a RAG set (paper says eight in places) | Oracle far above any single model; learned routers barely beat Zero router | Cost-only, no latency or load, GPT-4 judge for part of labels, workshop/preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2403.12031.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouterBench: A Benchmark for Multi-LLM Routing System. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

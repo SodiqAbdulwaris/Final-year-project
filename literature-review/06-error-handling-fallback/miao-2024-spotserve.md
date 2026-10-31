@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # SpotServe: serving LLMs on preemptible instances (Miao et al., 2024)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Section 2.5 (recovery in self-hosted serving) and a pointer to topic 05. "Miao e
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Miao et al. (2024) | Serve LLMs cheaply on preemptible GPUs | Dynamic reparallelization; matching-based migration; token-level stateful recovery | OPT-6.7B, GPT-20B, LLaMA-30B; AWS spot trace; FasterTransformer | P99 2.4 to 9.1x lower; 54% cheaper | Needs grace period; one deployment; latency-only objective |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2311.15566.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: SpotServe: Serving Generative Large Language Models on Preemptible Instances. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

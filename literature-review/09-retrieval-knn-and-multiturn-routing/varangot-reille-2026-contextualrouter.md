@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Past-performance retrieval and a few-shot k-NN router (Varangot-Reille et al., 2026)
 
 | Field | Value |
@@ -64,3 +69,10 @@ Identified by me: benchmark questions share formats, which makes retrieval easy 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Varangot-Reille et al. (2026) | Generalisable routing to new models without retraining | ContextualRouter (attention over k nearest past queries) versus plain k-NN; cost penalty λ | SPROUT, RouterBench, LiveBench, BigGenBench, EmbedLLM, FusionBench | k-NN as good as learned routers; works with 1% history; k > 40 no gain; embedding size irrelevant | Flawed labels, easy retrieval on benchmarks, no calibration or intervals, single turn |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://aclanthology.org/2026.eacl-srw.22.pdf.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

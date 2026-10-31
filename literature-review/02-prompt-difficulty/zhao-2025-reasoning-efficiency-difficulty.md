@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Routing reasoning problems by predicted difficulty (Zhao et al., 2025)
 
 | Field | Value |
@@ -61,3 +66,11 @@ Identified by me: math-only evaluation; very short paper with results shown main
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhao et al. (2025) | Route reasoning problems to the smallest capable model | MLP probes on s1.1-32B layer-45 activations predicting difficulty or correctness | MATH (difficulty labels); MathCombined (3,136 problems); eight open models profiled, five in the router pool (Appendix B) | Beats random routing; about equal to s1.1-32B at roughly two-thirds of compute | Math only, 32B features, workshop paper, no live load or money cost |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2511.03808.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Optimizing Reasoning Efficiency through Prompt Difficulty Prediction. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

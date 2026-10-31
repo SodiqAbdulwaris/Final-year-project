@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # FusionFactory: multi-LLM log data for routing, prompting and distillation (Feng et al., 2026)
 
 | Field | Value |
@@ -65,3 +70,11 @@ Identified by me: the cost estimate is token-based with list prices, not measure
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Feng et al. (2026) | Use multi-LLM logs to fuse model strengths | LLMFusionBench; query-, thought- and model-level fusion; reward α·P − β·C + γ·J | 14 tasks, 20 LLMs (8B–671B), 103M tokens | Routers beat best single LLM by 2–16%; GraphRouter 0.602 at cost 0.0184 vs 0.546 at 0.1850 | Token-based cost, no latency or load, judge scores and log noise |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2507.10540.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: FusionFactory: Fusing LLM Capabilities with Multi-LLM Log Data. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

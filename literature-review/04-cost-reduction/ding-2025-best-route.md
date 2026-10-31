@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # BEST-Route: adaptive routing with best-of-n sampling (Ding et al., 2025)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Section 2.4 (test-time compute as a cost lever); scoring function in Chapter 3. 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Ding et al. (2025) | Route across many LLMs without over-using the largest | DeBERTa multi-head router over (model, n); proxy-reward best-of-n; cheapest valid option | 10K instructions, 8 LLMs, MT-Bench; armoRM | 60% cost cut, 0.8% quality drop vs GPT-4o | One judge; static prices; no load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2506.22716.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: BEST-Route: Adaptive LLM Routing with Test-Time Optimal Compute. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

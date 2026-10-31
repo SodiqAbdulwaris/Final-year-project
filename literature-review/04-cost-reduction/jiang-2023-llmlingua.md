@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # LLMLingua: prompt compression for cheaper inference (Jiang et al., 2023)
 
 | Field | Value |
@@ -60,3 +65,11 @@ Section 2.4 (prompt compression) as a complementary, model-agnostic route to cos
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Jiang et al. (2023) | Reduce LLM inference cost and latency via shorter prompts | Coarse-to-fine compression: budget controller, iterative token-level perplexity pruning, distribution alignment | GSM8K, BBH, ShareGPT, Arxiv-March23; GPT-3.5-Turbo, Claude-v1.3 | 20x compression, 77.33 vs 78.85 EM on GSM8K; 1.7x to 5.7x faster | Needs a 7B compressor; drops at 25x+; no dollar figures; 2023 models |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2310.05736.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

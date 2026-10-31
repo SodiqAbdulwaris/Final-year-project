@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # GPTCache: an open-source semantic cache for LLM applications (Bang, 2023)
 
 | Field | Value |
@@ -62,3 +67,10 @@ Section 2.4 (semantic caching) and the architecture chapter for the cache layer.
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Bang (2023) | Cut LLM API cost and latency for repeated or paraphrased queries | Embedding-based semantic cache with vector store, similarity evaluator and eviction | ChatGPT-generated sentence pairs; ALBERT embeddings; Milvus | Hit latency 0.17 to 0.3 s vs about 3 s; about 95% of hits correct in tests | Synthetic data; no dollar figures; false hits; 7-page workshop paper |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://aclanthology.org/2023.nlposs-1.24.pdf.
+- Scope: Source retrieval did not yield a usable abstract/metadata parse; no fresh detailed claim verification. Historical claims remain unverified.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

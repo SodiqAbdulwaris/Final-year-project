@@ -1,8 +1,13 @@
+Status: DRAFT
+Depends on: D09; D12
+Sources: Historical audit and current L07 check
+Open items: Team direct reading and remaining claims
+
 # L01: Paper files are AI-written summaries, not your reading
 
 **Limitation.** All paper files and drafts were produced by Claude Code sessions. Sources were fetched and read, numbers were checked against papers, and an independent fact-check sampled 16 papers, but you have not read the originals.
 
-**Evidence.** Fact-check results (4 rounds): 15 of 16 sampled papers had correct titles, authors, years and headline numbers; about 20 wording and detail errors were found and fixed (for example the RouteLLM 3.66x saving was versus random routing, not versus GPT-4; RouterBench said eight datasets where the paper lists seven plus a retrieval set; RouterArena named the wrong lowest robustness).
+**Evidence.** Fact-check results (4 rounds): 15 of 16 sampled papers had correct titles, authors, years and headline numbers; about 20 wording and detail errors were found and fixed (for example the RouteLLM denominator was previously miscorrected: current Table 6 check confirms 3.66x over GPT-4 at 95% quality, while random routing is a separate comparison; RouterBench said eight datasets where the paper lists seven plus a retrieval set; RouterArena named the wrong lowest robustness).
 
 **Effect.** Any file may still hold errors in the 80% not sampled. Examiners expect you to have read what you cite.
 

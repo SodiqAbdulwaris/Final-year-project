@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # MeanCache: user-centric semantic caching (Gill et al., 2025)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Section 2.4 (semantic caching) as the second, more rigorous cache paper after GP
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Gill et al. (2025) | Reduce LLM calls with a privacy-preserving semantic cache that handles context | Client-side cache; federated embedding and threshold training; context chain; PCA compression | GPTCache dataset (1,000 queries) plus 450 contextual queries; MPNet, Albert; Llama 2 | Precision 0.72 vs 0.52; false hits 89 vs 233; 83% less storage | Client-side only; one baseline; small data; no dollar savings |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2403.02694.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: MeanCache: User-Centric Semantic Caching for LLM Web Services. Latest listed version: v4; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

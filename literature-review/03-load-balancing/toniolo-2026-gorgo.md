@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # GORGO: tuned cost-model routing across regions (Toniolo et al., 2026)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Existing balancers consider replica load (least-load, least-request) or KV-cache
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Toniolo et al. (2026) | Route across regions using cache, load and network latency | Linear TTFT cost model; (1+1)-ES tuning of two weights on p95 TTFT | SGLang, 3 regions, Qwen3.5-35B-A3B, ART-Chat-2.5M | 6.9–15.5% better p95 TTFT, 14.3–30.9% better p95 E2E than session affinity on held-out windows | Single model; synthetic trace; regime-specific weights; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2602.11688.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: GORGO: Online Tuning for Cross-Region Network-Aware LLM Serving. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

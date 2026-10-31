@@ -1,3 +1,16 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D07 current outcome
+
+No formal ethics approval under the owner-stated study position; basic ethics; minimal/no participants.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D07: Requirements interviews, usability study and ethics approval
 
 | | |
@@ -29,4 +42,4 @@ Recruit 5-8 developers (students plus a few outside developers), anonymous notes
 Do not collect names, emails or raw prompts. Interview questions should be open so they do not confirm your design.
 
 ## Where this shows up in the files
-`proposal-drafts/ch3-methodology-design.md` (3.2, 3.10), `ch4-ch5-skeletons.md`
+`proposal-drafts/03-methodology-design/00-overview.md` (3.2, 3.10), `ch4-ch5-skeletons.md`

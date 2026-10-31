@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Mélange: cost-efficient LLM serving by mixing GPU types (Griggs et al., 2024)
 
 | Field | Value |
@@ -54,3 +59,11 @@ Llama-2-7b (and 70b for an H100 versus A100 comparison) with vLLM 0.2.7. GPUs an
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Griggs et al. (2024) | Minimise cost of serving an LLM across GPU types | Tokens-per-dollar analysis; ILP cost-aware bin packing over workload slices | Llama-2-7b/70b, vLLM; L4, A10G, A100, H100; Chatbot Arena, PubMed | Up to 77%, 33%, 51% lower cost by workload type; 99.5% to 99.95% of requests meet latency targets | Fixed workload; no autoscaling; one model; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2404.14527.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: M\'elange: Cost Efficient Large Language Model Serving by Exploiting GPU Heterogeneity. Latest listed version: v4; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

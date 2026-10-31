@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Workload-aware RL router across LLM instances (Jain et al., 2024)
 
 | Field | Value |
@@ -56,3 +61,11 @@ Earlier work optimises scheduling inside one replica or routes between different
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Jain et al. (2024) | Route requests across identical LLM instances to cut latency | Output-length predictor (DistilBERT), mixing-penalty estimator, heuristic-guided RL router | Five-task mix, Cloud provider X trace; Llama-2-7B/Llama-3.1-8B, vLLM, V100/A100 | 11.43% lower mean end-to-end latency than round-robin; JSQ only 0.46% | Same-model replicas only; RL training and calibration; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2408.13510.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Intelligent Router for LLM Workloads: Improving Performance Through Workload-Aware Load Balancing. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

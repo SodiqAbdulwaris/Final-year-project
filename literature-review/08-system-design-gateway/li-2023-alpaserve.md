@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # AlpaServe: serving many models with model parallelism and statistical multiplexing (Li et al., 2023)
 
 | Field | Value |
@@ -54,3 +59,11 @@ BERT and GShard mixture-of-experts Transformers (1.3B to 104B parameters); footn
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Li et al. (2023) | Serve many large models with bursty traffic efficiently | Model-parallel placement with simulator-guided search; shortest-queue dispatch with SLO check | BERT, GShard MoE; 64 V100 GPUs; Azure function traces; simulator | 10x rate, 6x burstiness or 2.5x tighter SLO at 99% attainment; up to 2.3x fewer devices | Non-autoregressive models; no fault tolerance; controller single point of failure |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2302.11665.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: AlpaServe: Statistical Multiplexing with Model Parallelism for Deep Learning Serving. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

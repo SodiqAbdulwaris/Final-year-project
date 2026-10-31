@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # MTRouter: cost-aware turn-level routing with history–model embeddings (Zhang et al., 2026)
 
 | Field | Value |
@@ -61,3 +66,11 @@ Identified by me: the paper only notes, without measuring, that switching models
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhang et al. (2026) | Cost-aware model choice at each turn of agent episodes | History–model joint embeddings; MLP outcome estimator trained on logged trajectories | ScienceWorld, HLE; six-model pool; Router-R1, OpenRouter baselines | 53.8 vs 48.4 (GPT-5) at 58.7% lower cost on ScienceWorld; 43.4% cost cut on HLE; stays with same model 90.2% after error | Cache loss on switching not measured, no hysteresis rule, agent tasks, costly trajectory logging |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2604.23530.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: MTRouter: Cost-Aware Multi-Turn LLM Routing with History-Model Joint Embeddings. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Multi-tier SLA scheduling as an extension of Llumnix (Vestrum et al., 2026)
 
 | Field | Value |
@@ -56,3 +61,11 @@ The authors state that production LLM services commonly sell three to five servi
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Vestrum et al. (2026) | Support more than two SLA tiers in a migration-based LLM scheduler | Per-tier exponentially decaying headroom in Llumnix freeness; tier-aware dispatch | Vidur simulator, synthetic lengths, 3 priority mixes, 4 replicas | 4 tiers best; up to 8.3× prefill mean and 3.1× E2E P99 speedup over simulated INFaaS | Simulation only; own baselines; unreviewed preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2608.16336.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Beyond Binary Priorities: Multi-Tier SLA Scheduling for Large Language Model Serving. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

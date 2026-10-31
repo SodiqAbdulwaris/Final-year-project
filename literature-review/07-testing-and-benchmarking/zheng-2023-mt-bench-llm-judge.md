@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Judging LLM-as-a-judge with MT-Bench and Chatbot Arena (Zheng et al., 2023)
 
 | Field | Value |
@@ -67,3 +72,11 @@ Identified by me: only 80 questions and six models in MT-Bench, answers from 202
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zheng et al. (2023) | Can LLM judges approximate human preference for chat quality? | MT-Bench multi-turn questions; pairwise and single-answer LLM judging; Chatbot Arena votes | 80 MT-Bench questions, 3K expert votes, 30K Arena conversations; GPT-4, GPT-3.5, Claude-v1 | GPT-4–human agreement 85% vs human–human 81%; position, verbosity and self-enhancement biases | Small question set, helpfulness only, 2023 models, bias fixes preliminary |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2306.05685.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. Latest listed version: v4; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

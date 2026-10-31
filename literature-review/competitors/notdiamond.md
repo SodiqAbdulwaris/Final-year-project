@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation
+Open items: Self-hosting/fallback not established by overview
+
+## 31 October 2026 current-source recheck
+
+The [official overview](https://docs.notdiamond.ai/docs/what-is-not-diamond) confirms pretrained/custom intelligent routing (vendor documentation, accessed 31 October 2026). It does not establish operational fallback or self-hosting. Earlier material below is retained; do not infer feature absence from this limited page.
+
 # Not Diamond (grey literature: vendor documentation)
 
 | Field | Value |

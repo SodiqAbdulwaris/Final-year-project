@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # vLLM and PagedAttention (Kwon et al., 2023)
 
 | Field | Value |
@@ -56,3 +61,11 @@ The KV cache is large and grows with each generated token, and nobody knows outp
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Kwon et al. (2023) | Raise LLM serving throughput by cutting KV-cache waste | PagedAttention, block tables, sharing, FCFS with preemption | OPT/LLaMA, A100, ShareGPT/Alpaca traces | 2–4× throughput vs FasterTransformer and Orca | Normalized latency only; single engine |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2309.06180.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Efficient Memory Management for Large Language Model Serving with PagedAttention. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

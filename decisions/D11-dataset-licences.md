@@ -1,3 +1,16 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D11 current outcome
+
+Check data/component terms before use/redistribution. Findings and unresolved gates are in decisions-applied and Appendix B.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D11: Datasets and licences (RouterBench, LLMRouterBench, LongMemEval)
 
 | | |
@@ -27,4 +40,4 @@ Open each repository's licence and data card, record the licence and version in 
 Judge-based labels are noisy (see topic 07 overview).
 
 ## Where this shows up in the files
-`literature-review/07-testing-and-benchmarking/`, `proposal-drafts/ch3-methodology-design.md` (3.7)
+`literature-review/07-testing-and-benchmarking/`, `proposal-drafts/03-methodology-design/00-overview.md` (3.7)

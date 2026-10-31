@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Clockwork: a central controller that serves DNNs within latency SLOs (Gujarati et al., 2020)
 
 | Field | Value |
@@ -56,3 +61,11 @@ A private cluster of 12 Dell servers, each with 32 cores, 768 GB RAM and two NVI
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Gujarati et al. (2020) | Predictable tail latency for DNN serving | Central controller schedules all loads and inferences from predicted durations; workers reject actions that miss their window | ResNet50 and other image models; 12 servers, 24 V100 GPUs; Azure traces; Clipper and INFaaS | 100 ms target met for 99.9999% of requests with thousands of models; goodput kept below 100 ms SLO where rivals collapse | Deterministic DNNs only; no fault tolerance; controller becomes bottleneck at scale |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2006.02464.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Serving DNNs like Clockwork: Performance Predictability from the Bottom Up. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Cascade routing: a unified approach to routing and cascading (Dekoninck et al., 2025)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Section 2.4 (cost-aware selection); scoring-function design in Chapter 3. "Unlik
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Dekoninck et al. (2025) | Unify routing and cascading with optimality guarantees | Linear-programme view; cascade routing with quality and cost estimators | RouterBench, SWE-Bench, Minerva Math, LiveCodeBench | Beats both baselines (Table 1: 1 to 4 AUC points; up to 8% / 12% in Fig. 2 and 14% on SWE-Bench); estimator quality decisive | Simulated noise; static costs; no live load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2410.10347.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: A Unified Approach to Routing and Cascading for LLMs. Latest listed version: v5; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

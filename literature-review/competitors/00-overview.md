@@ -1,3 +1,14 @@
+Status: DRAFT
+Depends on: D04; L04; L10
+Sources: Current official sources in each competitor record
+Open items: Release-specific and submission-date rechecks
+
+# Current comparison note
+
+The [active Table 2.2](../../proposal-drafts/02-literature-review/2.5-existing-systems.md) supersedes conflicting historical rows below. TrueFoundry now documents complexity routing and local backends; OpenRouter Auto Router selects models per prompt; Martian current offering details remain unverified. Vendor documentation is grey literature accessed 31 October 2026. No product was operationally benchmarked.
+
+## Historical comparison
+
 # Competitor review: overview (grey literature)
 
 All facts come from vendor or project documentation fetched on **2026-10-31** and are grey literature, not peer-reviewed. "Not documented" means the page read does not say; it does not mean the feature is absent. Vendor docs change often; re-fetch before submission.

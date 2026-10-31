@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # AutoMix: self-verification and POMDP routing (Aggarwal et al., 2024)
 
 | Field | Value |
@@ -11,7 +16,7 @@
 | Relevance to project | Medium |
 
 ## APA 7 reference
-Aggarwal, P., Madaan, A., Anand, A., Potharaju, S. P., Mishra, S., Zhou, P., Gupta, A., Rajagopal, D., Kappaganthu, K., Yang, Y., Upadhyay, S., Faruqui, M., & Mausam. (2024). AutoMix: Automatically mixing language models. In A. Globerson, L. Mackey, D. Belgrave, A. Fan, U. Paquet, J. Tomczak, & C. Zhang (Eds.), *Advances in Neural Information Processing Systems* (Vol. 37). Curran Associates. https://proceedings.neurips.cc/paper_files/paper/2024/hash/ecda225cb187b40ea8edc1f46b03ffda-Abstract-Conference.html (preprint: https://doi.org/10.48550/arXiv.2310.12963). No DOI; editor list not checked. Author order follows the paper (the user's notes list them alphabetically).
+Aggarwal, P., Madaan, A., Anand, A., Potharaju, S. P., Mishra, S., Zhou, P., Gupta, A., Rajagopal, D., Kappaganthu, K., Yang, Y., Upadhyay, S., Faruqui, M., & Mausam. (2024). AutoMix: Automatically mixing language models. In A. Globerson, L. Mackey, D. Belgrave, A. Fan, U. Paquet, J. Tomczak, & C. Zhang (Eds.), *Advances in Neural Information Processing Systems* (Vol. 37). Curran Associates. https://proceedings.neurips.cc/paper_files/paper/2024/hash/ecda225cb187b40ea8edc1f46b03ffda-Abstract-Conference.html (preprint: https://doi.org/10.48550/arXiv.2310.12963). Proceedings DOI: https://doi.org/10.52202/079017-4164. Author order follows the paper (the user's notes list them alphabetically).
 
 ## In-text citation forms
 (Aggarwal et al., 2024) · Aggarwal et al. (2024)
@@ -54,3 +59,11 @@ Small models: Mistral-7B, Llama-2-13B, GPT-3.5; large: GPT-4 (Llama-2-70B as mid
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Aggarwal et al. (2024) | Mix small and large LMs via black-box APIs with little data | Few-shot self-verification plus POMDP or threshold router; IBC | QASPER, QuALITY, CoQA, MuTual, DIPLOMAT; Mistral, Llama-2, GPT-3.5/4 | Over 50% cost reduction at comparable performance; works with 50 examples | Context tasks only; sequential latency; no load or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2310.12963.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: AutoMix: Automatically Mixing Language Models. Latest listed version: v5; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

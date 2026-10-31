@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: Superseded earlier design
+Sources: Original draft preserved by git mv
+Open items: Archived historical text; excluded from assembly and active placeholder register
+
 # Notes on "LLM Router FYP: Architecture, Research Decisions and Experiment Guide" (Rev 2, 26 Oct 2026)
 
 Source: `Research Review/Research Paper Review.docx` (team document, later than the 16 Oct proposal). This file records what it says and where it differs from `AI_Request_Router_Proposal.docx`. **Status of the conflict: DECISION-NEEDED (user/team/supervisor).** Until decided, the drafts treat the newer 26 Oct guide as the governing design and keep the proposal's elements that it does not contradict.

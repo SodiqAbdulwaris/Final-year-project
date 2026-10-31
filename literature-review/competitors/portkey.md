@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation linked below
+Open items: Pinned release/configuration and feature checks before submission
+
+## 31 October 2026 current-source recheck
+
+Prioritised provider/model fallback is documented, including status-specific examples. This does not independently establish learned suitability prediction. [Vendor documentation](https://portkey.ai/docs/product/ai-gateway/fallbacks), accessed 31 October 2026. This note supersedes conflicting rows below; the earlier review is retained as history.
+
 # Portkey AI Gateway (grey literature: vendor documentation)
 
 | Field | Value |

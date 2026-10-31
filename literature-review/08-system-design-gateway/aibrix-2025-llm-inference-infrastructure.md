@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # AIBrix: cloud-native LLM-aware gateway and inference infrastructure (AIBrix Team, 2025)
 
 | Field | Value |
@@ -59,3 +64,11 @@ All figures are self-reported by the authors.
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Shan et al. (2025) | Cost-effective, scalable LLM serving infrastructure beyond the engine | LLM-aware Envoy-based gateway with load- and prefix-aware routing; autoscaler; distributed KV cache; GPU optimiser | Kubernetes, Ray, vLLM; Bird-SQL, ShareGPT, Text2SQL on A10 and L20 | Self-reported: mean latency down 19.2%, P99 down 79% from routing; KV cache about 50% more throughput | Preprint; routing not fully evaluated; same-model instances only; no per-prompt model choice or fallback evidence |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2504.03648.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: AIBrix: Towards Scalable, Cost-Effective Large Language Model Inference Infrastructure. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

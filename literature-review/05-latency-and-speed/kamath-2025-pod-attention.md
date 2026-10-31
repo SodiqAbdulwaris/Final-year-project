@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # POD-Attention: overlapping prefill and decode in one kernel (Kamath et al., 2025)
 
 | Field | Value |
@@ -56,3 +61,11 @@ Hybrid batching makes linear layers efficient, but attention kernels are still s
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Kamath et al. (2025) | Efficient attention for hybrid prefill/decode batches | SM-aware fused kernel running prefill and decode concurrently | Yi-6B, Llama-2-7B, Llama-3-8B, A100; enterprise and arXiv traces | Attention up to 59% faster; throughput +12–27%; P99 TTFT up to 4.3× lower than Sarathi | Hardware-specific; proprietary trace |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2410.18038.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # FamiCom: familiarity and complexity for label-free performance estimation (Li et al., 2024)
 
 | Field | Value |
@@ -59,3 +64,11 @@ Identified by me: all experiments are multiple choice; the score needs token per
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Li et al. (2024) | Label-free estimate of prompt-level LLM performance | Familiarity (perplexity, key-token similarity) combined with LLM-estimated complexity | 28 MC tasks from MMLU/BIG-Bench/etc.; Mistral-7B, Phi-3-mini, Llama-2-13b | Spearman 0.848 vs 0.426 familiarity-only; +4.6% prompt-selection accuracy | Preprint, MC tasks, needs logits, not a routing study |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2406.11243.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: FamiCom: Further Demystifying Prompts for Language Models with Task-Agnostic Performance Estimation. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouteProfile: profiling a new LLM from public signals only (Xu et al., 2026)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Identified by me: one new model was held out (a 24B instruct model), so conclusi
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Xu et al. (2026) | Route to a new LLM with no interaction data | Graph of public signals; text or embedding profiles; 1–4 hop aggregation; NCIR metric | Seven existing LLMs plus Mistral-Small-24B as new model; SimRouter, MLPRouter, GraphRouter | Structured profiles 0.580 vs PlainText 0.532 (oracle 0.679); NCIR near 0 for text profiles | One new model, inconsistent Single-Best figure, public-signal bias, preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2605.00180.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouteProfile: Graph-Based Profiling for Cold-Start LLM Routing. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

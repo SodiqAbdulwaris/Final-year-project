@@ -1,3 +1,16 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D06 current outcome
+
+Two RTX 4070 machines, desktop and laptop; minimal API budget, capped pilot and local failure tests.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D06: Hardware, GPU access and API budget
 
 | | |
@@ -29,4 +42,4 @@ Laptop + Ollama for the local deployment, hosted APIs for the others, a mock pro
 State exact hardware in Table 4.1; results are not transferable without it.
 
 ## Where this shows up in the files
-`proposal-drafts/ch3-methodology-design.md`, `ch4-ch5-skeletons.md` (Table 4.1)
+`proposal-drafts/03-methodology-design/00-overview.md`, `ch4-ch5-skeletons.md` (Table 4.1)

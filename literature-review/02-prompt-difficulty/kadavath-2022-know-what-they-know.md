@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Language models (mostly) know what they know (Kadavath et al., 2022)
 
 | Field | Value |
@@ -63,3 +68,11 @@ Identified by me: the authors themselves note a confound that P(IK) may reflect 
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Kadavath et al. (2022) | Can an LM predict whether it will answer correctly? | Calibration study, P(True) self-evaluation, P(IK) value head trained on sampled correctness | BIG-Bench, MMLU, TriviaQA, GSM8K, HumanEval; 800M–52B models | Calibrated on MC; P(IK) discriminates and generalises partially but is miscalibrated OOD | Preprint, 2022 pretrained models, difficulty confound, no routing or cost |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2207.05221.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Language Models (Mostly) Know What They Know. Latest listed version: v4; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

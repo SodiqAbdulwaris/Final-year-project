@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Model uncertainty plus text embeddings for item difficulty (Zotos et al., 2025)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Identified by me: difficulty here means human student difficulty on factual MCQs
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zotos et al. (2025) | Estimate MCQ difficulty without student field tests | Random Forest on TF-IDF/BERT features plus uncertainty from nine LLMs | Biopsychology, USMLE, CMCQRD; scikit-learn, SHAP | RMSE 0.1365 vs text-only 0.1498 (Biopsychology); beats prior bests on USMLE and CMCQRD | Exam MCQs only, many LLM calls, overconfident models weaken signal |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2412.11831.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Are You Doubtful? Oh, It Might Be Difficult Then! Exploring the Use of Model Uncertainty for Question Difficulty Estimation. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

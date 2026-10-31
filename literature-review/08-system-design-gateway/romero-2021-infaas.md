@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # INFaaS: model-less inference serving with per-query variant selection (Romero et al., 2021)
 
 | Field | Value |
@@ -59,3 +64,10 @@ Developers must search thousands of variants that differ in accuracy, latency, c
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Romero et al. (2021) | Remove the need for developers to pick model-variants and hardware per query | Model-less API; per-query variant selection with a dynamic state machine; model-vertical autoscaling with ILP and heuristic | 175 variants of 22 architectures on AWS CPU, GPU and Inferentia; Redis metadata store | 1.3x throughput, 1.6x fewer SLO violations, up to 21.6x lower cost; 2.2 to 3.5 ms median selection overhead | Image DNNs only; no LLM load signals, hosted APIs or prompt-level quality prediction |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://www.usenix.org/system/files/atc21-romero.pdf.
+- Scope: Source retrieval did not yield a usable abstract/metadata parse; no fresh detailed claim verification. Historical claims remain unverified.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

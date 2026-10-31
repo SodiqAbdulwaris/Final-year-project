@@ -1,6 +1,19 @@
+Status: DRAFT
+Depends on: D01; D04; D12
+Sources: proposal-drafts/_meta/hybrid-design.md; source paper records
+Open items: Historical synthesis below is superseded where it conflicts with the active proposal
+
+# Current governing synthesis
+
+This project investigates whether combining lightweight classification and embedding-derived suitability features with constrained cost–quality–latency selection improves on simpler routing baselines. Operational fallback is evaluated separately for resilience.
+
+The current objectives and evidence mapping are in [Section 2.7](../proposal-drafts/02-literature-review/2.7-research-gap.md). Do not use historical universal absence claims below (for example never considering latency) or its old live-load objectives as the current gap. LLMRouterBench explicitly supports latency-aware analysis. Live GPU/queue telemetry and related earlier ideas remain unresolved, not automatically core.
+
+## Historical synthesis preserved for provenance
+
 # Gaps and synthesis (supervisor)
 
-Built from the eight topic overviews and the competitors review. Every gap names its evidence. Where a source is a preprint or grey literature, the gap statement says so. Objectives O1–O6 are the drafts in `../proposal-drafts/ch1-introduction.md`.
+Built from the eight topic overviews and the competitors review. Every gap names its evidence. Where a source is a preprint or grey literature, the gap statement says so. Objectives O1–O6 are the drafts in `../proposal-drafts/01-introduction/00-overview.md`.
 
 ## 1. What the literature shows
 

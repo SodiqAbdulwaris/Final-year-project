@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Metastable failures in the wild (Huang et al., 2022)
 
 | Field | Value |
@@ -57,3 +62,12 @@ Section 2.5 (resilience patterns) and the rationale for circuit breaker and retr
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Huang et al. (2022) | How common and what sustains metastable failures | Incident survey; extended load-capacity model; reproductions | 21 public incident reports plus a Twitter case; 3 example apps | Retries sustain over half of incidents; at least 4 of 15 major AWS outages | Few incidents; no LLM context; qualitative |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://www.usenix.org/system/files/osdi22-huang-lexiang.pdf.
+- Scope: Source retrieval did not yield a usable abstract/metadata parse; no fresh detailed claim verification. Historical claims remain unverified.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+
+- Additional current check: USENIX publisher page https://www.usenix.org/conference/osdi22/presentation/huang-lexiang confirmed authors, venue, pages and abstract-level incident-analysis method; PDF fetch was blocked. No detailed numerical results reused.

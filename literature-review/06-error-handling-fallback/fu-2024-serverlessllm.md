@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # ServerlessLLM: low-latency serverless LLM inference with live migration (Fu et al., 2024)
 
 | Field | Value |
@@ -55,3 +60,11 @@ Section 2.5, request migration paragraph (alongside SpotServe and Llumnix in top
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Fu et al. (2024) | Low-latency serverless LLM inference | Fast checkpoint loading; token-based live migration; locality-aware scheduling | OPT, LLaMA-2, Falcon; GSM8K, ShareGPT; Azure trace; KServe, Ray Serve | 10 to 200x lower latency; 3.6 to 8.2x faster loading | Small cluster; failure handling not evaluated |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2401.14351.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: ServerlessLLM: Low-Latency Serverless Inference for Large Language Models. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

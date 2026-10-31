@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # EcoAssistant: cheaper and more accurate LLM assistants (Zhang et al., 2023)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Section 2.4 (cheap-first strategies and caching of successes). Synthesis sentenc
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhang et al. (2023) | Cheaper, more accurate LLM assistants for code-driven QA | Executor loop, cheap-to-expensive assistant hierarchy, retrieval of past successful solutions | ToolBench (Places, Weather, Stock); Llama-2-13B, GPT-3.5, GPT-4; AutoGen, Chroma | 80% success at $5.90 vs GPT-4 59% at $13.77 (Mixed-100) | Preprint or workshop only; small dataset; needs success feedback; local model costed at $0 |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2310.03046.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: EcoAssistant: Using LLM Assistant More Affordably and Accurately. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

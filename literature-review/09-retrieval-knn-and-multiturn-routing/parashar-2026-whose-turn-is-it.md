@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Whose turn is it? Session-aware routing and the cost of switching (Parashar et al., 2026)
 
 | Field | Value |
@@ -60,3 +65,11 @@ Identified by me: one domain (spreadsheet agents), two-model pools, cost account
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Parashar et al. (2026) | Cost-aware routing across turns of a stateful agent session | Zero-shot per-turn LLM router with or without history; escalation, de-escalation, random; closed-form cache break-even | SheetCopilot (112 tasks) and SpreadsheetBench 2 (221 workflows); three cheap/expensive pairs | History adds 3.3 points at equal offload; downward switch repays in about 1.25 calls; upward switch does not | One domain, two models, short sessions, cache pricing assumptions, preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2610.19292.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Whose turn is it? Context-guided model routing for stateful agents. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

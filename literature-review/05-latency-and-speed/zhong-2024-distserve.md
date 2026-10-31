@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # DistServe: disaggregating prefill and decoding for goodput (Zhong et al., 2024)
 
 | Field | Value |
@@ -55,3 +60,11 @@ Colocating both phases makes them interfere: one prefill added to a batch of dec
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhong et al. (2024) | Maximise per-GPU goodput under TTFT and TPOT targets | Prefill/decode disaggregation; placement search; M/D/1 analysis | OPT 13B–175B, A100 cluster, ShareGPT/HumanEval/LongBench | Up to 7.4× more requests or 12.6× tighter SLO than vLLM-class systems | No preemption or fault tolerance; own SLOs |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2401.09670.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

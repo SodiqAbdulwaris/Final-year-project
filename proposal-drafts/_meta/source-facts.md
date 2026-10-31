@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: Original proposal record; decisions-applied.md
+Sources: AI_Request_Router_Proposal.docx, historical extraction
+Open items: Historical record only; current decisions supersede older unknowns; not independently re-extracted in this session
+
 # 00 Source facts: AI Request Router
 
 Every fact in `AI_Request_Router_Proposal.docx` (draft of 16 October 2026), tagged by how far it can be trusted. All other draft files in this folder may use only what is listed here. Anything not listed is either marked `ASSUMPTION:` where it is used or left as `TODO`.

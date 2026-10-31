@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # L4 / CascadeInfer: length-aware multi-instance scheduling (Yuan et al., 2025)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Attention kernels are sensitive to length differences inside a batch: the GPU id
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Yuan et al. (2025) | Remove length heterogeneity within batches across replicas | Length-specialised stage pipeline, DP stage planning, decentralised bid-ask migration | vLLM, ShareGPT, H20/L40, 8 models | Up to 67% lower latency, 2.89× throughput vs SOTA; 1.71× Llumnix at heavy load | Homogeneous replicas; engine access; preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2512.19179.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: CascadeInfer: Length-Aware Scheduling of LLM Serving with Low Latency and Load Balancing. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

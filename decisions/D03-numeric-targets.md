@@ -1,3 +1,16 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D03 current outcome
+
+No numeric targets invented. Use [PROVISIONAL: revise after pilot]; justify/freeze quality margin before test inspection.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D03: Numeric targets and the non-inferiority margin
 
 | | |
@@ -33,4 +46,4 @@ Take Option 1 as provisional wording in the drafts, label every number `provisio
 Changing a target after seeing results is a validity threat; write the date and version of the targets into the report.
 
 ## Where this shows up in the files
-`proposal-drafts/ch3-methodology-design.md` (Table 3.2), `ch4-ch5-skeletons.md`
+`proposal-drafts/03-methodology-design/00-overview.md` (Table 3.2), `ch4-ch5-skeletons.md`

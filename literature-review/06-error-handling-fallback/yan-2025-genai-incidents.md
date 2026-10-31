@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Production incidents in generative AI cloud services (Yan et al., 2025)
 
 | Field | Value |
@@ -55,3 +60,11 @@ Section 2.5 (why failover is needed) and the fault-injection scenarios in 3.9. "
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Yan et al. (2025) | Characterise incidents in GenAI cloud services | Manual coding of symptoms, causes, mitigations; comparison with non-GenAI incidents | Microsoft IcM incidents, 2020 to 2024 | 49.8% degradation; 38.3% human-detected; infrastructure 27.2% of causes | One provider; preprint; normalised numbers; provider-side only |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2504.08865.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: An Empirical Study of Production Incidents in Generative AI Cloud Services. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # ContinuityBench: stateful failover in multi-provider LLM routing (Pandey & Singh, 2026)
 
 | Field | Value |
@@ -53,3 +58,11 @@ Section 2.5 (fallback in LLM gateways) as the only direct study, labelled prepri
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Pandey & Singh (2026a) | Measure conversational continuity under provider failover | CPR and CLO metrics; stateless vs history-forwarding proxy; fault injection; LLM judge | 150 synthetic conversations × 5 runs; GPT-4o-mini to Claude 3.5 Sonnet | CPR 99.20% vs 0%; retry storm and race condition found | Preprint; synthetic; no streaming; strawman baseline |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2607.15899.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: ContinuityBench: A Benchmark and Systems Study of Stateful Failover in Multi-Provider LLM Routing. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

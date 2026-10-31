@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Learning to route LLMs with confidence tokens (Chuang et al., 2025)
 
 | Field | Value |
@@ -64,3 +69,11 @@ Identified by me: the confidence is produced *after* generating an answer, so th
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Chuang et al. (2025) | Reliable confidence for routing or abstaining | Self-REF: fine-tune with correctness-based confidence tokens, route on P(confident) | MMLU, OpenbookQA, GSM8K, MedQA; Llama3-8B, Mistral-7B, Llama3-70B | 39% of MMLU queries routed matches 70B accuracy; up to 2.03× lower per-token latency | Post-generation, per-task fine-tuning, one escalation target, no load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2410.13284.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Learning to Route LLMs with Confidence Tokens. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

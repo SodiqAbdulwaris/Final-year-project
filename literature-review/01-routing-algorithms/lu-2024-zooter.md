@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Zooter: reward-guided routing to expert LLMs (Lu et al., 2024)
 
 | Field | Value |
@@ -53,3 +58,11 @@ Candidates (LLaMA-based 13B): WizardLM, WizardCoder, WizardMath, Vicuna, OpenCha
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Lu et al. (2024) | Ensemble LLMs without running all | Reward distillation into 86M router, tag-based smoothing | DivInstruct; six 13B LLMs; AlpacaEval, FLASK, MT-Bench, MMLU, GSM8K, HumanEval | MTR 1.94 vs 2.23 best single; top on 44% of subsets | Fixed pool; noisy rewards; no cost or load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2311.08692.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Routing to the Expert: Efficient Reward-guided Ensemble of Large Language Models. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

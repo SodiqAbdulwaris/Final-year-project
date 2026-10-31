@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation linked below
+Open items: Pinned release/configuration and feature checks before submission
+
+## 31 October 2026 current-source recheck
+
+Official guide, updated 15 October 2026, describes complexity-based routing, cross-provider fallbacks and self-hosted models. This supersedes earlier no-per-prompt-choice/local-not-documented rows. Vendor-marketed performance was not independently checked. [Vendor documentation](https://www.truefoundry.com/blog/ai-agent-portability), accessed 31 October 2026. This note supersedes conflicting rows below; the earlier review is retained as history.
+
 # TrueFoundry AI Gateway (grey literature: vendor documentation)
 
 | Field | Value |

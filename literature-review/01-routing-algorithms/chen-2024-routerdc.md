@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # RouterDC: dual contrastive learning for query-based routing (Chen et al., 2024)
 
 | Field | Value |
@@ -11,7 +16,7 @@
 | Relevance to project | High |
 
 ## APA 7 reference
-Chen, S., Jiang, W., Lin, B., Kwok, J. T., & Zhang, Y. (2024). RouterDC: Query-based router by dual contrastive learning for assembling large language models. In A. Globerson, L. Mackey, D. Belgrave, A. Fan, U. Paquet, J. Tomczak, & C. Zhang (Eds.), *Advances in Neural Information Processing Systems* (Vol. 37). Curran Associates. https://proceedings.neurips.cc/paper_files/paper/2024/hash/7a641b8ec86162fc875fb9f6456a542f-Abstract-Conference.html (preprint: https://doi.org/10.48550/arXiv.2409.19886). No DOI; editor list not checked against the front matter.
+Chen, S., Jiang, W., Lin, B., Kwok, J. T., & Zhang, Y. (2024). RouterDC: Query-based router by dual contrastive learning for assembling large language models. In A. Globerson, L. Mackey, D. Belgrave, A. Fan, U. Paquet, J. Tomczak, & C. Zhang (Eds.), *Advances in Neural Information Processing Systems* (Vol. 37). Curran Associates. https://proceedings.neurips.cc/paper_files/paper/2024/hash/7a641b8ec86162fc875fb9f6456a542f-Abstract-Conference.html (preprint: https://doi.org/10.48550/arXiv.2409.19886). Proceedings DOI: https://doi.org/10.52202/079017-2120.
 
 ## In-text citation forms
 (Chen et al., 2024) · Chen et al. (2024)
@@ -54,3 +59,11 @@ Seven 7B/8B LLMs (Mistral-7B, MetaMath-Mistral, zephyr, Chinese-Mistral, two dol
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Chen et al. (2024) | Route queries among several good LLMs | Encoder plus learnable LLM embeddings; two contrastive losses | MMLU, GSM8K, CMMLU, ARC-C, HumanEval; OOD PreAlgebra, MBPP, C-EVAL; seven 7-8B LLMs | 58.54% vs 54.56% best single; +1.90 OOD; about 6x faster than voting | Small models; accuracy only; fixed pool; no cost or load |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2409.19886.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: RouterDC: Query-Based Router by Dual Contrastive Learning for Assembling Large Language Models. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

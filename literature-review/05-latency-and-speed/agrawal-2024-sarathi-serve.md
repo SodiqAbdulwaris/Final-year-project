@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Sarathi-Serve: chunked prefills and stall-free scheduling (Agrawal et al., 2024)
 
 | Field | Value |
@@ -56,3 +61,11 @@ Prefill (processing the prompt) is compute-heavy and slow per iteration, while d
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Agrawal et al. (2024b) | Meet tail-latency SLOs without losing throughput | Chunked prefill, stall-free batching, token budget | Mistral-7B to Falcon-180B, A100/A40, ShareGPT/arXiv traces | 2.6× to 5.6× higher capacity than vLLM | Single replica; per-deployment profiling |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2403.02310.
+- Scope: Full-text sample: method and selected numerical/limitation statements checked; see L07.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

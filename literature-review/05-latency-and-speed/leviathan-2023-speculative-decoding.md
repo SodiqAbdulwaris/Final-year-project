@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Speculative decoding (Leviathan et al., 2023)
 
 | Field | Value |
@@ -54,3 +59,11 @@ Producing K tokens takes K serial passes of the model, and each pass is slow for
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Leviathan et al. (2023) | Faster autoregressive decoding without changing outputs | Draft with small model, verify in parallel, speculative sampling | T5-XXL, T5-small/base/large, LaMDA, TPU-v4 | 2×–3× speed-up, identical outputs | Batch size 1; compute overhead; task-dependent acceptance |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2211.17192.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Fast Inference from Transformers via Speculative Decoding. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

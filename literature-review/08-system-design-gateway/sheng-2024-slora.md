@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # S-LoRA: serving thousands of concurrent LoRA adapters (Sheng et al., 2024)
 
 | Field | Value |
@@ -57,3 +62,11 @@ Llama-7B, 13B, 30B and 70B base models; A10G 24 GB, A100 40 GB and 80 GB GPUs. S
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Sheng et al. (2024) | Serve thousands of LoRA adapters of one base model | Unified Paging; heterogeneous batching kernels; adapter tensor parallelism; early-abort admission control | Llama 7B to 70B; A10G and A100; synthetic and Chatbot Arena traces; PEFT, vLLM-packed | Up to 4x vs vLLM-packed, up to 30x vs PEFT; 2,000 adapters on one GPU at 7.61 req/s | LoRA and single base model; weak PEFT baseline; no model choice or failover |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2311.03285.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: S-LoRA: Serving Thousands of Concurrent LoRA Adapters. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

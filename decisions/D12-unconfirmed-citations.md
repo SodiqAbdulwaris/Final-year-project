@@ -1,3 +1,16 @@
+Status: DRAFT
+Depends on: Owner proposal-building instructions, 31 October 2026
+Sources: proposal-drafts/_meta/decisions-applied.md
+Open items: Only residual implementation/evidence details stated in current register
+
+# D12 current outcome
+
+Source/metadata checks and sampled full texts precede Chapter 2 drafting; residual uncertainty in L03/L07 and source files.
+
+The owner has supplied this decision; do not re-ask the historical question below. [Applied register](../proposal-drafts/_meta/decisions-applied.md).
+
+## Historical question and recommendation (superseded)
+
 # D12: Citations to confirm before submission (DOIs, venues, versions)
 
 | | |

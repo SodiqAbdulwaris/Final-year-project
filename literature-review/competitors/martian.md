@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation linked below
+Open items: Pinned release/configuration and feature checks before submission
+
+## 31 October 2026 current-source recheck
+
+Current homepage focuses on model-science work and links Thesean AI; the historical router offering details were not established by this page. Treat old routing/deployment claims as unverified. [Vendor documentation](https://withmartian.com/), accessed 31 October 2026. This note supersedes conflicting rows below; the earlier review is retained as history.
+
 # Martian (grey literature: vendor documentation)
 
 | Field | Value |

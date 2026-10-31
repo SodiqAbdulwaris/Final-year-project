@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Preble: prompt-sharing-aware distributed scheduling (Srivatsa et al., 2025)
 
 | Field | Value |
@@ -55,3 +60,10 @@ Prefix caching worked only inside one GPU. In a cluster, round-robin scatters re
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Srivatsa et al. (2025) | Co-optimise KV-prefix reuse and load balance across GPUs | E2 policy over global radix trees with windowed token-based load cost; rebalancing; local priority queue | Five prompt-sharing workloads, Azure arrivals, Mistral 7B, Llama-3 70B, SGLang/vLLM | 1.5×–14.5× lower mean latency, 2×–10× lower p99 vs round-robin SGLang | Needs high prompt sharing; offline profiling; one model |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://proceedings.iclr.cc/paper_files/paper/2025/file/5bc342f48de8264779952fac378f96dc-Paper-Conference.pdf.
+- Scope: Source retrieval did not yield a usable abstract/metadata parse; no fresh detailed claim verification. Historical claims remain unverified.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.

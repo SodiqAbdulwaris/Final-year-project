@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # EmbedLLM: compact model embeddings, a correctness dataset and a fast router (Zhuang et al., 2025)
 
 | Field | Value |
@@ -60,3 +65,11 @@ Identified by me: all tasks are multiple-choice or short-answer with exact-match
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Zhuang et al. (2025) | Reusable compact LLM embeddings for routing and forecasting | Matrix-factorisation encoder–decoder on model×question correctness; all-mpnet-base-v2 question embeddings | 112 open models × 36,054 questions from 10 benchmarks | Beats KNN and single-best; 3,000 routes in 3.80 s on one A100; predicts 7 of 10 benchmark rankings | Fixed pool, retraining for new models, correctness-only, no cost or latency |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2410.02223.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: EmbedLLM: Learning Compact Representations of Large Language Models. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

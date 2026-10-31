@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Faster cascades via speculative decoding (Narasimhan et al., 2025)
 
 | Field | Value |
@@ -55,3 +60,11 @@ Section 2.4 (distinguishing routing from in-engine efficiency) with a pointer to
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Narasimhan et al. (2025) | Combine cascade quality gains with speculative-decoding speed | Speculative execution of cascade deferral rules (Chow, Diff, OPT, token-specific) | T5-small to large/XL on WMT, XSum, CNN/DM; Gemma 2B to 27B on 8 few-shot tasks | Up to 2.61x latency reduction at large-model quality; better trade-off than cascades or speculative decoding alone | Two co-served models; logits needed; batch size 1; higher total compute |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2405.19261.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Faster Cascades via Speculative Decoding. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

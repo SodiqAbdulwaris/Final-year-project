@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Vidur: simulating LLM inference performance (Agrawal et al., 2024c)
 
 | Field | Value |
@@ -55,3 +60,11 @@ Choosing parallelism, batching algorithm (Orca, vLLM, Sarathi-Serve), batch size
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Agrawal et al. (2024c) | Predict and search LLM deployment performance without GPUs | Operator profiling, regression, hierarchical scheduler, Vidur-Search | LMSys-Chat-1M, Arxiv, BWB; LLaMA2, Qwen, InternLM | Under 9% latency error; best config in about 1 hour on a 96-core CPU machine ($9.93/h) vs 42K GPU-hours | Accuracy falls near capacity; engine-only model |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2405.05465.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Vidur: A Large-Scale Simulation Framework For LLM Inference. Latest listed version: v2; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

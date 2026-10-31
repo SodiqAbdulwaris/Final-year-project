@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Conformal Cascade: distribution-free accuracy guarantees for multi-tier inference (Dou et al., 2026)
 
 | Field | Value |
@@ -58,3 +63,11 @@ Identified by me: the method is post-generation (16 samples at each tier), so it
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Dou et al. (2026) | Accuracy guarantee for LLM cascades | Split conformal prediction sets; accept when set is a single answer | 18 MC benchmarks, four open families, two tiers; 16 samples per tier | Beats best heuristic cascade in 49 of 72 pairs; coverage at α = 0.10 within ±0.02 in 6 of 8 Llama benchmarks | Marginal guarantee, exchangeability, MC only, test-tuned grids, preprint |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2607.25018.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Conformal Cascade: Distribution-Free Accuracy Guarantees for Multi-Tier LLM Inference. Latest listed version: v3; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.

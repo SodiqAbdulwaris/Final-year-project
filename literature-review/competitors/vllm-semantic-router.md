@@ -1,3 +1,12 @@
+Status: DRAFT
+Depends on: L04; L10
+Sources: Official vendor documentation linked below
+Open items: Pinned release/configuration and feature checks before submission
+
+## 31 October 2026 current-source recheck
+
+Official repository confirms an open programmable model/compute decision layer. Old documentation URLs have moved; current repository points to vllm-sr.ai. Exact recovery and selector behaviour requires a pinned release/configuration. [Vendor documentation](https://github.com/vllm-project/semantic-router), accessed 31 October 2026. This note supersedes conflicting rows below; the earlier review is retained as history.
+
 # vLLM Semantic Router (grey literature: open-source project, release blog and preprint)
 
 | Field | Value |

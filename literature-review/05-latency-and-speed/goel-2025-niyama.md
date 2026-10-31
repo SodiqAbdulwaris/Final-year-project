@@ -1,3 +1,8 @@
+Status: DRAFT
+Depends on: D08; D12
+Sources: Primary URLs in source table and proposal-audit section
+Open items: Scoped numerical/final-version checks recorded below
+
 # Niyama / QoServe: QoS-aware co-scheduling (Goel et al., 2025)
 
 | Field | Value |
@@ -5,15 +10,13 @@
 | Topic (home) | 05 Latency and speed |
 | Also relevant to | 03 Load balancing (SLO tiers), 06 Fallback (graceful degradation) |
 | Paper type | system (scheduler) |
-| Venue and status | arXiv preprint v1 (28 Mar 2025, "Niyama"); published as "QoServe: Breaking the silos of LLM inference serving" at ASPLOS '26 (DOI 10.1145/3779212.3790206, Crossref) |
+| Venue and status | peer-reviewed successor QoServe, ASPLOS 2026, DOI 10.1145/3779212.3790206 (Crossref confirmed); earlier Niyama preprint remains the version read |
 | Source read | full text of the arXiv v1 preprint (https://arxiv.org/pdf/2503.22562). I did not read the published QoServe version, so numbers are cited to the preprint |
 | Verified on | 2026-10-31, against arXiv abs 2503.22562 and the Crossref record of the ASPLOS paper |
 | Relevance to project | High |
 
 ## APA 7 reference
-Goel, K., Mohan, J., Kwatra, N., Anupindi, R. S., & Ramjee, R. (2025). *Niyama: Breaking the silos of LLM inference serving*. arXiv. https://doi.org/10.48550/arXiv.2503.22562
-
-Published version: Goel, K., Mohan, J., Kwatra, N., Anupindi, R. S., & Ramjee, R. (2026). QoServe: Breaking the silos of LLM inference serving. In *Proceedings of the 31st ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2* (pp. 1492–1507). ACM. https://doi.org/10.1145/3779212.3790206
+Goel, K., Mohan, J., Kwatra, N., Anupindi, R. S., & Ramjee, R. (2026). QoServe: Breaking the silos of LLM inference serving. In *Proceedings of the 31st ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2* (pp. 1492–1507). Association for Computing Machinery. https://doi.org/10.1145/3779212.3790206
 
 ## In-text citation forms
 (Goel et al., 2025) · Goel et al. (2025). Switch to Goel et al. (2026) if the published text is used.
@@ -59,3 +62,17 @@ Providers keep interactive traffic (tight TTFT and TBT) and batch traffic in sep
 | Author(s) and year | Aim / problem | Method / technique | Dataset / tools | Key findings | Limitations / gap |
 |---|---|---|---|---|---|
 | Goel et al. (2025) | Co-schedule mixed-latency classes on shared GPUs | Deadlines per QoS class; dynamic chunking; EDF/SRPF hybrid; eager relegation | Llama3-8B, Qwen-7B, A100; Azure traces, ShareGPT | 32% more capacity than silos; 13–32% fewer GPUs; 1.5–2.4× goodput vs FCFS | Small models; own SLO buckets; preprint vs published versions |
+
+
+## 2026-10-31 proposal audit
+
+- Source attempted: https://arxiv.org/abs/2503.22562.
+- Scope: Abstract/metadata check only in this session; detailed numerical results remain unchecked.
+- Historical Source read above records the earlier session, not a claim of a fresh full reading.
+- arXiv title matched: Niyama : Breaking the Silos of LLM Inference Serving. Latest listed version: v1; arXiv DOI identifies the preprint, not peer review. A missing journal reference does not prove that no published version exists.
+- Crossref confirms the published successor QoServe at ASPLOS 2026, DOI https://doi.org/10.1145/3779212.3790206. Published text not read; do not transfer Niyama numbers to QoServe without comparison.
+
+
+## Published-version preference
+
+Canonical metadata will use QoServe (2026), confirmed through Crossref. The Niyama preprint remains the only full text read in the earlier summary; all numerical findings above remain attached to that preprint and must not be transferred to the final version without checking. Historical filename retained for links.
