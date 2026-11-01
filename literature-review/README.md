@@ -10,6 +10,7 @@ Markdown literature review for the final-year project (Nile University of Nigeri
 ## Start here
 | File | What it is |
 |---|---|
+| [relevance-ranking.md](relevance-ranking.md) | All 90 papers ranked against the current hybrid project, with reasons, cautions and a suggested reading sequence |
 | [gaps-and-synthesis.md](gaps-and-synthesis.md) | What the literature shows, the closest prior art, gaps mapped to objectives O1–O6, suggested gap wording |
 | [00-project-context.md](00-project-context.md) | The proposal in brief and the question each topic answers |
 | [references.md](references.md) | Master APA 7 reference list (alphabetical) |
