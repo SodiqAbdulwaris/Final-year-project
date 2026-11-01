@@ -16,6 +16,7 @@ Paste the numbered sections in order; remove metadata and team notes.
 | [2.4.5-latency-and-load-balancing.md](2.4.5-latency-and-load-balancing.md) | DRAFT | 2.4.5 Latency and load balancing |
 | [2.4.6-reliability-and-fallback.md](2.4.6-reliability-and-fallback.md) | DRAFT | 2.4.6 Reliability and fallback |
 | [2.4.7-benchmarks-and-evaluation.md](2.4.7-benchmarks-and-evaluation.md) | DRAFT | 2.4.7 Benchmarks and evaluation |
+| [2.4.8-serving-infrastructure.md](2.4.8-serving-infrastructure.md) | DRAFT | 2.4.8 Serving infrastructure |
 
 ## Notes for the team: reference verification
 

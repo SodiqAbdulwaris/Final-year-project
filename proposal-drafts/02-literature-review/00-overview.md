@@ -5,7 +5,9 @@ Open items: Section-specific placeholders and final Word assembly
 
 # CHAPTER TWO: LITERATURE REVIEW
 
-Paste the numbered sections in order; remove metadata and team notes.
+This chapter evaluates research on model routing, cost, latency and reliability to justify the proposed AI Request Router. It explains the review method and conceptual framework, compares enabling techniques and related works by theme, examines existing systems, and maps the evidence gaps to the project objectives.
+
+Paste the opening paragraph above and the numbered sections in order; remove metadata and team notes. The [review matrix](outputs/chapter-2/chapter-2-review-matrix.xlsx) records the same 45 provisional studies and flags numerical results still requiring verification. Both figures are linked from their sections.
 
 | File | Status | Use |
 |---|---|---|
