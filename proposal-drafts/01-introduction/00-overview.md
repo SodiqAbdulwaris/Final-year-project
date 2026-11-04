@@ -5,6 +5,8 @@ Open items: Section-specific placeholders and final Word assembly
 
 # CHAPTER ONE: INTRODUCTION
 
+This chapter introduces the project. It gives the background to the choice of a large language model (LLM) for each request, states the problem the project addresses and sets out the aim, objectives and research questions. It then summarises the methodology, significance, scope, limitations and expected contributions, defines the key terms and describes how the rest of the report is organised.
+
 Paste the numbered sections in order; remove metadata and team notes.
 
 | File | Status | Use |

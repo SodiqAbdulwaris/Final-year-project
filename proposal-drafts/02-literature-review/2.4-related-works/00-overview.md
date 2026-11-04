@@ -5,20 +5,24 @@ Open items: Section-specific placeholders and final Word assembly
 
 # 2.4-related-works — assembly overview
 
+**Section 2.4 opening paragraph (paste first):** The 33 studies are grouped into eight themes. Table 2.3 in Section 2.6 summarises their methods, data, findings and limitations.
+
 Paste the numbered sections in order; remove metadata and team notes.
 
 | File | Status | Use |
 |---|---|---|
 | [2.4.1-routing-algorithms.md](2.4.1-routing-algorithms.md) | DRAFT | 2.4.1 Routing algorithms |
-| [2.4.2-prompt-difficulty-and-suitability.md](2.4.2-prompt-difficulty-and-suitability.md) | DRAFT | 2.4.2 Prompt difficulty and suitability |
-| [2.4.3-retrieval-and-knn-routing.md](2.4.3-retrieval-and-knn-routing.md) | DRAFT | 2.4.3 Retrieval and k-NN routing |
-| [2.4.4-cost-reduction-and-cascades.md](2.4.4-cost-reduction-and-cascades.md) | DRAFT | 2.4.4 Cost reduction and cascades |
-| [2.4.5-latency-and-load-balancing.md](2.4.5-latency-and-load-balancing.md) | DRAFT | 2.4.5 Latency and load balancing |
-| [2.4.6-reliability-and-fallback.md](2.4.6-reliability-and-fallback.md) | DRAFT | 2.4.6 Reliability and fallback |
-| [2.4.7-benchmarks-and-evaluation.md](2.4.7-benchmarks-and-evaluation.md) | DRAFT | 2.4.7 Benchmarks and evaluation |
-| [2.4.8-serving-infrastructure.md](2.4.8-serving-infrastructure.md) | DRAFT | 2.4.8 Serving infrastructure |
+| [2.4.2-suitability-difficulty-retrieval.md](2.4.2-suitability-difficulty-retrieval.md) | DRAFT | 2.4.2 Suitability prediction, difficulty and retrieval |
+| [2.4.3-load-balancing.md](2.4.3-load-balancing.md) | DRAFT | 2.4.3 Load balancing |
+| [2.4.4-cost-reduction.md](2.4.4-cost-reduction.md) | DRAFT | 2.4.4 Cost reduction |
+| [2.4.5-latency-and-speed.md](2.4.5-latency-and-speed.md) | DRAFT | 2.4.5 Latency and speed |
+| [2.4.6-error-handling-and-fallback.md](2.4.6-error-handling-and-fallback.md) | DRAFT | 2.4.6 Error handling and fallback |
+| [2.4.7-testing-and-benchmarking.md](2.4.7-testing-and-benchmarking.md) | DRAFT | 2.4.7 Testing and benchmarking |
+| [2.4.8-system-design-and-gateway.md](2.4.8-system-design-and-gateway.md) | DRAFT | 2.4.8 System design and gateway |
 
 ## Notes for the team: reference verification
+
+> Historical register from the 45-work version. The Word draft now reviews 33 studies; entries not in Table 2.3 are no longer cited in the chapter.
 
 Fresh check scope is separate from earlier reading. Publication metadata is **unverified in this session** unless explicitly confirmed below or in L03. All detailed numbers outside L07 remain unchecked. This register will not be pasted into the submission.
 

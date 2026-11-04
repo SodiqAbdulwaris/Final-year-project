@@ -17,7 +17,7 @@ This folder will assemble the B.Sc. Software Engineering proposal for Nile Unive
 6. [Chapter 5](05-conclusion/5.1-summary.md), then 5.2.
 7. [References](06-references.md), then [Appendices](07-appendices/00-overview.md).
 
-Read the [style guide](_meta/style-guide.md) before Word assembly. Remove header blocks and Notes for the team from submission text. Apply Word heading/caption styles and regenerate contents, lists and page numbers. Render Mermaid from the figure register in Appendix G; no figure is considered rendered simply because a source block exists.
+Read the [style guide](_meta/style-guide.md) before Word assembly. Remove header blocks and Notes for the team from submission text. Apply Word heading/caption styles and regenerate contents, lists and page numbers. Figures are the PNG files listed in the Appendix G register; regenerate or replace them there, not from Mermaid.
 
 | Status | Meaning |
 |---|---|
@@ -34,4 +34,4 @@ Use limitations/L07-fact-check-sample.md for sampled source checks and limitatio
 
 ## Documentation check scope
 
-The package has 45 cited scholarly works, 45 summary rows and ten Mermaid sources. All ten parsed with Mermaid 11.14.0; visual rendering remains pending. The abstract is 268 words with five alphabetical keywords. See the applied-decision and source-audit registers for evidence and remaining checks. Final Word layout/page counts and departmental wording have not been verified.
+On 4 November 2026 the Markdown drafts were brought into line with the Word working draft (`proposal frags/Proposal_Working_Draft_v2.docx`), which is now the leading text. The package has the abstract (296 words, five alphabetical keywords), Chapters 1 to 3 in the Module 3 proposal structure (Chapter 3 has Sections 3.1 to 3.15), 33 reviewed studies in Table 2.3, a 45-entry reference list, and Figure 2.1 and Figures 3.1 to 3.11 as Codex-generated PNGs. Chapters 4 and 5 are still skeletons. The earlier Mermaid sources are archived in `03-methodology-design/outputs/chapter-3/mermaid-sources.md`. Final Word layout, page counts and departmental wording have not been verified.

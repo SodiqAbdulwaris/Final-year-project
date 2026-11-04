@@ -15,7 +15,7 @@ Paste the numbered sections in order; remove metadata and team notes.
 | [D-test-cases-and-traceability.md](D-test-cases-and-traceability.md) | DRAFT | Appendix D: Test Cases and Traceability |
 | [E-genai-use-log.md](E-genai-use-log.md) | DRAFT | Appendix E: Generative-AI Use Log |
 | [F-experiment-protocol.md](F-experiment-protocol.md) | DRAFT | Appendix F: Experiment Protocol |
-| [G-diagram-sources.md](G-diagram-sources.md) | DRAFT | Appendix G: Diagram Sources |
+| [G-diagram-sources.md](G-diagram-sources.md) | DRAFT | Appendix G: Diagram Sources (image register; Mermaid sources archived) |
 
 ## Mapping to the Word report's appendix letters (4 November 2026)
 

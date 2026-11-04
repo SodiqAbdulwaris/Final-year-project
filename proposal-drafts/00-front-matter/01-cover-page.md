@@ -1,24 +1,25 @@
 Status: DRAFT
 Depends on: D02; D09; Chapters 1–3
-Sources: _meta/decisions-applied.md; _meta/history/front-matter.md; owner-supplied template structure
-Open items: D02 personal details; title approval; university declaration wording
+Sources: Proposal_Working_Draft_v2.docx; _meta/decisions-applied.md
+Open items: supervisor approval of the title
 
-# [PROJECT TITLE]
+# DESIGN AND IMPLEMENTATION OF A PROMPT-AWARE LARGE LANGUAGE MODEL REQUEST ROUTING SYSTEM
 
-A project proposal submitted to the Department of Software Engineering, Nile University of Nigeria, in partial fulfilment of the requirements for the award of the Bachelor of Science (B.Sc.) degree in Software Engineering.
+A project proposal submitted to the Department of Software Engineering, Faculty of Computing, Nile University of Nigeria, in partial fulfilment of the requirements for the award of the degree of Bachelor of Science (B.Sc. Hons) in Software Engineering.
 
 | Member | Name | Student ID |
 |---|---|---|
-| 1 | [MEMBER 1 NAME] | [MEMBER 1 STUDENT ID] |
-| 2 | [MEMBER 2 NAME] | [MEMBER 2 STUDENT ID] |
-| 3 | [MEMBER 3 NAME] | [MEMBER 3 STUDENT ID] |
-| 4 | [MEMBER 4 NAME] | [MEMBER 4 STUDENT ID] |
-| 5 | [MEMBER 5 NAME] | [MEMBER 5 STUDENT ID] |
+| 1 | Terseer Solomon TERZUNGWE-TEMBE | 20231900 |
+| 2 | Abdulwaris Omotayo SODIQ | 20231024 |
+| 3 | Maryam Bawa DAHIRU | 242120247 |
+| 4 | Wahida Abdulrasheed BELLO | 20231224 |
+| 5 | Adriel Madukwe OGBUREKE | 20230922 |
+| 6 | Kabiru Mabudi AHMED | 20230160 |
 
-Supervisor: [SUPERVISOR NAME]
+Supervisor: Dr. Emmanuel Aderemi Tunbosun
 
-[MONTH YEAR]
+June 2027
 
 ## Notes for the team
 
-Working title pending approval: *Design and Evaluation of a Hybrid Prompt-Aware, Multi-Objective LLM Routing Algorithm with Automatic Fallback*. Retain only actual members; do not fill unused rows with invented people. Final title approval will replace [PROJECT TITLE] consistently.
+The title is the team’s wording and still needs the supervisor’s approval. The earlier working title (*Design and Evaluation of a Hybrid Prompt-Aware, Multi-Objective LLM Routing Algorithm with Automatic Fallback*) is retired. Group Leader: Terseer Solomon Terzungwe-Tembe.

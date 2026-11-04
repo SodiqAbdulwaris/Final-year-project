@@ -55,3 +55,18 @@ Fresh metadata retrieval was attempted for all 90 paper files. Twenty full-text 
 ## Final documentation checks
 
 The package contains 86 Markdown files including eight archived drafts. The active Chapter 2 discusses 45 works and the bibliography contains those 45 cited entries. The abstract is 268 words with five alphabetically ordered keywords. Ten Mermaid sources parsed successfully with Mermaid 11.14.0; no images were rendered. The exact 86-file tree, required headers, active local links, citation closure, abstract length, marker catalogue and whitespace were checked. No router implementation or experiment was performed. Word page counts, formal approval wording, personal source reading and remaining metadata/licence gates are not verified.
+
+## Synchronisation with the Word draft (4 November 2026)
+
+The Word file `proposal frags/Proposal_Working_Draft_v2.docx` now leads. These repository files were regenerated from it:
+
+- Front matter 01 to 07 and 09, and the abstract (296 words), with the title *Design and Implementation of a Prompt-Aware Large Language Model Request Routing System*, six members, session 2026/2027, free access.
+- Chapter 1 (1.1 to 1.11): six objectives and six research questions (the earlier five are replaced); the Nigerian exchange-rate sentence rests on African Development Bank (2026); the two laptops are named in 1.8.
+- Chapter 2: 33 studies in eight themes (the 45-study register is historical); Table 2.1 states that screening counts were not recorded; the comparison covers OpenRouter, LiteLLM and Portkey only (TrueFoundry and Not Diamond are dropped); the 2.4 theme files were renamed to match.
+- Chapter 3: restructured to Sections 3.1 to 3.15 following the Module 3 slides (the former 3.11 summary is now 3.15; new 3.11 risks, 3.12 work plan, 3.13 budget, 3.14 expected outcomes, 3.6.8 traceability). Numeric targets are adopted (NFR-01 to NFR-10); Scrum with two-week sprints; sprint owners follow Tasks.md.
+- References: the list in 06-references.md is the Word list (45 entries, Peffers et al. 2007 added).
+- Figures: Codex-generated PNGs replace the Mermaid sources, which are archived.
+
+**Decisions that differ from earlier records:** the numeric targets are fixed in Chapter 3 (previously provisional until a pilot); a revision is allowed only with a recorded reason before the test results are inspected. The lecturer’s slides ask for ethics approval and consent; the repository decision (no formal ethical approval, no human participants) is kept and still has to be confirmed with the supervisor.
+
+**Not yet verified:** Peffers et al. (2007) DOI; descriptions in Table 2.3 that were not checked against the full text; the budget amounts and the assumed exchange rate (₦1,500 per US$); per-laptop specifications; model names.

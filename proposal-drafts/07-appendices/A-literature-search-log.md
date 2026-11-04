@@ -11,7 +11,7 @@ The log will preserve the existing topic searches and the current source checks 
 |---|---|---|---|
 | Historical topic searches | 30–31 October 2026 as recorded per overview | arXiv and publisher/title searches; examples in Table 2.1. | 90 paper files across nine topics; global deduplicated retrieval/screen counts not reconstructed. |
 | Current verification | 31 October 2026 | Primary arXiv records, publisher/proceedings pages, official benchmark repositories/cards. | Metadata retrieval attempted for 90 records; 20 full-text samples across all topics; scope in L03/L07. |
-| Chapter selection | 31 October 2026 | Relevance to hybrid components, reliability and evaluation. | 45 works selected for narrative/table use; vendor documents separate. |
+| Chapter selection | 31 October 2026 | Relevance to hybrid components, reliability and evaluation. | 45 works selected for narrative/table use (33 of them are reviewed in the Word draft, Table 2.3); vendor documents separate. |
 
 ## Topic search records
 
