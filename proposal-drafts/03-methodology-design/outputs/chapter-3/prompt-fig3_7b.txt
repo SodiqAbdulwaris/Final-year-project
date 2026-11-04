@@ -1,0 +1,28 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_7b.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as given and include every element listed; do not add or drop elements.
+
+Diagram: flowchart / activity diagram, top to bottom, rounded process boxes and diamonds for the four decisions, Yes / No labels exactly as in the source. Put the retry loop (Yes from "Retryable, safe, attempts and resources remain?" back to "Filter capability, context, budget and availability") on the FAR RIGHT side of the page, routed around the right of all other boxes, so it does not cross any other line; the three outcome boxes ("Explicit infeasibility", "Reconcile and return", "Explicit execution failure") all end at "Redacted monitoring" at the bottom. Keep the main flow in one central column.
+
+Source:
+
+flowchart TD
+ A[Validate request] --> B[Filter capability, context, budget and availability]
+ B --> C{Eligible candidates?}
+ C -- No --> X[Explicit infeasibility]
+ C -- Yes --> D[Classify and retrieve permitted neighbours]
+ D --> E[Predict per-model suitability, cost and latency]
+ E --> F[Apply quality, cost and deadline constraints]
+ F --> G{Feasible candidate?}
+ G -- No --> X
+ G -- Yes --> H[Choose cheapest and revalidate and reserve]
+ H --> I[Execute]
+ I --> J{Completed?}
+ J -- Yes --> K[Reconcile and return]
+ J -- No --> L[Record health and uncertain usage]
+ L --> M{Retryable, safe, attempts and resources remain?}
+ M -- Yes --> B
+ M -- No --> N[Explicit execution failure]
+ X --> O[Redacted monitoring]
+ K --> O
+ N --> O

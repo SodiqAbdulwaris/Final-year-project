@@ -1,0 +1,31 @@
+Generate ONE raster image (PNG, landscape, about 2400 x 1350 px) and save it as figure-2-1c.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path when done.
+
+Purpose: Figure 2.1, "Conceptual framework of the study", for a B.Sc. Software Engineering final-year project report (Nile University of Nigeria) on a prompt-aware LLM request-routing gateway. It must look like a clean academic figure that prints well in black and white.
+
+Style: white background; flat vector look; thin dark-grey outlines; rounded rectangles; one single accent colour (muted blue) used only for the central routing policy; light grey fills elsewhere; sans-serif labels (Arial/Helvetica style), at least 24 px so text stays legible when shrunk to a 16 cm page width. No gradients, no shadows, no icons, no clip art, no people, no logos, no decorative background, no title inside the image, no numbers or fabricated results. Spell every label exactly as given.
+
+Layout (left to right, three bands):
+
+BAND 1 (left), a box labelled "Inputs":
+  - "Client request"
+  - "Declared constraints (capability, budget, privacy, deadline)"
+
+BAND 2 (centre), a large rounded container labelled "Routing gateway" holding a horizontal chain of four boxes joined by arrows:
+  1. "Eligibility filtering" with small caption "hard constraints, never relaxed silently"
+  2. "Suitability evidence" containing two stacked small boxes: "Task classification" and "Embedding similarity to scored past requests"
+  3. "Constrained selection" (this is the ONLY box filled with the muted blue accent) with caption "estimated quality, cost, latency"
+  4. "Execution on a hosted or local deployment"
+  Below the chain, inside the container, a long thin box labelled "Reliability controller: health tracking, circuit breaker, bounded fallback". Draw exactly these arrows around it:
+   (a) a solid arrow from the reliability controller up to box 4 "Execution on a hosted or local deployment", labelled "new attempt";
+   (b) a solid arrow from box 4 back down to the reliability controller, labelled "failure or outcome" (draw it beside arrow (a) so both are clearly visible);
+   (c) a dashed arrow from the reliability controller looping back up to box 1 "Eligibility filtering", labelled "re-check constraints on failure";
+   (d) a solid arrow leaving the container to the right, starting at the reliability controller box (not at the container edge or any other box), labelled "explicit error to client", used when retries are exhausted or unsafe.
+  There must be no other arrows inside the container except the left-to-right chain 1 > 2 > 3 > 4. ALSO draw two arrows between the bands: (e) a solid arrow from the "Inputs" box into the "Routing gateway" container, ending at box 1 "Eligibility filtering"; and (f) a solid arrow from the "Routing gateway" container to the "Outcomes measured" box. Every one of the arrows (a) to (f) and the chain 1 > 2 > 3 > 4 must be present.
+
+BAND 3 (right), a box labelled "Outcomes measured" with six short lines: "Quality", "Cost", "Latency", "Calibration", "Constraint violations", "Completion under failures".
+
+Across the very top, a wide thin bracket spanning band 2 labelled "Independent variable: routing policy (fixed model, cheapest eligible, rule-based, hybrid)".
+Across the very bottom, a wide thin bar labelled "Recorded context: model versions, task mix, prompt length, network conditions, concurrency".
+Draw a thin arrow from the "Routing gateway" container to "Outcomes measured".
+
+Keep generous whitespace, align boxes on a grid, avoid crossing lines, make arrowheads clear, and make sure no text is cut off or misspelled.

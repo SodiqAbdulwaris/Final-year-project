@@ -1,0 +1,12 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_1m.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as given and include every element listed; do not add or drop elements.
+
+Diagram: research and development methodology figure, left to right. Six rounded boxes in a row, numbered, each with a bold heading and a short project-specific line beneath it, joined by solid arrows:
+1 "Problem identification": fixed-model routing, cost, latency, failure and privacy limits (Chapters One and Two).
+2 "Define objectives": six objectives with measurable targets (Section 1.3).
+3 "Design and development": a larger box containing a small cycle of three mini-boxes "Sprint planning" > "Build and test" > "Sprint review", with the label "Scrum, two-week sprints".
+4 "Demonstration": replay on scored benchmark requests; capped live pilot with injected failures.
+5 "Evaluation": compare hybrid with baselines and ablations; check targets for quality, cost, latency and recovery.
+6 "Communication": final report, test evidence and reproducible configuration.
+Add one dashed arrow from box 5 back to box 3 labelled "findings feed later sprints". Above the row put a thin bracket labelled "Design Science Research activities". Fill box 3 with the muted-blue accent, all other boxes light grey.

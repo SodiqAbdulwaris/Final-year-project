@@ -1,0 +1,25 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_8b.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as given and include every element listed; do not add or drop elements.
+
+Diagram: entity relationship diagram in crow's-foot notation. One box per entity with the name in capitals; relationship lines labelled with the verb. Use EXACTLY these relationships, where "one" means exactly one (two bars) and "many" means zero-or-many (circle and crow's foot):
+MODEL (one) exposes DEPLOYMENT (many); MODEL (one) supports MODEL_CAPABILITY (many); CAPABILITY (one) defines MODEL_CAPABILITY (many); DEPLOYMENT (one) priced_by PRICE_VERSION (many); POLICY_VERSION (one) governs REQUEST (many); REQUEST (one) receives ESTIMATE (many); MODEL (one) predicted_for ESTIMATE (many); REQUEST (one) executes ATTEMPT (many); DEPLOYMENT (one) handles ATTEMPT (many); PRICE_VERSION (one) accounts_for ATTEMPT (many); ATTEMPT (one) reserves RESERVATION (one); DEPLOYMENT (one) produces HEALTH_EVENT (many); EXPERIMENT_RUN (one) contains EVALUATION_RECORD (many); MODEL (one) scored_for EVALUATION_RECORD (many).
+Be especially careful that the ATTEMPT end of "handles" and the EVALUATION_RECORD end of "scored_for" show the crow's foot (many), not a single bar. Avoid lines crossing boxes.
+
+Source:
+
+erDiagram
+ MODEL ||--o{ DEPLOYMENT : exposes
+ MODEL ||--o{ MODEL_CAPABILITY : supports
+ CAPABILITY ||--o{ MODEL_CAPABILITY : defines
+ DEPLOYMENT ||--o{ PRICE_VERSION : priced_by
+ POLICY_VERSION ||--o{ REQUEST : governs
+ REQUEST ||--o{ ESTIMATE : receives
+ MODEL ||--o{ ESTIMATE : predicted_for
+ REQUEST ||--o{ ATTEMPT : executes
+ DEPLOYMENT ||--o{ ATTEMPT : handles
+ PRICE_VERSION ||--o{ ATTEMPT : accounts_for
+ ATTEMPT ||--|| RESERVATION : reserves
+ DEPLOYMENT ||--o{ HEALTH_EVENT : produces
+ EXPERIMENT_RUN ||--o{ EVALUATION_RECORD : contains
+ MODEL ||--o{ EVALUATION_RECORD : scored_for

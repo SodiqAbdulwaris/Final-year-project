@@ -1,0 +1,30 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_2e.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as given and include every element listed; do not add or drop elements.
+
+Diagram: left-to-right logical architecture. One large rounded box labelled "Router application" contains, in a left-to-right chain: Gateway and validation, Hard filters, Preprocessing and classification, then (stacked vertically) Embedding and k-NN retrieval above Suitability predictor, then Constrained selector, then Execution adapters. Client is left of the big box. Hosted model and Local model are right of it, stacked. Below the big box, in ONE row left to right: Registry and budget reservations (under Hard filters), Health tracker and circuit breaker, Offline calibration on validation data, and Monitoring and logs at the far right, placed EXACTLY below Execution adapters so that the solid arrow Execution adapters > Monitoring and logs drops straight down from the bottom edge of Execution adapters (and NOT from Constrained selector). Route Monitoring and logs > Health tracker and circuit breaker along a lane below the row of boxes. Small legend: solid arrow = request path, dotted arrow = state / evidence.
+SOLID arrows (exactly these): Client > Gateway and validation; Gateway and validation > Hard filters; Hard filters > Preprocessing and classification; Preprocessing and classification > Embedding and k-NN retrieval; Preprocessing and classification > Suitability predictor; Embedding and k-NN retrieval > Suitability predictor; Suitability predictor > Constrained selector; Constrained selector > Execution adapters; Execution adapters > Hosted model; Execution adapters > Local model; Execution adapters > Monitoring and logs.
+DOTTED arrows (exactly these seven), EACH WITH A SMALL LABEL so that it can be traced, and no two dotted lines may share or overlap a segment, each using its own lane: Registry and budget reservations > Hard filters (label "budget state"); Registry and budget reservations > Constrained selector (label "budget limits"); Health tracker and circuit breaker > Hard filters (label "availability"); Health tracker and circuit breaker > Execution adapters (label "breaker state"); Monitoring and logs > Health tracker and circuit breaker (label "outcomes"); Monitoring and logs > Offline calibration on validation data (label "records"); Offline calibration on validation data > Suitability predictor (label "calibration").
+There must be NO other arrows. IMPORTANT ownership check: "Registry and budget reservations" has exactly TWO outgoing dotted lines ("budget state" up to Hard filters and "budget limits" up to Constrained selector). "Health tracker and circuit breaker" has exactly TWO outgoing dotted lines ("availability" up to Hard filters and "breaker state" up to Execution adapters). The line labelled "budget limits" must visibly start on the Registry and budget reservations box and must NOT touch the Health tracker box; give it its own lane that passes above the Health tracker box.
+
+Source (Mermaid, for labels):
+
+flowchart LR
+ C[Client] --> G[Gateway and validation]
+ G --> F[Hard filters]
+ F --> P[Preprocessing and classification]
+ P --> E[Embedding and k-NN retrieval]
+ P --> Q[Suitability predictor]
+ E --> Q
+ Q --> S[Constrained selector]
+ S --> A[Execution adapters]
+ A --> H[Hosted model]
+ A --> L[Local model]
+ R[Registry and budget reservations] -.-> F
+ R -.-> S
+ T[Health tracker and circuit breaker] -.-> F
+ T -.-> A
+ A --> O[Monitoring and logs]
+ O -.-> T
+ O -.-> V[Offline calibration on validation data]
+ V -.-> Q

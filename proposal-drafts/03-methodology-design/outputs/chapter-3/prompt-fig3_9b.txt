@@ -1,0 +1,16 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_9b.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as given and include every element listed; do not add or drop elements.
+
+Diagram: greyscale desktop dashboard wireframe drawn as one application window. Top bar: "AI Request Router: run ID / configuration version". Inside, stacked panels with NO arrows between them, in this order: (1) "Summary: offered / completed / cost / p95 / violations" with four empty placeholder cards; (2) "Deployment health: model / endpoint / breaker / last observation" with an empty table of grey bars; (3) "Quality and calibration: policy / predicted vs observed" with an empty axes placeholder (two light axes and a diagonal dashed reference line only, no data curves); (4) "Attempt log: request ID / reason / cost / latency / outcome" with an empty table; (5) "Filters: run / model / fault type / date" as four labelled empty input boxes; (6) a button labelled "Export aggregate report / inspect safe details". No numbers, no invented values.
+
+Source:
+
+flowchart TB
+ H[AI Request Router: run ID / configuration version]
+ H --> A[Summary: offered / completed / cost / p95 / violations]
+ A --> B[Deployment health: model / endpoint / breaker / last observation]
+ B --> C[Quality and calibration: policy / predicted vs observed]
+ C --> D[Attempt log: request ID / reason / cost / latency / outcome]
+ D --> E[Filters: run / model / fault type / date]
+ E --> F[Export aggregate report / inspect safe details]

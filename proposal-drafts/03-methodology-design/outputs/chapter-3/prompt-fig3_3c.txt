@@ -1,0 +1,22 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_3c.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as given and include every element listed; do not add or drop elements.
+
+Diagram: deployment diagram. Two large labelled machine boxes placed side by side; keep the machine titles at the top-left corner of each box, clear of any arrow. Put "Client and experiment driver" to the LEFT of Laptop A with a short horizontal arrow into "Router application and relational store" so that no arrow crosses a title. "Laptop A: RTX 4070" contains THREE inner boxes: "Router application and relational store", "Embeddings / classifier / k-NN index" and "Small model via vLLM or Ollama". "Laptop B: RTX 4070" contains ONE inner box: "Local test backend / failure injection". "Client and experiment driver" sits above or left, outside both laptops, with an arrow to "Router application and relational store". From "Router application and relational store" draw arrows to "Embeddings / classifier / k-NN index", to "Small model via vLLM or Ollama", to "Local test backend / failure injection" (crossing from Laptop A to Laptop B) and to "Hosted API: capped pilot only", which sits outside both laptops with a dashed outline. No other arrows. The router application MUST be drawn inside Laptop A.
+
+Source:
+
+flowchart TB
+ C[Client and experiment driver] --> G[Router application and relational store]
+ subgraph D[Laptop A: RTX 4070]
+ G
+ E[Embeddings / classifier / k-NN index]
+ L[Small model via vLLM or Ollama]
+ end
+ subgraph P[Laptop B: RTX 4070]
+ T[Local test backend / failure injection]
+ end
+ G --> E
+ G --> L
+ G --> T
+ G --> A[Hosted API: capped pilot only]

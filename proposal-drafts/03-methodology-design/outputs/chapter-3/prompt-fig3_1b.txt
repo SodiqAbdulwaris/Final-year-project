@@ -1,0 +1,17 @@
+Generate ONE raster image (PNG, landscape, at least 2000 px wide) and save it as fig3_1b.png in the current working directory. Use your image generation capability; do not draw it with code. Reply only with the saved file path.
+
+This is a figure for a B.Sc. Software Engineering final-year project report. It must look like a clean academic diagram that prints well in black and white: white background, flat vector look, thin dark-grey outlines, light-grey fills, one muted-blue accent used sparingly, sans-serif labels (Arial/Helvetica style) of at least 22 px, generous whitespace, aligned boxes, no crossing lines where avoidable, clear arrowheads. No gradients, shadows, icons, clip art, logos, decorative backgrounds, in-image titles or invented numbers. Spell every label exactly as it appears in the source below and include every node and every arrow of the source; do not add or drop elements.
+
+Diagram type and layout: UML use case diagram. A system boundary rectangle titled "AI Request Router" containing exactly four ellipses, placed so that NO association line passes through or behind any ellipse it is not attached to: "Route request" at the centre-left, "Apply constraints" at the top centre, "Monitor and calibrate" at the top right, "Operational fallback" at the bottom centre. Three actors drawn as stick figures outside the boundary: "Client application" on the left, "Administrator" on the right at the top, "Provider / model backend" at the bottom right below the boundary's right edge. Plain association lines: Client application to Route request, Apply constraints and Operational fallback; Administrator to Monitor and calibrate and Apply constraints; Provider / model backend to Route request and Operational fallback. Draw one dashed arrow from Route request to Apply constraints labelled "includes". Route the lines with straight or elbow segments so each connects only its two endpoints and none overlaps another ellipse.
+
+Source (ground truth for names):
+
+flowchart LR
+  C[Client application] --> R([Route request])
+  C --> X([Apply constraints])
+  C --> F([Operational fallback])
+  A[Administrator] --> M([Monitor and calibrate])
+  A --> X
+  P[Provider / model backend] --> R
+  P --> F
+  R --> X

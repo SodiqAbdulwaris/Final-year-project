@@ -14,7 +14,7 @@ The owner's current task will govern all active drafts. Earlier recommendations 
 | D03 | No invented numeric targets. Quality non-inferiority margin, cost and latency reductions remain provisional after pilot, frozen before testing. | 1.3, 3.5, 3.9, Appendix F |
 | D04 | Owner's evaluation-focused gap wording used verbatim. No first/novel-algorithm claim. | 1.2, 2.7 |
 | D05 | Three to four models: cheap/small, mid-tier and frontier, restricted to benchmark-covered candidates. | 1.7, 3.7, Appendix B |
-| D06 | Two RTX 4070 machines, desktop and laptop; scored-output reuse, capped hosted pilot, local failure tests. | 1.8, 3.8, Table 4.1 |
+| D06 | Two RTX 4070 laptops (Lenovo Legion 7i, ASUS ROG Zephyrus G16); scored-output reuse, capped hosted pilot, local failure tests. | 1.8, 3.8, Table 4.1 |
 | D07 | No formal ethics approval; basic research ethics; human involvement minimal or none. This records the owner's stated approval position, not an independently obtained exemption. | 3.2, 3.10, Appendix C |
 | D08 | Keep preprints/2026 works, label status, prefer established peer-reviewed version. | Chapter 2, references |
 | D09 | Full AI declaration and log; team will read key sources directly. Exact past model versions remain unknown. | Front matter 06, Appendix E, style guide |
@@ -28,7 +28,7 @@ Recommendation: first test an LLMRouterBench candidate pool using **Qwen3-8B** a
 
 Evidence: the [official README](https://github.com/ynulihao/LLMRouterBench/blob/0b81ba3053fbb74828382690a883849e2443e2d8/README.md), checked 31 October 2026, lists Qwen3-8B in the lightweight performance pool and Gemini-2.5-flash / GPT-5-medium in the performance–cost pool. Its configuration separates these pools and task sets. That proves listed coverage, not shared prompts or complete scored-output availability across the proposed three models. The downloaded result archive has not been inspected. Before freezing names, check exact revisions, aligned request IDs, shared scoring and deployment availability. Do not join unrelated scores by benchmark name alone.
 
-Local feasibility will require measured VRAM and a tested model/quantisation/context configuration. Desktop and laptop RTX 4070 branding does not establish equal capacity. A quantised local deployment will not inherit full-precision benchmark quality labels without qualification. If no aligned mixed pool is usable, document the feasibility conflict rather than silently breaking D05 or commissioning an uncapped new evaluation.
+Local feasibility will require measured VRAM and a tested model/quantisation/context configuration. The shared RTX 4070 branding of the two laptops does not establish equal capacity. A quantised local deployment will not inherit full-precision benchmark quality labels without qualification. If no aligned mixed pool is usable, document the feasibility conflict rather than silently breaking D05 or commissioning an uncapped new evaluation.
 
 ## D11 findings and redistribution gate
 
